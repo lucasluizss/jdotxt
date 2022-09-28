@@ -149,10 +149,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Static tools: Checkstyle, PMD, Spotbugs -->
-
-            <!-- TBA -->
-
         </plugins>
     </reporting>
 </project>
