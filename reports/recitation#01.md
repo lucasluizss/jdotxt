@@ -100,8 +100,6 @@ The checkstyle can check various aspects of the source code, it can identify pro
 
 ### Report produced by the static testing tool.
 
-
-
 #### Checkstyle
 
 [Generated Report](../target/site/checkstyle.html)
@@ -116,7 +114,7 @@ _After:_
 
 |Files|Info|Warnings|Errors|
 |-----|----|--------|------|
-| 67  | 0  | 12560  | 0    |
+| 67  | 0  | 11750  | 0    |
 
 ### 5x2 randomly selected bugs.
 
@@ -145,3 +143,4 @@ _After:_
 - EmptyLineSeparator
   - Before each 'METHOD_DEF' should be separated from previous line.
   - After it was fixed for every warning in the file by applying the IDE tool.
+
