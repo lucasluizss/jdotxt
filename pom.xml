@@ -54,7 +54,7 @@
     <build>
         <plugins>
 
-            <!-- Recitation #1 (Checkstyle) -->
+            <!-- Recitation #1 (Checkstyle/Spotbug) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -72,6 +72,12 @@
             </plugin>
 
             <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>4.7.2.0</version>
+            </plugin>
+
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.10.1</version>
@@ -83,23 +89,8 @@
                 </configuration>
             </plugin>
 
-            <!--plugin>
-                <groupId>sh.tak.appbundler</groupId>
-                <artifactId>appbundle-maven-plugin</artifactId>
-                <version>1.2.0</version>
-                <configuration>
-                    <mainClass>com.chschmid.jdotxt.Jdotxt</mainClass>
-                    <iconFile>drawable/jdotxt.icns</iconFile>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                          <goal>bundle</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin-->
+            <!-- Recitation #2 -->
+            <!-- ... -->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -140,6 +131,8 @@
     <reporting>
         <plugins>
 
+            <!-- Recitation #1 (Checkstyle/Spotbug) -->
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -148,6 +141,15 @@
                     <configLocation>${basedir}/rulesets/checkstyle-rules.xml</configLocation>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>4.7.2.0</version>
+            </plugin>
+
+            <!-- Recitation #2 -->
+            <!-- ... -->
 
         </plugins>
     </reporting>

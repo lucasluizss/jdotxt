@@ -34,7 +34,7 @@ import com.todotxt.todotxttouch.util.Util;
 
 /**
  * A task repository for interacting with the local file system
- * 
+ *
  * @author Tim Barlotta
  */
 public class LocalFileTaskRepository implements LocalTaskRepository {
@@ -52,13 +52,13 @@ public class LocalFileTaskRepository implements LocalTaskRepository {
 			throw new TodoException("Error initializing LocalFile", e);
 		}
 	}
-	
+
 	@Override
 	public void init() {
 		try {
 			if (!TODO_TXT_FILE.exists()) {
 				Util.createParentDirectory(TODO_TXT_FILE);
-				TODO_TXT_FILE.createNewFile();
+				System.out.println(TODO_TXT_FILE.createNewFile());
 			}
 		} catch (IOException e) {
 			throw new TodoException("Error initializing LocalFile", e);

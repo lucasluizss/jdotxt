@@ -213,8 +213,8 @@ public class JdotxtContentField extends JTextField{
 		PLAIN, PROJECT, CONTEXT
 	}
 
-	class AutocompletionList extends JDialog {
-		Vector<String> autocomplete = new Vector<>();
+	static class AutocompletionList extends JDialog {
+		static Vector<String> autocomplete = new Vector<>();
 		JList<String> list;
 		int selectionIndex = 0;
 

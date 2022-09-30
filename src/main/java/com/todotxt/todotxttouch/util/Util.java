@@ -272,12 +272,10 @@ public class Util {
 		if (dir != null && !dir.exists()) {
 			createParentDirectory(dir);
 		}
-		if (!dir.exists()) {
-			if (!dir.mkdirs()) {
+		if (dir != null && !dir.exists() && !dir.mkdirs()) {
 				System.out.print("Could not create dirs: " + dir.getAbsolutePath());
 				throw new TodoException("Could not create dirs: "
 						+ dir.getAbsolutePath());
-			}
 		}
 	}
 
@@ -381,14 +379,14 @@ public class Util {
 		}
 		return builder.toString();
 	}
-	
+
 	public static ArrayList<String> split(String s, String delimeter) {
 		if (Strings.isBlank(s)) {
 			return new ArrayList<String>();
 		}
 		return new ArrayList<String>(Arrays.asList(s.split(delimeter)));
 	}
-	
+
     public static ImageIcon createImageIcon(String path) {
         java.net.URL imgURL = JdotxtToolbar.class.getResource(path);
         if (imgURL != null) {
@@ -398,13 +396,13 @@ public class Util {
             return null;
         }
     }
-    
+
 	public static void prependString(ArrayList<String> list, String prepend) {
 		for (int k1=0; k1 < list.size(); k1++) {
 			list.set(k1, prepend + list.get(k1));
 		}
 	}
-	
+
 	public static int[] integerList2IntArray(List<Integer> integerlist) {
 		int[] array = new int[integerlist.size()];
 		for (int k1 = 0; k1 < integerlist.size(); k1++) {
