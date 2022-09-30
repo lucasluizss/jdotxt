@@ -129,20 +129,29 @@ _After:_
 #### How those 5x2 bugs were addressed/fixed.
 
 - NeedBraces
+
   - Before 'if' construct must use '{}'s.
   - It was added braces to the 'if' clausures.
+    ![NeedBraces_108BugFix](../.github/%2301/NeedBraces_108BugFix.jpeg)
+
 - EmptyBlock
   - Before there was an empty `else` block.
-  - After it was removed.
+    ![EmptyBlock_108Bug](../.github/%2301/EmptyBlock_302Fix.jpeg)
+  - After it was removed.\
+    ![EmptyBlock_108Fix](../.github/%2301/EmptyBlock_302Fix.jpeg)
 - FileTabCharacter
   - Before the file was indented with tabs.
   - After it was applied the space indentation for fixing the warning.
 - RightCurly
   - Before the warning says that '}' at column 104 should be alone on a line.
+    ![RightCurly_480Bug](../.github/%2301/RightCurly_480Bug.jpeg)
   - After the code was indented by improving the method organisation. Also fixed the `LeftCurly`.
+    ![RightCurly_480Fix](../.github/%2301/RightCurly_480Fix.jpeg)
 - EmptyLineSeparator
   - Before each 'METHOD_DEF' should be separated from previous line.
+    ![EmptyLineSeparator_501Bug](../.github/%2301/EmptyLineSeparator_501Bug.jpeg)
   - After it was fixed for every warning in the file by applying the IDE tool.
+    ![EmptyLineSeparator_501Fix](../.github/%2301/EmptyLineSeparator_501Fix.jpeg)
 
 ### Spotbug
 
@@ -173,17 +182,27 @@ _After:_
 - MALICIOUS_CODE
 
   - Before the bug was refering to com.chschmid.jdotxt.gui.JdotxtGUI.COLOR_GRAY_PANEL isn't final but should be
+    ![MALICIOUS_CODE_59Bug](../.github/%2301/MALICIOUS_CODE_59Bug.png)
   - After que variables was fixed by making them final.
+    ![MALICIOUS_CODE_59Fix](../.github/%2301/MALICIOUS_CODE_59Fix.png)
 
 - PERFORMANCE
   - Before the bug was complaining that it should com.chschmid.jdotxt.gui.controls.JdotxtContentField$AutocompletionList be a _static_ inner class?
+    ![PERFORMANCE_217Bug](../.github/%2301/PERFORMANCE_217Bug.png)
   - After the class was asssigned as static within the property mentioned.
+    ![PERFORMANCE_217Fix](../.github/%2301/PERFORMANCE_217Fix.png)
 - CORRECTNESS
   - Before the bug was complaning that possible null pointer dereference of dir in com.todotxt.todotxttouch.util.Util.createParentDirectory(File)
+    ![CORRECTNESS_275Bug](../.github/%2301/CORRECTNESS_275Bug.png)
   - It was added a null verification for preventing the exception.
+    ![CORRECTNESS_275Fix](../.github/%2301/CORRECTNESS_275Fix.png)
 - BAD_PRACTICE
   - Before, Exceptional return value of java.io.File.createNewFile() ignored in com.todotxt.todotxttouch.task.LocalFileTaskRepository.init().
+    ![BAD_PRACTICE_61Bug](../.github/%2301/BAD_PRACTICE_61Bug.png)
   - After the returned value was used for showing it values as a logger.
+    ![BAD_PRACTICE_61Fix](../.github/%2301/BAD_PRACTICE_61Fix.png)
 - STYLE
   - Before switch statement found in com.chschmid.jdotxt.gui.JdotxtWelcomeDialog.initGUI() where default case is missing
+    ![STYLE_66Bug](../.github/%2301/STYLE_66Bug.png)
   - After was added a log with no valid purpose for requested translation operation.
+    ![STYLE_66Fix](../.github/%2301/STYLE_66Fix.png)
