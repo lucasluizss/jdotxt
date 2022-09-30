@@ -97,7 +97,8 @@ Static testing can help us to define good quality of code reading, by improving 
 ### Spotbugs
 
 - **How was it configured for your project.**
-  > Your description must explain, e.g., why did you enabled or disabled any default configuration or bug pattern.
+  > Image result for spotbug java SpotBugs is a program which uses static analysis to look for bugs in Java code. It is free software, distributed under the terms of the GNU Lesser General Public License. SpotBugs is a fork of FindBugs (which is now an abandoned project), carrying on from the point where it left off with support of its community.
+  > It was configured using the `pom.xml` file by adding the plugin reference and the reporting plugin tag reference using the Intellij IDE.
 
 ## Report produced by the static testing tool.
 
