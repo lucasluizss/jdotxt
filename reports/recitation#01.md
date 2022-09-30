@@ -1,5 +1,7 @@
 # Report - Recitation #01
 
+Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
+
 > > **Lucas Silva** - up202103397
 >
 > > **Garcia Manuel** - up202204409
