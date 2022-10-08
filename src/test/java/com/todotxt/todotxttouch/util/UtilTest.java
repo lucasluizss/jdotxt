@@ -93,10 +93,13 @@ public class UtilTest {
 	public void testRenamingNullFile() throws IOException, TodoException {
 		// arange
 		File file = TODO_TXT_FILE;
+		File origFile = null;
+		File newFile = null;
+		boolean overwrite = false;
 
 		// act & assert
 		file.createNewFile();
-		Util.renameFile(null, null, false);
+		Util.renameFile(origFile, newFile, overwrite);
 	}
 
 	@Test(expected = TodoException.class)
