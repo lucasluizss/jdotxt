@@ -59,16 +59,16 @@ Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
 
 ## Brief description of the unit tests generated for each category.
 
-- `com.todotxt.todotxttouch.util.CursorPositionCalculator.calculate​`
+- `com.todotxt.todotxttouch.util.CursorPositionCalculator.calculate​` [(VIEW TESTS)](../src/test/java/com/todotxt/todotxttouch/util/CursorPositionCalculatorTest.java)
   - The tests were generated based on the parameters, for testing each possibility and checking the returned position if it matches.
   - Testing with a prior value, new value and position.
-- `com.todotxt.todotxttouch.util.Path.fileName`
+- `com.todotxt.todotxttouch.util.Path.fileName` [(VIEW TESTS)](../src/test/java/com/todotxt/todotxttouch/util/PathTest.java)
   - Each unit test were created for cover each possible condition like a file name starting or ending with slash "`/`", an empty string or null for returning it correct file name.
-- `com.todotxt.todotxttouch.util.Path.parentPath`
+- `com.todotxt.todotxttouch.util.Path.parentPath` [(VIEW TESTS)](../src/test/java/com/todotxt/todotxttouch/util/PathTest.java)
   - Each unit test were created for cover each possible condition like a file name starting or ending with slash "`/`", an empty string or null for returning it correct parent path.
-- `com.todotxt.todotxttouch.util.Util.createParentDirectory`
+- `com.todotxt.todotxttouch.util.Util.createParentDirectory` [(VIEW TESTS)](../src/test/java/com/todotxt/todotxttouch/util/UtilTest.java)
   - The unit tests were created in order of prevent possible defects, handling the parent directory creation used by the program.
-- `com.todotxt.todotxttouch.util.Util.renameFile`
+- `com.todotxt.todotxttouch.util.Util.renameFile` [(VIEW TESTS)](../src/test/java/com/todotxt/todotxttouch/util/UtilTest.java)
   - The unit tests were created for validating the file renaming and possible defects.
 
 ## Brief description of the outcome of each unit test and whether any test results in a failure (and why).
