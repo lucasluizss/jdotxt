@@ -7,14 +7,15 @@ Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
 ## Selected functions and reasons
 
 - `com.todotxt.todotxttouch.util.CursorPositionCalculator.calculate​`
-  - This function was selected because there was not tests for it and it contained a logic for getting the cursor position.
+  - This function were selected because there was not tests for it and it contained a logic for getting the cursor position.
 - `com.todotxt.todotxttouch.util.Path.fileName`
-  - This function was chosen because it handles the file name and process it's name returning it.
+  - This function were chosen because it handles the file name and process it's name returning it.
 - `com.todotxt.todotxttouch.util.Path.parentPath`
-  - This function was chosen because it handles the parent path and return it's path.
+  - This function were chosen because it handles the parent path and return it's path.
 - `com.todotxt.todotxttouch.util.Util.createParentDirectory`
-  - This function was chosen because it is responsible for creating new `txt` files that is used in the program.
-- 5
+  - This function were chosen because it is responsible for creating parent directory that is used in the program.
+- `com.todotxt.todotxttouch.util.Util.renameFile`
+  - This function were chosen for being responsible for renaming the files used in the program.
 
 ## What is the purpose of each function.
 
@@ -25,8 +26,9 @@ Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
 - `com.todotxt.todotxttouch.util.Path.parentPath`
   - It will verify if parent path is blank and validate it's content by returning the validated parent path or an empty string if not valid.
 - `com.todotxt.todotxttouch.util.Util.createParentDirectory`
-  - Create new directory folder or file for the program usage.
-- 5
+  - Create new parent directory folder of a file for the program usage.
+- `com.todotxt.todotxttouch.util.Util.renameFile`
+  - This function is used for renaming files in the program.
 
 ## Step-by-step of the ‘Category-Partition’ algorithm for each function.
 
@@ -46,10 +48,14 @@ Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
   - Getting the correct result.
 - `com.todotxt.todotxttouch.util.Util.createParentDirectory`
   - Identifying the usage of the function.
-  - Analysing it parameter types.
+  - Analysing it parameter types for creating a parent directory.
   - Testing with different inputs and handling possible exceptions in tests.
-  - Verifying created files and deleting it at the end.
-- 5
+  - Verifying created directories and deleting it at the end if necessary.
+- `com.todotxt.todotxttouch.util.Util.renameFile`
+  - Checking how the function was used.
+  - Analysing the paramters for renaming a file.
+  - Creating file in order to rename it.
+  - Verifying the renamed file and possible errors.
 
 ## Brief description of the unit tests generated for each category.
 
@@ -61,8 +67,9 @@ Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
 - `com.todotxt.todotxttouch.util.Path.parentPath`
   - Each unit test were created for cover each possible condition like a file name starting or ending with slash "`/`", an empty string or null for returning it correct parent path.
 - `com.todotxt.todotxttouch.util.Util.createParentDirectory`
-  - The unit tests were created in order of prevent possible defects, handling the file creation used by the program.
-- 5
+  - The unit tests were created in order of prevent possible defects, handling the parent directory creation used by the program.
+- `com.todotxt.todotxttouch.util.Util.renameFile`
+  - The unit tests were created for validating the file renaming and possible defects.
 
 ## Brief description of the outcome of each unit test and whether any test results in a failure (and why).
 
@@ -73,5 +80,6 @@ Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
 - `com.todotxt.todotxttouch.util.Path.parentPath`
   - It is not possible to create a failure test because the function prevent the failure because the string parameter type.
 - `com.todotxt.todotxttouch.util.Util.createParentDirectory`
-  - The unit tests can validate the exception cases when informing invalid inputs, or validating the correct creation of the files.
-- 5
+  - The unit tests can validate the exception cases when informing invalid inputs, or validating the correct creation of the parent directories.
+- `com.todotxt.todotxttouch.util.Util.renameFile`
+  - The unit tests can validate file renaming and possible exceptions when trying to rename a nonexistent file.
