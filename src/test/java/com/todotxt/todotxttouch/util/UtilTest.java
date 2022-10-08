@@ -89,6 +89,16 @@ public class UtilTest {
 		assertEquals(expected, renamedFilePath);
 	}
 
+	@Test(expected = NullPointerException.class)
+	public void testRenamingNullFile() throws IOException, TodoException {
+		// arange
+		File file = TODO_TXT_FILE;
+
+		// act & assert
+		file.createNewFile();
+		Util.renameFile(null, null, false);
+	}
+
 	@Test(expected = TodoException.class)
 	public void testRenamingNonExistentFile() throws IOException, TodoException {
 		// arange
