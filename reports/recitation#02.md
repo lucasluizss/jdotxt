@@ -2,9 +2,7 @@
 
 Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
 
-> > **Lucas Silva** - up202103397 (Functios [1, 2, 3])
->
-> > **Garcia Manuel** - up202204409 (Functios [4, 5])
+> **Lucas Silva** - up202103397
 
 ## Selected functions and reasons
 

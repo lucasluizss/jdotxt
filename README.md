@@ -1,7 +1,8 @@
-jdotxt
-======
+# jdotxt
 
 [![CircleCI](https://circleci.com/gh/nicdnb/jdotxt/tree/master.svg?style=svg)](https://circleci.com/gh/nicdnb/jdotxt/tree/master)
+
+![screenshot](.github/jdotxt_program.png)
 
 Copyright 2013-2018 Christian M. Schmid
 
@@ -14,6 +15,7 @@ another open source cross-platform GUI for the todo.txt file format
 #### Building jdotxt
 
 to build jdotxt from its sources, you will need
+
 - a Java Development Kit (JDK) Version 7 or higher http://www.oracle.com/technetwork/java/javase/downloads/index.html
 - Apache Maven as build system https://maven.apache.org/
 
