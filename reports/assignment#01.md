@@ -1,4 +1,4 @@
-# Report - Recitation #01
+# Report - Assignment #01
 
 Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
 

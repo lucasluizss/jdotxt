@@ -1,4 +1,4 @@
-# Report - Recitation #02
+# Report - Assignment #02
 
 Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
 
@@ -31,6 +31,8 @@ Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
   - This function is used for renaming files in the program.
 
 ## Step-by-step of the ‘Category-Partition’ algorithm for each function.
+
+> describe function params and usages (boundary/category partition)
 
 - `com.todotxt.todotxttouch.util.CursorPositionCalculator.calculate​`
   - First identifying the class type and how the functions could be called.
