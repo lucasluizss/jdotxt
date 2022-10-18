@@ -34,30 +34,119 @@ Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
 
 > describe function params and usages (boundary/category partition)
 
-- `com.todotxt.todotxttouch.util.CursorPositionCalculator.calculate​`
-  - First identifying the class type and how the functions could be called.
-  - Analysing the parameters types.
-  - Depending on the value of parameters (_invalid/null_) the returned value can be zero.
-- `com.todotxt.todotxttouch.util.Path.fileName`
-  - First identifying the class type and how the functions could be called.
-  - Analysing the parameter type.
-  - Testing with different inputs.
-  - Getting the correct result.
-- `com.todotxt.todotxttouch.util.Path.parentPath`
-  - First identifying the class type and how the functions could be called.
-  - Analysing the parameter type.
-  - Testing with different inputs.
-  - Getting the correct result.
-- `com.todotxt.todotxttouch.util.Util.createParentDirectory`
-  - Identifying the usage of the function.
-  - Analysing it parameter types for creating a parent directory.
-  - Testing with different inputs and handling possible exceptions in tests.
-  - Verifying created directories and deleting it at the end if necessary.
-- `com.todotxt.todotxttouch.util.Util.renameFile`
-  - Checking how the function was used.
-  - Analysing the paramters for renaming a file.
-  - Creating file in order to rename it.
-  - Verifying the renamed file and possible errors.
+### `com.todotxt.todotxttouch.util.CursorPositionCalculator.calculate​`
+
+- First identifying the class type and how the functions could be called.
+- Analysing the parameters types.
+- Depending on the value of parameters (_invalid/null_) the returned value can be zero.
+
+Signature:
+
+```java
+public static final int calculate​(int priorCursorPosition, String priorValue, String newValue)
+```
+
+Parameters:
+
+- (Interger) `priorCursorPosition` - the position of the cursor prior to the change
+- (String) `priorValue` - the prior value of the string
+- (String) `newValue` - the new value of the string
+
+Returns:
+
+- the calculated position. If priorValue is null than the calculated position will be the position just after the string. If the newValue is null than the position will be 0.
+
+<hr>
+
+### `com.todotxt.todotxttouch.util.Path.fileName`
+
+- First identifying the class type and how the functions could be called.
+- Analysing the parameter type.
+- Testing with different inputs.
+- Getting the correct result.
+
+Signature:
+
+```java
+public static String fileName​(String path)
+```
+
+Parameters:
+
+- (String) `path` - the new value of the string
+
+Returns:
+
+- Path
+
+<hr>
+
+### `com.todotxt.todotxttouch.util.Path.parentPath`
+
+- First identifying the class type and how the functions could be called.
+- Analysing the parameter type.
+- Testing with different inputs.
+- Getting the correct result.
+
+Signature:
+
+```java
+public static String parentPath​(String path)
+```
+
+Parameters:
+
+- (String) `path` - the new value of the string
+
+Returns:
+
+- Path
+
+<hr>
+
+### `com.todotxt.todotxttouch.util.Util.createParentDirectory`
+
+- Identifying the usage of the function.
+- Analysing it parameter types for creating a parent directory.
+- Testing with different inputs and handling possible exceptions in tests.
+- Verifying created directories and deleting it at the end if necessary.
+
+Signature:
+
+```java
+public static void createParentDirectory​(File dest) throws TodoException
+```
+
+Parameters:
+
+- (File) `dest` - file destination
+
+Throws:
+
+- `TodoException`
+
+<hr>
+
+### `com.todotxt.todotxttouch.util.Util.renameFile`
+
+- Checking how the function was used.
+- Analysing the paramters for renaming a file.
+- Creating file in order to rename it.
+- Verifying the renamed file and possible errors.
+
+Signature:
+
+```java
+public static void renameFile​(File origFile, File newFile, boolean overwrite)
+```
+
+Parameters:
+
+- (File) `origFile` - file origin
+- (File) `newFile` - file to be renamed
+- (boolean) `overwrite` - flag for overwritring
+
+<hr>
 
 ## Brief description of the unit tests generated for each category.
 
