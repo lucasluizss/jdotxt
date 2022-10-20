@@ -11,7 +11,7 @@ Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
   - This function were chosen because it will insert spaces in the requested position regarding the parameters.
 - `com.todotxt.todotxttouch.util.Strings.isEmptyOrNull​`
   - This function were chosen because it will verify if the passed string is not valid.
-- `com.todotxt.todotxttouch.util.RelativeDateZWSP`
+- `com.todotxt.todotxttouch.util.RelativeDate.getRelativeDate​`
   - This function was chosed because its values create seven different partitions and six explicit boundaries between them.
 
 ## What is the purpose of each function.
@@ -20,7 +20,7 @@ Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
   - Inserts a given string into another padding it with spaces.
 - `com.todotxt.todotxttouch.util.Strings.isEmptyOrNull​`
   - Checks the passed in string to see if it is null or an empty string.
-- `com.todotxt.todotxttouch.util.RelativeDateZWSP`
+- `com.todotxt.todotxttouch.util.RelativeDate.getRelativeDate​`
   - Returns a difference between dates as a string
 
 ## Step-by-step of the ‘Boundary Value Analysis’ for each function.
@@ -94,6 +94,7 @@ Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
   - `d1` 60 days later than `d2` (E6)
   - `d1` a year later than `d2` (E7)
 - **Returns**: one of the following string: "today", "1 day ago", "2 days ago", "N days ago", "1 month ago", "2 months ago", "N months ago", `d2` in format yyyy-mm-dd
+  ![relative_date_image](../.github/%2303/relativeDate.png)
 
 ## Brief description of the unit tests generated for each ‘boundary’.
 
