@@ -3,6 +3,8 @@
 > **Anastasiia Dunaeva** - up202202453
 >
 > **Lucas Silva** - up202103397
+>
+> **Francisco Pacheco** - up201906505
 
 ## Which use cases have you selected for testing and why.
 

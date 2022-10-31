@@ -3,6 +3,7 @@
 Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
 
 > **Lucas Silva** - up202103397
+>
 > **Anastasiia Dunaeva** - up202202453
 
 ## Which functions have you selected for testing and why.
@@ -74,18 +75,18 @@ Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
     public static String getRelativeDate(Calendar d1, Calendar d2)
   ```
 - Description:
-  - Returns a string which represents how much later the first date is than the second. 
+  - Returns a string which represents how much later the first date is than the second.
 - Parameters & Boundaries:
   - `d1` - the first _calendar_
   - `d2` - the second _calendar_
 - Partitions:
-    - E1: `d2` is later than `d1`
-    - E2: `d1` is later than `d2` by less than a day
-    - E3: `d1` is later than `d2` by less than 2 days, more than a day
-    - E4: `d1` is later than `d2` by less than 30 days, more than 2 days
-    - E5: `d1` is later than `d2` by less than 60 days, more than 30 days
-    - E6: `d1` is later than `d2` by less than a year, more than 60 days
-    - E7: `d1` is later than `d2` by more than a year
+  - E1: `d2` is later than `d1`
+  - E2: `d1` is later than `d2` by less than a day
+  - E3: `d1` is later than `d2` by less than 2 days, more than a day
+  - E4: `d1` is later than `d2` by less than 30 days, more than 2 days
+  - E5: `d1` is later than `d2` by less than 60 days, more than 30 days
+  - E6: `d1` is later than `d2` by less than a year, more than 60 days
+  - E7: `d1` is later than `d2` by more than a year
 - Boundaries:
   - `d1` = `d2` (E2)
   - `d1` a day later than `d2` (E3)
@@ -99,7 +100,7 @@ Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
 ## Brief description of the unit tests generated for each ‘boundary’.
 
 | Function        | Boundary | Unit Testing               | Description                                                                                                                 |
-|-----------------|----------|----------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| --------------- | -------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | insertPadded    | E1       | insertPaddedE1             | Passing empty string in parameter `s` that return an empty string as expected.                                              |
 |                 | E2       | insertPaddedE2             | Passing null string in parameter `s` that return a **_NullPointerException_** as expected.                                  |
 |                 | E3       | insertPaddedE3             | Passing string with spaces in parameter `s` that return a new string with the expected character.                           |
@@ -115,7 +116,7 @@ Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
 |                 | E2       | isEmptyOrNull​E2           | Passing null string in parameter `s` that return true.                                                                      |
 |                 | E3       | isEmptyOrNull​E3           | Passing string with spaces in parameter `s` that return false.                                                              |
 |                 | E4       | isEmptyOrNull​E4           | Passing valid string in parameter `s` that return false.                                                                    |
-| getRelativeDate | E1       | getRelativeDate​E1         | Passing `d2` one day later than `d1`  .                                                                                     |
+| getRelativeDate | E1       | getRelativeDate​E1         | Passing `d2` one day later than `d1` .                                                                                      |
 |                 | E2       | getRelativeDate​E2Boundary | Passing `d1` equals `d1`.                                                                                                   |
 |                 | E2       | getRelativeDate​E2         | Passing `d1` 22 hours later than `d2`.                                                                                      |
 |                 | E3       | getRelativeDate​E3Boundary | Passing `d1` 1 day later than `d2`.                                                                                         |
@@ -131,7 +132,7 @@ Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
 ## Brief description of the outcome of each unit test and whether any test results in a failure (and why).
 
 | Function                   | Input(s)                              | Output(s)                          |
-|----------------------------|---------------------------------------|------------------------------------|
+| -------------------------- | ------------------------------------- | ---------------------------------- |
 | insertPaddedE1             | ("", 0, "test1")                      | "test1"                            |
 | insertPaddedE2             | (null, 0, "test2)                     | throws `NullPointerException`      |
 | insertPaddedE3             | (" ", 0, "test")                      | "test "                            |
@@ -157,5 +158,5 @@ Commits available at [forked repository](https://github.com/lucasluizss/jdotxt).
 | getRelativeDateE5Boundary​ | ("2015-02-04", "2015-01-05")          | "1 month ago"                      |
 | getRelativeDateE5​         | ("2015-03-04", "2015-01-05")          | "1 month ago"                      |
 | getRelativeDateE6Boundary​ | ("2015-03-05", "2015-01-05")          | "2 months ago"                     |
-| getRelativeDateE6​         | ("2015-12-05", "2015-01-05")          | "11 months ago"                    | 
+| getRelativeDateE6​         | ("2015-12-05", "2015-01-05")          | "11 months ago"                    |
 | getRelativeDateE7Boundary​ | ("2016-01-05", "2015-01-05")          | "2015-01-05"                       |
