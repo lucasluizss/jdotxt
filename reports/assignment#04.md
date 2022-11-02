@@ -10,7 +10,7 @@
 
 ### Case 1
 
-This is one of the most important use cases. As a first scenario, the first use case regards the basic usage of the application. The main path leads to the creation of tasks following the common steps of a user. For example, the user can start configuring his task by adding a description or using its default value, and then can add it for a new creation (adding to the list of tasks) or set it as done directly or later. In the last case, the user can also delete his task (which will remove the task from the list of tasks).
+This is one of the most important use cases. As a first scenario, the first use case regards the basic usage of the application. The main path leads to the creation of tasks following the common steps of a user. For example, the user can start configuring his task by adding a description or using its default value, and then can add it for a new creation (adding to the list of tasks) or set it as done directly or later. Also, the user can also delete his task (which will remove the task from the list of tasks).
 
 ### Case 2
 
@@ -132,8 +132,8 @@ The second use case concerns prioritization of tasks, which is important for the
 				Realize orange path in the tree (<i>Configuring</i> -> <i>Configured as Done</i> -> <i>Configuring</i>). <br>
 				- Set task as done (checkbox) before adding it <br>
 				- Check if task was set as done <br>
-				- Configuring task done <br>
-				- Check configuring changed <br>
+				- Set configuring task as not done <br>
+				- Check if task is not mark as done <br>
 				- Cleanup: reset task
 			</td>
 		</tr>

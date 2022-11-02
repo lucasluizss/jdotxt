@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE RootStep>
 <RootStep id="_0" name="jdotxt"
-          signature="8BAAC35B1F0FFEFF6DFD5D0321F701BF44F280F1"
+          signature="BDF77401B26023CF0FEEA807F60672A93DB5C611"
           version="6.0.3">
   <include>qfs.qft</include>
   <TestSet id="_1" name="use-case-1">
@@ -43,11 +43,14 @@
           <text>Changed</text>
         </TextInputStep>
       </BasicSequence>
-      <BasicSequence id="_2S" name="check-configuring-changed">
-        <CheckStringStep client="$(client)" component="frameJdotxt.text9"
-                         id="_2T">
-          <text>Changed</text>
-        </CheckStringStep>
+      <BasicSequence id="_3s" name="uncheck-task">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelCheck3" event="MOUSE_MPRC"
+                        id="_3t" modifiers="16" x="11" y="13"/>
+      </BasicSequence>
+      <BasicSequence id="_3u" name="check-unchecked-task">
+        <CheckStringStep client="$(client)"
+                         component="frameJdotxt.labelUncheck2" id="_3v"/>
       </BasicSequence>
       <CleanupSequence id="_2Z" name="reset-task">
         <MouseEventStep clicks="1" client="$(client)"
@@ -512,6 +515,20 @@
                         state="0">Panel</extrafeature>
           <extrafeature name="qfs:systemclass" negate="false" regexp="false"
                         state="0">javax.swing.JPanel</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Label" classcount="3" classindex="1" height="24"
+                       id="frameJdotxt.labelCheck3" uid="_3r" width="24"
+                       x="268" y="2">
+          <extrafeature name="imagehash" negate="false" regexp="false"
+                        state="1">-283907346</extrafeature>
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtImageCheckBox</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Label</extrafeature>
+          <extrafeature name="qfs:label" negate="false" regexp="false"
+                        state="1">check</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JLabel</extrafeature>
         </ComponentStep>
       </ComponentStep>
       <ComponentStep class="Label" classcount="18" classindex="7"
