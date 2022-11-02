@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE RootStep>
+<RootStep id="_0" name="jdotxt"
+          signature="8BAAC35B1F0FFEFF6DFD5D0321F701BF44F280F1"
+          version="6.0.3">
+  <include>qfs.qft</include>
+  <TestSet id="_1" name="use-case-1">
+    <SetupSequence id="_6" name="Launch jdotxt">
+      <SetGlobalStep id="_7" varname="client">
+        <default>jdotxt</default>
+      </SetGlobalStep>
+      <ClientWaiter client="$(client)" id="_8" local="true" raise="false"
+                    resvarname="isSUTRunning" timeout="1">
+        <comment>This node checks whether the SUT is already running. The result of this check will be stored in the variable isSUTRunning. The variable itself can contain true if SUT is already running or false if SUT is not running. This variable will be used in the following 'If' node.</comment>
+      </ClientWaiter>
+      <IfSequence id="_9" name="Launch SUT if not running"
+                  test="not $(isSUTRunning)">
+        <JavaClientStarter client="$(client)" executable="${qftest:java}"
+                           id="_A">
+          <parameter>-jar</parameter>
+          <parameter>/Users/lucassilva/Projects/MESW/tvvs/2022-2023/jdotxt/jdotxt.jar</parameter>
+        </JavaClientStarter>
+        <ClientWaiter client="$(client)" id="_B"/>
+      </IfSequence>
+    </SetupSequence>
+    <TestCase id="_2" name="main1">
+      <BasicSequence id="_l" name="set-done">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelUncheck2"
+                        event="MOUSE_MPRC" id="_m" modifiers="16" x="14"
+                        y="14"/>
+      </BasicSequence>
+      <BasicSequence id="_2I" name="check-task-done">
+        <CheckStringStep client="$(client)" component="frameJdotxt.labelCheck"
+                         id="_2J"/>
+      </BasicSequence>
+      <BasicSequence id="_2U" name="configuring-task-done">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.text4" event="MOUSE_MPRC"
+                        id="_2V" modifiers="16" x="68" y="18"/>
+        <TextInputStep clear="true" client="$(client)"
+                       component="frameJdotxt.text4" id="_2W">
+          <text>Changed</text>
+        </TextInputStep>
+      </BasicSequence>
+      <BasicSequence id="_2S" name="check-configuring-changed">
+        <CheckStringStep client="$(client)" component="frameJdotxt.text9"
+                         id="_2T">
+          <text>Changed</text>
+        </CheckStringStep>
+      </BasicSequence>
+      <CleanupSequence id="_2Z" name="reset-task">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelDelete3"
+                        event="MOUSE_MPRC" id="_2a" modifiers="16" x="12"
+                        y="10"/>
+      </CleanupSequence>
+    </TestCase>
+    <TestCase id="_g" name="main2">
+      <BasicSequence id="_p" name="set-done">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelUncheck2"
+                        event="MOUSE_MPRC" id="_q" modifiers="16" x="14"
+                        y="14"/>
+      </BasicSequence>
+      <BasicSequence id="_2j" name="check-task-done">
+        <CheckStringStep client="$(client)" component="frameJdotxt.labelCheck"
+                         id="_2k"/>
+      </BasicSequence>
+      <BasicSequence id="_1b" name="create-task">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.panel" event="MOUSE_MPRC"
+                        id="_1c" modifiers="16" x="130" y="124"/>
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelAdd" event="MOUSE_MPRC"
+                        id="_1d" modifiers="16" x="30" y="31"/>
+      </BasicSequence>
+      <BasicSequence id="_2m" name="check-created-task">
+        <CheckBooleanStep checktype="visible" client="$(client)"
+                          component="frameJdotxt.panel4" id="_2n"/>
+      </BasicSequence>
+      <BasicSequence id="_2+" name="check-created-task-done">
+        <CheckStringStep client="$(client)" component="frameJdotxt.labelCheck"
+                         id="_2-"/>
+      </BasicSequence>
+      <CleanupSequence id="_2b" name="delete-task">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelDelete" event="MOUSE_MPRC"
+                        id="_2c" modifiers="16" x="8" y="14"/>
+      </CleanupSequence>
+    </TestCase>
+    <TestCase id="_h" name="main3">
+      <BasicSequence id="_3B" name="set-done">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelUncheck2"
+                        event="MOUSE_MPRC" id="_3C" modifiers="16" x="14"
+                        y="14"/>
+      </BasicSequence>
+      <BasicSequence id="_3D" name="check-task-done">
+        <CheckStringStep client="$(client)" component="frameJdotxt.labelCheck"
+                         id="_3E"/>
+      </BasicSequence>
+      <BasicSequence id="_3F" name="create-task">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.panel" event="MOUSE_MPRC"
+                        id="_3G" modifiers="16" x="130" y="124"/>
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelAdd" event="MOUSE_MPRC"
+                        id="_3H" modifiers="16" x="30" y="31"/>
+      </BasicSequence>
+      <BasicSequence id="_3I" name="check-created-task">
+        <CheckBooleanStep checktype="visible" client="$(client)"
+                          component="frameJdotxt.panel4" id="_3J"/>
+      </BasicSequence>
+      <BasicSequence id="_3K" name="check-created-task-done">
+        <CheckStringStep client="$(client)" component="frameJdotxt.labelCheck"
+                         id="_3L"/>
+      </BasicSequence>
+      <BasicSequence id="_3M" name="delete-task">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelDelete" event="MOUSE_MPRC"
+                        id="_3N" modifiers="16" x="8" y="14"/>
+      </BasicSequence>
+      <CleanupSequence id="_3O" name="check-deleted-task">
+        <CheckBooleanStep checktype="visible" client="$(client)"
+                          component="frameJdotxt.panel5" id="_3P"/>
+      </CleanupSequence>
+    </TestCase>
+    <TestCase id="_i" name="main4">
+      <BasicSequence id="_t" name="create-task">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.panel" event="MOUSE_MPRC"
+                        id="_u" modifiers="16" x="130" y="124"/>
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelAdd" event="MOUSE_MPRC"
+                        id="_v" modifiers="16" x="30" y="31"/>
+      </BasicSequence>
+      <BasicSequence id="_2q" name="check-created-task">
+        <CheckBooleanStep checktype="visible" client="$(client)"
+                          component="frameJdotxt.panel4" id="_2r"/>
+      </BasicSequence>
+      <BasicSequence id="_13" name="set-created-done">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelUncheck3"
+                        event="MOUSE_MPRC" id="_14" modifiers="16" x="11"
+                        y="14"/>
+      </BasicSequence>
+      <BasicSequence id="_2u" name="check-created-task-done">
+        <CheckStringStep client="$(client)" component="frameJdotxt.labelCheck"
+                         id="_2v"/>
+      </BasicSequence>
+      <CleanupSequence id="_2f" name="delete-task">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelDelete" event="MOUSE_MPRC"
+                        id="_2g" modifiers="16" x="8" y="14"/>
+      </CleanupSequence>
+    </TestCase>
+    <TestCase id="_j" name="main5">
+      <BasicSequence id="_3T" name="create-task">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.panel" event="MOUSE_MPRC"
+                        id="_3U" modifiers="16" x="130" y="124"/>
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelAdd" event="MOUSE_MPRC"
+                        id="_3V" modifiers="16" x="30" y="31"/>
+      </BasicSequence>
+      <BasicSequence id="_3W" name="check-created-task">
+        <CheckBooleanStep checktype="visible" client="$(client)"
+                          component="frameJdotxt.panel4" id="_3X"/>
+      </BasicSequence>
+      <BasicSequence id="_3e" name="delete-task">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelDelete" event="MOUSE_MPRC"
+                        id="_3f" modifiers="16" x="8" y="14"/>
+      </BasicSequence>
+      <CleanupSequence id="_3g" name="check-deleted-task">
+        <CheckBooleanStep checktype="visible" client="$(client)"
+                          component="frameJdotxt.panel5" id="_3h"/>
+      </CleanupSequence>
+    </TestCase>
+    <TestCase id="_k" name="sneak-path">
+      <BasicSequence id="_3i" name="create-task">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.panel" event="MOUSE_MPRC"
+                        id="_3j" modifiers="16" x="130" y="124"/>
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelAdd" event="MOUSE_MPRC"
+                        id="_3k" modifiers="16" x="30" y="31"/>
+      </BasicSequence>
+      <BasicSequence id="_3l" name="check-created-task">
+        <CheckBooleanStep checktype="visible" client="$(client)"
+                          component="frameJdotxt.panel4" id="_3m"/>
+      </BasicSequence>
+      <BasicSequence id="_3n" name="delete-task">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelDelete" event="MOUSE_MPRC"
+                        id="_3o" modifiers="16" x="8" y="14"/>
+      </BasicSequence>
+      <CleanupSequence id="_3p" name="check-deleted-task">
+        <CheckBooleanStep checktype="visible" client="$(client)"
+                          component="frameJdotxt.panel5" id="_3q"/>
+      </CleanupSequence>
+    </TestCase>
+  </TestSet>
+  <PackageRoot id="_3"/>
+  <ExtraSequence id="_4"/>
+  <WindowList id="_5">
+    <WindowStep class="Window" feature="jdotxt" height="602" id="frameJdotxt"
+                uid="_C" width="807" x="2331" y="157">
+      <extrafeature name="qfs:class" negate="false" regexp="false" state="0">com.chschmid.jdotxt.gui.JdotxtGUI</extrafeature>
+      <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                    state="0">Window</extrafeature>
+      <extrafeature name="qfs:label" negate="false" regexp="false" state="1">jdotxt</extrafeature>
+      <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                    state="0">javax.swing.JFrame</extrafeature>
+      <ComponentStep class="Panel" classcount="18" classindex="9" height="501"
+                     id="frameJdotxt.scroll" uid="_D" width="307" x="500"
+                     y="76">
+        <extrafeature name="qfs:class" negate="false" regexp="false"
+                      state="0">javax.swing.JScrollPane</extrafeature>
+        <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                      state="0">Panel</extrafeature>
+        <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                      state="0">javax.swing.JScrollPane</extrafeature>
+        <extrafeature name="qfs:type" negate="false" regexp="false" state="0">Panel:ScrollPanel</extrafeature>
+        <ComponentStep class="TextField" classcount="6" classindex="1"
+                       height="25" id="frameJdotxt.text" uid="_E" width="186"
+                       x="82" y="2">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtContentField</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">TextField</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JTextField</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Label" classcount="5" classindex="1" height="24"
+                       id="frameJdotxt.labelUncheck" uid="_F" width="24"
+                       x="268" y="2">
+          <extrafeature name="imagehash" negate="false" regexp="false"
+                        state="1">-871109906</extrafeature>
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtImageCheckBox</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Label</extrafeature>
+          <extrafeature name="qfs:label" negate="false" regexp="false"
+                        state="1">uncheck</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JLabel</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="TextField" classcount="6" classindex="0"
+                       height="25" id="frameJdotxt.text2" uid="_G" width="34"
+                       x="48" y="2">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtPriorityField</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">TextField</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JTextField</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Label" classcount="5" classindex="3" height="24"
+                       id="frameJdotxt.labelUncheck3" uid="_z" width="24"
+                       x="268" y="52">
+          <extrafeature name="imagehash" negate="false" regexp="false"
+                        state="1">-871109906</extrafeature>
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtImageCheckBox</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Label</extrafeature>
+          <extrafeature name="qfs:label" negate="false" regexp="false"
+                        state="1">uncheck</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JLabel</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Panel" classcount="8" classindex="0"
+                       height="501" id="frameJdotxt.panel2" uid="_15"
+                       width="292" x="0" y="0">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">javax.swing.JViewport</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Panel</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JViewport</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Label" classcount="5" classindex="4" height="24"
+                       id="frameJdotxt.labelDelete" uid="_16" width="24"
+                       x="268" y="76">
+          <extrafeature name="imagehash" negate="false" regexp="false"
+                        state="1">1746989883</extrafeature>
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtImageButton</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Label</extrafeature>
+          <extrafeature name="qfs:label" negate="false" regexp="false"
+                        state="1">delete</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JLabel</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="TextField" classcount="6" classindex="2"
+                       height="23" id="frameJdotxt.text6" uid="_1o"
+                       width="186" x="82" y="27">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtDateField</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">TextField</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JTextField</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Panel" classcount="8" classindex="1"
+                       id="frameJdotxt.panel3" uid="_1s">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtTaskList</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Panel</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JPanel</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Label" classcount="5" classindex="0" height="48"
+                       id="frameJdotxt.labelAdd2" uid="_1t" width="48" x="0"
+                       y="2">
+          <extrafeature name="imagehash" negate="false" regexp="false"
+                        state="1">1577404465</extrafeature>
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtImageButton</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Label</extrafeature>
+          <extrafeature name="qfs:label" negate="false" regexp="false"
+                        state="1">add</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JLabel</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Label" classcount="5" classindex="2" height="24"
+                       id="frameJdotxt.labelDelete2" uid="_1u" width="24"
+                       x="268" y="26">
+          <extrafeature name="imagehash" negate="false" regexp="false"
+                        state="1">1746989883</extrafeature>
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtImageButton</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Label</extrafeature>
+          <extrafeature name="qfs:label" negate="false" regexp="false"
+                        state="1">delete</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JLabel</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Label" classcount="5" classindex="3" height="24"
+                       id="frameJdotxt.labelCheck" uid="_1v" width="24"
+                       x="268" y="52">
+          <extrafeature name="imagehash" negate="false" regexp="false"
+                        state="1">-283907346</extrafeature>
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtImageCheckBox</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Label</extrafeature>
+          <extrafeature name="qfs:label" negate="false" regexp="false"
+                        state="1">check</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JLabel</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="TextField" classcount="6" classindex="4"
+                       height="25" id="frameJdotxt.text7" uid="_1w"
+                       width="230" x="38" y="52">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtContentField</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">TextField</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JTextField</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="TextField" classcount="6" classindex="5"
+                       height="23" id="frameJdotxt.text8" uid="_1x"
+                       width="230" x="38" y="77">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtDateField</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">TextField</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JTextField</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Label" classcount="5" classindex="1" height="24"
+                       id="frameJdotxt.labelCheck2" uid="_2L" width="24"
+                       x="268" y="2">
+          <extrafeature name="imagehash" negate="false" regexp="false"
+                        state="1">-283907346</extrafeature>
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtImageCheckBox</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Label</extrafeature>
+          <extrafeature name="qfs:label" negate="false" regexp="false"
+                        state="1">check</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JLabel</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Panel" classcount="8" classindex="5" height="49"
+                       id="frameJdotxt.panel4" uid="_2l" width="292" x="0"
+                       y="52">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtTaskPanel</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Panel</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JPanel</extrafeature>
+        </ComponentStep>
+      </ComponentStep>
+      <ComponentStep class="Panel" classcount="21" classindex="9" height="501"
+                     id="frameJdotxt.scroll2" uid="_H" width="307" x="500"
+                     y="76">
+        <extrafeature name="qfs:class" negate="false" regexp="false"
+                      state="0">javax.swing.JScrollPane</extrafeature>
+        <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                      state="0">Panel</extrafeature>
+        <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                      state="0">javax.swing.JScrollPane</extrafeature>
+        <extrafeature name="qfs:type" negate="false" regexp="false" state="0">Panel:ScrollPanel</extrafeature>
+        <ComponentStep class="TextField" classcount="9" classindex="1"
+                       height="25" id="frameJdotxt.text3" uid="_I" width="186"
+                       x="82" y="2">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtContentField</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">TextField</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JTextField</extrafeature>
+        </ComponentStep>
+      </ComponentStep>
+      <ComponentStep class="Panel" classcount="15" classindex="9" height="501"
+                     id="frameJdotxt.scroll3" uid="_R" width="307" x="500"
+                     y="76">
+        <extrafeature name="qfs:class" negate="false" regexp="false"
+                      state="0">javax.swing.JScrollPane</extrafeature>
+        <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                      state="0">Panel</extrafeature>
+        <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                      state="0">javax.swing.JScrollPane</extrafeature>
+        <extrafeature name="qfs:type" negate="false" regexp="false" state="0">Panel:ScrollPanel</extrafeature>
+        <ComponentStep class="TextField" classcount="3" classindex="1"
+                       height="25" id="frameJdotxt.text4" uid="_S" width="186"
+                       x="82" y="2">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtContentField</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">TextField</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JTextField</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Label" classcount="3" classindex="1" height="24"
+                       id="frameJdotxt.labelUncheck2" uid="_T" width="24"
+                       x="268" y="2">
+          <extrafeature name="imagehash" negate="false" regexp="false"
+                        state="1">-871109906</extrafeature>
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtImageCheckBox</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Label</extrafeature>
+          <extrafeature name="qfs:label" negate="false" regexp="false"
+                        state="1">uncheck</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JLabel</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="TextField" classcount="3" classindex="2"
+                       height="23" id="frameJdotxt.text5" uid="_U" width="186"
+                       x="82" y="27">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtDateField</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">TextField</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JTextField</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Panel" classcount="5" classindex="0"
+                       height="501" id="frameJdotxt.panel" uid="_r"
+                       width="292" x="0" y="0">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">javax.swing.JViewport</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Panel</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JViewport</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Label" classcount="3" classindex="0" height="48"
+                       id="frameJdotxt.labelAdd" uid="_s" width="48" x="0"
+                       y="2">
+          <extrafeature name="imagehash" negate="false" regexp="false"
+                        state="1">1577404465</extrafeature>
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtImageButton</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Label</extrafeature>
+          <extrafeature name="qfs:label" negate="false" regexp="false"
+                        state="1">add</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JLabel</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Label" classcount="3" classindex="2" height="24"
+                       id="frameJdotxt.labelDelete3" uid="_2Y" width="24"
+                       x="268" y="26">
+          <extrafeature name="imagehash" negate="false" regexp="false"
+                        state="1">1746989883</extrafeature>
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtImageButton</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Label</extrafeature>
+          <extrafeature name="qfs:label" negate="false" regexp="false"
+                        state="1">delete</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JLabel</extrafeature>
+        </ComponentStep>
+        <ComponentStep class="Panel" classcount="5" classindex="1"
+                       id="frameJdotxt.panel5" uid="_38">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtTaskList</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">Panel</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JPanel</extrafeature>
+        </ComponentStep>
+      </ComponentStep>
+      <ComponentStep class="Label" classcount="18" classindex="7"
+                     feature="ToolTip: Show hidden tasks (h:1)" height="48"
+                     id="labelTipShow_hidden_tasks_(h:1)" uid="_1y" width="48"
+                     x="455" y="28">
+        <extrafeature name="imagehash" negate="false" regexp="false"
+                      state="1">-1732931351</extrafeature>
+        <extrafeature name="qfs:class" negate="false" regexp="false"
+                      state="0">com.chschmid.jdotxt.gui.controls.JdotxtToggleImageButton</extrafeature>
+        <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                      state="0">Label</extrafeature>
+        <extrafeature name="qfs:label" negate="false" regexp="false"
+                      state="1">hide</extrafeature>
+        <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                      state="0">javax.swing.JLabel</extrafeature>
+      </ComponentStep>
+      <ComponentStep class="Label" classcount="18" classindex="6"
+                     feature="ToolTip: Show tasks with threshold date in future (t:)"
+                     height="48"
+                     id="labelTipShow_tasks_with_threshold_date_in_future_(t:)"
+                     uid="_1z" width="48" x="407" y="28">
+        <extrafeature name="imagehash" negate="false" regexp="false"
+                      state="1">-785398826</extrafeature>
+        <extrafeature name="qfs:class" negate="false" regexp="false"
+                      state="0">com.chschmid.jdotxt.gui.controls.JdotxtToggleImageButton</extrafeature>
+        <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                      state="0">Label</extrafeature>
+        <extrafeature name="qfs:label" negate="false" regexp="false"
+                      state="1">future</extrafeature>
+        <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                      state="0">javax.swing.JLabel</extrafeature>
+      </ComponentStep>
+      <ComponentStep class="Label" classcount="18" classindex="5"
+                     feature="ToolTip: Prepend (instead of append) projects/contexts to new tasks"
+                     height="48"
+                     id="labelTipPrepend_(instead_of_append)_projects/contexts_to_new_tasks"
+                     uid="_1+" width="48" x="359" y="28">
+        <extrafeature name="imagehash" negate="false" regexp="false"
+                      state="1">-2065973664</extrafeature>
+        <extrafeature name="qfs:class" negate="false" regexp="false"
+                      state="0">com.chschmid.jdotxt.gui.controls.JdotxtToggleImageButton</extrafeature>
+        <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                      state="0">Label</extrafeature>
+        <extrafeature name="qfs:label" negate="false" regexp="false"
+                      state="1">prepend</extrafeature>
+        <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                      state="0">javax.swing.JLabel</extrafeature>
+      </ComponentStep>
+      <ComponentStep class="Label" classcount="18" classindex="4"
+                     feature="ToolTip: Copy projects/contexts from a selected task to new task"
+                     height="48"
+                     id="labelTipCopy_projects/contexts_from_a_selected_task_to_new_task"
+                     uid="_1-" width="48" x="311" y="28">
+        <extrafeature name="imagehash" negate="false" regexp="false"
+                      state="1">-150222469</extrafeature>
+        <extrafeature name="qfs:class" negate="false" regexp="false"
+                      state="0">com.chschmid.jdotxt.gui.controls.JdotxtToggleImageButton</extrafeature>
+        <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                      state="0">Label</extrafeature>
+        <extrafeature name="qfs:label" negate="false" regexp="false"
+                      state="1">copy</extrafeature>
+        <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                      state="0">javax.swing.JLabel</extrafeature>
+      </ComponentStep>
+      <ComponentStep class="Panel" classcount="27" classindex="9" height="501"
+                     id="frameJdotxt.scroll4" uid="_2Q" width="307" x="500"
+                     y="76">
+        <extrafeature name="qfs:class" negate="false" regexp="false"
+                      state="0">javax.swing.JScrollPane</extrafeature>
+        <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                      state="0">Panel</extrafeature>
+        <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                      state="0">javax.swing.JScrollPane</extrafeature>
+        <extrafeature name="qfs:type" negate="false" regexp="false" state="0">Panel:ScrollPanel</extrafeature>
+        <ComponentStep class="TextField" classcount="15" classindex="1"
+                       height="25" id="frameJdotxt.text9" uid="_2R"
+                       width="186" x="82" y="2">
+          <extrafeature name="qfs:class" negate="false" regexp="false"
+                        state="0">com.chschmid.jdotxt.gui.controls.JdotxtContentField</extrafeature>
+          <extrafeature name="qfs:genericclass" negate="false" regexp="false"
+                        state="0">TextField</extrafeature>
+          <extrafeature name="qfs:systemclass" negate="false" regexp="false"
+                        state="0">javax.swing.JTextField</extrafeature>
+        </ComponentStep>
+      </ComponentStep>
+    </WindowStep>
+  </WindowList>
+</RootStep>
