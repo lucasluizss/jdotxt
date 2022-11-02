@@ -69,10 +69,14 @@ The second use case concerns prioritization of tasks, which is important for the
 
 ### Case 2
 
-| Test Case | Description |
-| --------- | ----------- |
-| sample    | sample      |
-| sample    | sample      |
+| Test Case  | Description                                                                                                                                                                                                                                                                                                                                                                                        |
+|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| priority1  | Realize orange path in the tree (_Configuring_ -> _Configured as Prioritized_ -> _Configuring_).<br/> - Set priority (A) before creating task <br/> - Assert that priority was set <br/> -Delete priority <br/> - Assert that priority was deleted <br/> - Cleanup: close window                                                                                                                   |
+| priority2  | Realize blue path in the tree (_Configuring_ -> _Configured as Prioritized_ -> _Prioritized_ -> _Created_). <br/> -  Set priority (A) before creating task <br/> - Assert that priority was set <br/> - Create task <br/> - Assert that priority of created task is set to (A) <br/> - Delete priority of this task <br/> - Assert that priority was deleted <br/> - Cleanup: delete task and close window |
+| priority3  | Realize green path in the tree (_Configuring_ -> _Created_ -> _Prioritized_). <br/> - Create new task with unspecified priority <br/> -Assert that task is created with unspecified priority <br/> - Set priority (A) for created task <br/> - Assert that priority was set to (A) <br/> - Cleanup: delete task and close window                                                                   |
+| sneak-path | Sneak path: delete priority while _Configuring_ and state is not changed.                                                                                                                                                                                                                                                                                                                          |
+
+![QF-Test Priority](../.github/%2304/QF-Screenshots/2_priority.png)
 
 ### Case 3
 
@@ -92,10 +96,12 @@ The second use case concerns prioritization of tasks, which is important for the
 
 ### Case 2
 
-| Test Case | Outcome | Failure Reason |
-| --------- | ------- | -------------- |
-| sample    | sample  | -              |
-| sample    | sample  | sample         |
+| Test Case  | Outcome                                                                           | Failure Reason                      |
+|------------|-----------------------------------------------------------------------------------|-------------------------------------|
+| priority1  | Asserts were successful                                                           | -                                   |
+| priority2  | Asserts were successful                                                           | -                                   |
+| priority3  | Firstly assert was failed. <br/> After errors correction asserts were successful. | Tasks was not deleted while cleanup |
+| sneak-path | Asserts were successful                                                                                  | -                                   |
 
 ### Case 3
 
