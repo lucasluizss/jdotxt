@@ -60,6 +60,10 @@ The second use case concerns prioritization of tasks, which is important for the
 
 <br>
 
+![QF-Test Priority](../.github/%2304/QF-Screenshots/1_main.png)
+
+<br>
+
 ### Case 2
 
 <hr>
@@ -114,19 +118,139 @@ The second use case concerns prioritization of tasks, which is important for the
 
 ### Case 1
 
-| Test Case | Description |
-| --------- | ----------- |
-| sample    | sample      |
-| sample    | sample      |
+<table>
+	<thead>
+		<tr>
+			<th>Test Case</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>main1</td>
+			<td>
+				Realize orange path in the tree (<i>Configuring</i> -> <i>Configured as Done</i> -> <i>Configuring</i>). <br>
+				- Set task as done (checkbox) before adding it <br>
+				- Check if task was set as done <br>
+				- Configuring task done <br>
+				- Check configuring changed <br>
+				- Cleanup: reset task
+			</td>
+		</tr>
+		<tr>
+			<td>main2</td>
+			<td>
+				Realize blue path in the tree (<i>Configuring</i> -> <i>Configured as Done</i> -> <i>Done</i> -> <i>Created</i>). <br>
+				- Set task done <br>
+				- Check task is set as done <br>
+				- Create task <br>
+				- Check task was created <br>
+				- Check created task is configured as done <br>
+				- Cleanup: delete task
+			</td>
+		</tr>
+		<tr>
+			<td>main3</td>
+			<td>
+				Realize green path in the tree (<i>Configuring</i> -> <i>Configured as Done</i> -> <i>Done</i> -> <i>Deleted</i>). <br>
+				- Set task done <br>
+				- Check task is set as done <br>
+				- Create task <br>
+				- Check task was created <br>
+				- Check created task is configured as done <br>
+				- Delete task <br>
+				- Cleanup: check deleted task
+			</td>
+		</tr>
+		<tr>
+			<td>main4</td>
+			<td>
+				Realize red path in the tree (<i>Configuring</i> -> <i>Created</i> -> <i>Done</i>)  <br>
+				- Create task <br>
+				- Check task was created <br>
+				- Set created task as done <br>
+				- Check created task is configured as done <br>
+				- Cleanup: delete task
+			</td>
+		</tr>
+		<tr>
+			<td>main5</td>
+			<td>
+				Realize yellow path in the tree (<i>Configuring</i> -> <i>Created</i> -> <i>Deleted</i>)  <br>
+				- Create task <br>
+				- Check task was created <br>
+				- Delete task <br>
+				- Cleanup: check deleted task
+			</td>
+		</tr>
+		<tr>
+			<td>sneak-path</td>
+			<td>
+				- Create task <br>
+				- Check task was created <br>
+				- Delete task <br>
+				- Cleanup: check deleted task
+			</td>
+		</tr>
+	</tbody>
+</table>
 
 ### Case 2
 
-| Test Case  | Description                                                                                                                                                                                                                                                                                                                                                                                            |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| priority1  | Realize orange path in the tree (_Configuring_ -> _Configured as Prioritized_ -> _Configuring_).<br/> - Set priority (A) before creating task <br/> - Check that priority was set <br/> - Delete priority <br/> - Check that priority was deleted <br/> - Cleanup: close window                                                                                                                        |
-| priority2  | Realize blue path in the tree (_Configuring_ -> _Configured as Prioritized_ -> _Prioritized_ -> _Created_). <br/> - Set priority (A) before creating task <br/> - Check that priority was set <br/> - Create task <br/> - Check that priority of created task is set to (A) <br/> - Delete priority of this task <br/> - Check that priority was deleted <br/> - Cleanup: delete task and close window |
-| priority3  | Realize green path in the tree (_Configuring_ -> _Created_ -> _Prioritized_). <br/> - Create new task with unspecified priority <br/> - Check that task is created with unspecified priority <br/> - Set priority (A) for created task <br/> - Check that priority was set to (A) <br/> - Cleanup: delete task and close window                                                                        |
-| sneak-path | Sneak path: delete priority while _Configuring_ and state is not changed. <br/> - Delete priority of configuring task <br/> - Check that task doesn't have priority set <br/> - Cleanup: close window                                                                                                                                                                                                  |
+<table>
+	<thead>
+		<tr>
+			<th>Test Case</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>priority1</td>
+			<td>
+			Realize orange path in the tree (<i>Configuring<i> -> <i>Configured as Prioritized</i> -> <i>Configuring</i>).<br/>
+			- Set priority (A) before creating task <br/>
+			- Check that priority was set <br/>
+			- Delete priority <br/>
+			- Check that priority was deleted <br/>
+			- Cleanup: close window
+			</td>
+		</tr>
+		<tr>
+			<td>priority2</td>
+			<td>
+			Realize blue path in the tree (<i>Configuring</i> -> <i>Configured as Prioritized</i> -> <i>Prioritized</i> -> <i>Created</i>). <br/>
+			- Set priority (A) before creating task <br/>
+			- Check that priority was set <br/>
+			- Create task <br/>
+			- Check that priority of created task is set to (A) <br/>
+			- Delete priority of this task <br/>
+			- Check that priority was deleted <br/>
+			- Cleanup: delete task and close window
+			</td>
+		</tr>
+		<tr>
+			<td>priority3</td>
+			<td>
+			Realize green path in the tree (<i>Configuring</i> -> <i>Created</i> -> <i>Prioritized</i>). <br/>
+			- Create new task with unspecified priority <br/>
+			- Check that task is created with unspecified priority <br/>
+			- Set priority (A) for created task <br/>
+			- Check that priority was set to (A) <br/>
+			- Cleanup: delete task and close window
+			</td>
+		</tr>
+		<tr>
+			<td>sneak-path</td>
+			<td>
+			Sneak path: delete priority while <i>Configuring</i> and state is not changed. <br/>
+			- Delete priority of configuring task <br/>
+			- Check that task doesn't have priority set <br/>
+			- Cleanup: close window
+			</td>
+		</tr>
+	</tbody>
+</table>
 
 ![QF-Test Priority](../.github/%2304/QF-Screenshots/2_priority.png)
 
@@ -141,10 +265,14 @@ The second use case concerns prioritization of tasks, which is important for the
 
 ### Case 1
 
-| Test Case | Outcome | Failure Reason |
-| --------- | ------- | -------------- |
-| sample    | sample  | -              |
-| sample    | sample  | sample         |
+| Test Case  | Outcome                                   | Failure Reason                                           |
+| ---------- | ----------------------------------------- | -------------------------------------------------------- |
+| main1      | Firstly assert failed and fixed after on. | Configuring input was not mathing with the expected text |
+| main2      | Asserts were successful                   | -                                                        |
+| main3      | Asserts were successful                   | -                                                        |
+| main4      | Asserts were successful                   | -                                                        |
+| main5      | Asserts were successful                   | -                                                        |
+| sneak-path | Asserts were successful                   | -                                                        |
 
 ### Case 2
 
@@ -164,4 +292,4 @@ The second use case concerns prioritization of tasks, which is important for the
 
 ## In English (mandatory), detail feedback/opinion of the QF-Test tool.
 
-...
+While developing the first use case it was possible to note how can we use this tool for development growth. It's possible to prevent multiple ways of failure, doing changes in different ways and validating it according to the business specification. It is not so easy for understanding the usage of the tool at first, but with some tries and errors, it is notable the power it brings for scaling new applications and assure quality.
