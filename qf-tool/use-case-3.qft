@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE RootStep>
 <RootStep id="_0" name="Jdotxt"
-          signature="D43303842CDA68A77D82A541B4F6648761D0B2B6"
+          signature="9323F7140B938CE79EE8D7A4D67C3FA4553B9F47"
           version="6.0.3">
   <include>qfs.qft</include>
   <TestSet id="_1" name="use-case-3">
@@ -23,8 +23,8 @@
         <ClientWaiter client="$(client)" id="_B"/>
       </IfSequence>
     </SetupSequence>
-    <TestCase id="_1e" name="config-hidden">
-      <BasicSequence id="_1g" name="config-task">
+    <TestCase id="_1e" name="hidden1">
+      <BasicSequence id="_1g" name="set-hidden-tittle">
         <MouseEventStep clicks="1" client="$(client)"
                         component="frameJdotxt.text" event="MOUSE_MPRC"
                         id="_1h" modifiers="16" x="103" y="15"/>
@@ -69,7 +69,7 @@
                         y="11"/>
       </CleanupSequence>
     </TestCase>
-    <TestCase id="_2" name="set-hidden-display">
+    <TestCase id="_2" name="hidden2">
       <BasicSequence id="_z" name="disable-H">
         <MouseEventStep clicks="1" client="$(client)"
                         component="labelTipShow_hidden_tasks_(h:1)"
@@ -116,7 +116,7 @@
                         id="_h" modifiers="16" x="11" y="13"/>
       </CleanupSequence>
     </TestCase>
-    <TestCase id="_1G" name="set-display-hidden">
+    <TestCase id="_1G" name="hidden3">
       <BasicSequence id="_1H" name="config-hidden-task">
         <MouseEventStep clicks="1" client="$(client)"
                         component="frameJdotxt.text" event="MOUSE_MPRC"
@@ -162,32 +162,23 @@
       </CleanupSequence>
     </TestCase>
     <TestCase id="_2X" name="sneak-path">
-      <BasicSequence id="_2Y" name="create-normal-title">
+      <BasicSequence id="_31" name="reset-title">
         <MouseEventStep clicks="1" client="$(client)"
                         component="frameJdotxt.text" event="MOUSE_MPRC"
-                        id="_2Z" modifiers="16" x="74" y="20"/>
+                        id="_32" modifiers="16" x="115" y="16"/>
+        <KeyEventStep client="$(client)" component="frameJdotxt.text"
+                      event="KEY_PTR" id="_33" keychar="8" keycode="8"
+                      modifiers="0"/>
         <TextInputStep clear="true" client="$(client)"
-                       component="frameJdotxt.text" id="_2a">
-          <text>teste</text>
+                       component="frameJdotxt.text" id="_34">
+          <text>New task</text>
         </TextInputStep>
       </BasicSequence>
-      <BasicSequence id="_2b" name="check-normal-title">
+      <BasicSequence id="_2t" name="check-hidden-undeclared">
         <CheckStringStep client="$(client)" component="frameJdotxt.text"
-                         id="_2c">
-          <text>teste</text>
+                         id="_2u">
+          <text>New task</text>
         </CheckStringStep>
-      </BasicSequence>
-      <BasicSequence id="_2n" name="enable-C">
-        <MouseEventStep clicks="1" client="$(client)"
-                        component="labelTipCopy_projects/contexts_from_a_selected_task_to_new_task"
-                        event="MOUSE_MPRC" id="_2o" modifiers="16" x="39"
-                        y="29"/>
-      </BasicSequence>
-      <BasicSequence id="_2p" name="disable-C">
-        <MouseEventStep clicks="1" client="$(client)"
-                        component="labelTipCopy_projects/contexts_from_a_selected_task_to_new_task"
-                        event="MOUSE_MPRC" id="_2q" modifiers="16" x="39"
-                        y="29"/>
       </BasicSequence>
       <CleanupSequence id="_2k" name="delete-task">
         <MouseEventStep clicks="1" client="$(client)"
@@ -199,6 +190,19 @@
   </TestSet>
   <PackageRoot id="_3"/>
   <ExtraSequence id="_4">
+    <BasicSequence id="_2r" name="delete-config-task">
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="frameJdotxt.labelDelete2" event="MOUSE_MPRC"
+                      id="_2s" modifiers="16" x="11" y="12"/>
+    </BasicSequence>
+    <BasicSequence id="_2+" name="delete-config-title">
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="frameJdotxt.text" event="MOUSE_MPRC" id="_2-"
+                      modifiers="16" x="72" y="15"/>
+      <KeyEventStep client="$(client)" component="frameJdotxt.text"
+                    event="KEY_PTR" id="_30" keychar="8" keycode="8"
+                    modifiers="0"/>
+    </BasicSequence>
     <BasicSequence id="_b" name="check-task-hidden (erro)">
       <CheckBooleanStep checktype="visible" client="$(client)"
                         component="frameJdotxt.panel2" id="_c" state="false"/>
