@@ -118,7 +118,7 @@ The third use cases focus on a specific feature of the Jdotxt App. This feature 
 
 **Transition Table**
 
-![Transition Table 3](../.github/%2304/Tables/transition_table3.jpg)
+![Transition Table 3](../.github/%2304/Tables/transition_table3.png)
 
 > The task can go from the state _Configuring_ to the state _Configured as Hidden_ and vice-versa by setting the hidden tag on task's title or by removing it. After the task is _Configured as Hidden_ when is created it can go to the states _Displayed_ (if H button is enabled) or _Hidden_ (if H button is disabled). After this, when the task is created it can go from _Displayed_ to _Hidden_ and vice-versa by simply disable/enable the H button.
 
@@ -290,10 +290,63 @@ The third use cases focus on a specific feature of the Jdotxt App. This feature 
 
 ### Case 3
 
-| Test Case | Description |
-| --------- | ----------- |
-| sample    | sample      |
-| sample    | sample      |
+<table>
+	<thead>
+		<tr>
+			<th>Test Case</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>hidden1</td>
+			<td>
+			Realize red path in the tree (<i>Configuring<i> -> <i>Configured as Hidden</i> -> <i>Configuring</i>).<br/>
+			- Set tittle with hidden tag (h:1) <br/>
+			- Check that hidden tag was set <br/>
+			- Delete hidden tag <br/>
+			- Check that hidden tag was deleted <br/>
+			- Cleanup: reset task
+			</td>
+		</tr>
+		<tr>
+			<td>hidden2</td>
+			<td>
+			Realize green path in the tree (<i>Configuring</i> -> <i>Configured as Hidden</i> -> <i>Hidden</i> -> <i>Displayed</i>). <br/>
+			- Disable H button <br/>
+			- Set tittle with hidden tag (h:1) <br/>
+			- Check that hidden tag was set <br/>
+			- Create task <br/>
+			- Check that task dont appear on the tasks list <br/>
+			- Enable H button <br/>
+			- Check that task appear on the tasks list <br/>
+			- Cleanup: delete task
+			</td>
+		</tr>
+		<tr>
+			<td>hidden3</td>
+			<td>
+			Realize blue path in the tree (<i>Configuring</i> -> <i>Configured as Hidden</i> -> <i>Displayed</i> -> <i>Hidden</i>). <br/>
+			- Set tittle with hidden tag (h:1) <br/>
+			- Check that hidden tag was set <br/>
+			- Create task <br/>
+			- Check that task appear on the tasks list <br/>
+			- Disable H button <br/>
+			- Check that task dont appear on the tasks list <br/>
+			- Cleanup: enable H button, delete task
+			</td>
+		</tr>
+		<tr>
+			<td>sneak-path</td>
+			<td>
+			Sneak path: delete hidden while <i>Configuring</i> and keep in the same state. <br/>
+			- Delete hidden of configuring task <br/>
+			- Check that task doesn't have hiiden tag set <br/>
+			- Cleanup: reset task
+			</td>
+		</tr>
+	</tbody>
+</table>
 
 ## Brief description of the outcome of each test and whether any test results in a failure (and why).
 
@@ -319,10 +372,12 @@ The third use cases focus on a specific feature of the Jdotxt App. This feature 
 
 ### Case 3
 
-| Test Case | Outcome | Failure Reason |
-| --------- | ------- | -------------- |
-| sample    | sample  | -              |
-| sample    | sample  | sample         |
+| Test Case  | Outcome                                    | Failure Reason                                            |
+| ---------- | -----------------------------------------  | --------------------------------------------------------  |
+| hidden1      | Asserts were successful                  | -                                                         |
+| hidden2      | Firstly assert failed and fixed after on.| When change the state of the H button the title resets and also the check verifier was in the wrong panel				  |
+| hidden3      | Asserts were successful                  | -                                                         |
+| sneak-path | Asserts were successful                    | -                                                         |
 
 ## In English (mandatory), detail feedback/opinion of the QF-Test tool.
 
