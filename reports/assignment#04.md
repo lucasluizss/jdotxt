@@ -18,7 +18,7 @@ The second use case concerns prioritization of tasks, which is important for the
 
 ### Case 3
 
-...
+The third use cases focus on a specific feature of the Jdotxt App. This feature gives to the user the possibility to hide tasks, this could be used to make the interface cleaner or to any other goal that user finds this feature relevant. Also, this feature is very easy to use. The user just has to add "h:1" in front of the task's title. After this, the user can hide or show the tasks with this property by simply click on the "H" button on the top of the interface.
 
 ## Derive the state machine, transition tree, and transition table of each use case.
 
@@ -108,9 +108,43 @@ The second use case concerns prioritization of tasks, which is important for the
 
 <hr>
 
-![Diagram Image 3](../.github/#04/diagram-image-3.png)
+**State Machine**
 
-> Description 3...
+![State Machine 3](../.github/%2304/SM/3_state_machine_hidden.png)
+
+> In this use case there are 4 states: _Configuring_ (state of task before creation, when hidden tag is not set), _Configured as Hidden_ (state of task before creation, when hidden tag is set), _Displayed_ (task is created with the hidden tag and H button is enabled, so the task is present on the tasks list), _Hidden_ (task is created with the hidden tag but H button is disable, so the task isn't present on the tasks list).
+
+<br>
+
+**Transition Table**
+
+![Transition Table 3](../.github/%2304/Tables/transition_table3.jpg)
+
+> The task can go from the state _Configuring_ to the state _Configured as Hidden_ and vice-versa by setting the hidden tag on task's title or by removing it. After the task is _Configured as Hidden_ when is created it can go to the states _Displayed_ (if H button is enabled) or _Hidden_ (if H button is disabled). After this, when the task is created it can go from _Displayed_ to _Hidden_ and vice-versa by simply disable/enable the H button.
+
+<br>
+
+**Transition Tree**
+
+![Transition Tree 3](../.github/%2304/TT/3_transition_tree_hidden.png)
+
+> The following tree represent the possible transitions present on the state machine diagram of the 3-use-case
+
+<br>
+
+![Transition Tree Color 3](../.github/%2304/TT/tree_arrows3.png)
+
+> There are 3 leaves in this tree, what means that there are 3 paths which covers all states and transitions. The path is defined as the path from the root to the leaf. Each path represents separated test case which will be implemented by QF-Test.
+ 
+<br>
+
+![State Machine Paths 3](../.github/%2304/SM/3_sm_priority_paths.png)
+
+> By displaying tree paths on the state diagram, we can see that each transition and state is covered at least once.
+
+<br>
+
+![QF-Test Priority](../.github/%2304/QF-Screenshots/3_case.png)
 
 <br>
 
