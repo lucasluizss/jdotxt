@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE RootStep>
 <RootStep id="_0" name="Jdotxt"
-          signature="9323F7140B938CE79EE8D7A4D67C3FA4553B9F47"
+          signature="ABB14351C03253A2E20D824DBD2969C4F3DC3119"
           version="6.0.3">
   <include>qfs.qft</include>
   <TestSet id="_1" name="use-case-3">
@@ -161,6 +161,38 @@
                         id="_1V" modifiers="16" x="11" y="13"/>
       </CleanupSequence>
     </TestCase>
+    <TestCase id="_3E" name="sneak-path">
+      <BasicSequence id="_3F" name="disable-H">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="labelTipShow_hidden_tasks_(h:1)"
+                        event="MOUSE_MPRC" id="_3G" modifiers="16" x="18"
+                        y="25"/>
+      </BasicSequence>
+      <BasicSequence id="_3H" name="enable-H">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="labelTipShow_hidden_tasks_(h:1)"
+                        event="MOUSE_MPRC" id="_3I" modifiers="16" x="18"
+                        y="25"/>
+      </BasicSequence>
+      <BasicSequence id="_3J" name="check-tasks">
+        <CheckBooleanStep checktype="visible" client="$(client)"
+                          component="frameJdotxt.panel" id="_3K"/>
+      </BasicSequence>
+      <CleanupSequence id="_3L" name="reset-task">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelDelete2"
+                        event="MOUSE_MPRC" id="_3M" modifiers="16" x="9"
+                        y="11"/>
+      </CleanupSequence>
+    </TestCase>
+  </TestSet>
+  <PackageRoot id="_3"/>
+  <ExtraSequence id="_4">
+    <BasicSequence id="_2r" name="delete-config-task">
+      <MouseEventStep clicks="1" client="$(client)"
+                      component="frameJdotxt.labelDelete2" event="MOUSE_MPRC"
+                      id="_2s" modifiers="16" x="11" y="12"/>
+    </BasicSequence>
     <TestCase id="_2X" name="sneak-path">
       <BasicSequence id="_31" name="reset-title">
         <MouseEventStep clicks="1" client="$(client)"
@@ -187,14 +219,6 @@
                         y="11"/>
       </CleanupSequence>
     </TestCase>
-  </TestSet>
-  <PackageRoot id="_3"/>
-  <ExtraSequence id="_4">
-    <BasicSequence id="_2r" name="delete-config-task">
-      <MouseEventStep clicks="1" client="$(client)"
-                      component="frameJdotxt.labelDelete2" event="MOUSE_MPRC"
-                      id="_2s" modifiers="16" x="11" y="12"/>
-    </BasicSequence>
     <BasicSequence id="_2+" name="delete-config-title">
       <MouseEventStep clicks="1" client="$(client)"
                       component="frameJdotxt.text" event="MOUSE_MPRC" id="_2-"
@@ -215,6 +239,26 @@
       <CheckStringStep client="$(client)"
                        component="labelTipShow_hidden_tasks_(h:1)" id="_V"/>
     </BasicSequence>
+    <TestCase id="_35" name="sneak-path-normalTask">
+      <BasicSequence id="_36" name="create-normal-task">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelAdd" event="MOUSE_MPRC"
+                        id="_37" modifiers="16" x="26" y="37"/>
+      </BasicSequence>
+      <BasicSequence id="_38" name="check-normalTask-created">
+        <CheckBooleanStep checktype="visible" client="$(client)"
+                          component="frameJdotxt.panel2" id="_39"/>
+      </BasicSequence>
+      <BasicSequence id="_3A" name="delete-normal-task">
+        <MouseEventStep clicks="1" client="$(client)"
+                        component="frameJdotxt.labelDelete" event="MOUSE_MPRC"
+                        id="_3B" modifiers="16" x="10" y="18"/>
+      </BasicSequence>
+      <CleanupSequence id="_3C" name="check-normalTask-deleted">
+        <CheckBooleanStep checktype="visible" client="$(client)"
+                          component="frameJdotxt.panel" id="_3D"/>
+      </CleanupSequence>
+    </TestCase>
   </ExtraSequence>
   <WindowList id="_5">
     <WindowStep class="Window" feature="jdotxt" height="603" id="frameJdotxt"

@@ -339,9 +339,10 @@ The third use cases focus on a specific feature of the Jdotxt App. This feature 
 		<tr>
 			<td>sneak-path</td>
 			<td>
-			Sneak path: delete hidden while <i>Configuring</i> and keep in the same state. <br/>
-			- Delete hidden of configuring task <br/>
-			- Check that task doesn't have hiiden tag set <br/>
+			Sneak path: enable/disable "H" button while <i>Configuring</i> and keep on the same state. <br/>
+			- Enable "H" button <br/>
+			- Disable "H" button <br/>
+			- Check that no new task appeared <br/>
 			- Cleanup: reset task
 			</td>
 		</tr>
