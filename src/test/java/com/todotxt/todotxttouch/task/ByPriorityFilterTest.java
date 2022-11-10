@@ -1,6 +1,8 @@
 package com.todotxt.todotxttouch.task;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,6 +13,12 @@ import org.junit.Test;
 public class ByPriorityFilterTest {
 
 	@Test
+	public void testCreateFilterEmpty() {
+		ByPriorityFilter priorityFilter = new ByPriorityFilter(null);
+		assertEquals(0, priorityFilter.getPriorities().size());
+	}
+
+	@Test
 	public void testNewPriorityFilterNullPriorities() {
 		ByPriorityFilter filter = new ByPriorityFilter(null);
 
@@ -18,6 +26,16 @@ public class ByPriorityFilterTest {
 		List<Priority> actual = filter.getPriorities();
 
 		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testApplyZero() {
+		List<Priority> priorities = new ArrayList<>();
+		ByPriorityFilter priorityFilter = new ByPriorityFilter(priorities);
+		Task input = new Task(1, "text");
+
+		boolean returned = priorityFilter.apply(input);
+		assertTrue(returned);
 	}
 
 	@Test
@@ -44,6 +62,30 @@ public class ByPriorityFilterTest {
 		boolean actual = filter.apply(task);
 
 		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testApplyContainsPriority() {
+		List<Priority> priorities = new ArrayList<>();
+		priorities.add(Priority.A);
+		ByPriorityFilter priorityFilter = new ByPriorityFilter(priorities);
+		Task input = new Task(1, "text");
+		input.setPriority(Priority.A);
+
+		boolean returned = priorityFilter.apply(input);
+		assertTrue(returned);
+	}
+
+	@Test
+	public void testApplyNotContainPriority() {
+		List<Priority> priorities = new ArrayList<>();
+		priorities.add(Priority.A);
+		ByPriorityFilter priorityFilter = new ByPriorityFilter(priorities);
+		Task input = new Task(1, "text");
+		input.setPriority(Priority.B);
+
+		boolean returned = priorityFilter.apply(input);
+		assertFalse(returned);
 	}
 
 	@Test
