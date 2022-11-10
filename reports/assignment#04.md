@@ -8,9 +8,11 @@
 
 ## Which use cases have you selected for testing and why.
 
+<hr>
+
 ### Case 1
 
-This is one of the most important use cases. As a first scenario, the first use case regards the basic usage of the application. The main path leads to the creation of tasks following the common steps of a user. For example, the user can start configuring his task by adding a description or using its default value, and then can add it for a new creation (adding to the list of tasks) or set it as done directly or later. In the last case, the user can also delete his task (which will remove the task from the list of tasks).
+This is one of the most important use cases. As a first scenario, the first use case regards the basic usage of the application. The main path leads to the creation of tasks following the common steps of a user. For example, the user can start configuring his task by adding a description or using its default value, and then can add it for a new creation (adding to the list of tasks) or set it as done directly or later. Also, the user can also delete his task (which will remove the task from the list of tasks).
 
 ### Case 2
 
@@ -18,11 +20,14 @@ The second use case concerns prioritization of tasks, which is important for the
 
 ### Case 3
 
-...
+The third use cases focus on a specific feature of the Jdotxt App. This feature gives to the user the possibility to hide tasks, this could be used to make the interface cleaner or to any other goal that user finds this feature relevant. Also, this feature is very easy to use. The user just has to add "h:1" in front of the task's title. After this, the user can hide or show the tasks with this property by simply click on the "H" button on the top of the interface.
+
+<br>
 
 ## Derive the state machine, transition tree, and transition table of each use case.
 
-> Note: write a brief description of each diagram.
+<hr>
+<br>
 
 ### Case 1
 
@@ -57,10 +62,6 @@ The second use case concerns prioritization of tasks, which is important for the
 ![State Machine Paths 1](../.github/%2304/SM/1_sm_main_paths.png)
 
 > By displaying tree paths on the state diagram, we can see that each transition and state is covered at least once.
-
-<br>
-
-![QF-Test Priority](../.github/%2304/QF-Screenshots/1_main.png)
 
 <br>
 
@@ -108,13 +109,45 @@ The second use case concerns prioritization of tasks, which is important for the
 
 <hr>
 
-![Diagram Image 3](../.github/#04/diagram-image-3.png)
+**State Machine**
 
-> Description 3...
+![State Machine 3](../.github/%2304/SM/3_state_machine_hidden.png)
+
+> In this use case there are 4 states: _Configuring_ (state of task before creation, when hidden tag is not set), _Configured as Hidden_ (state of task before creation, when hidden tag is set), _Displayed_ (task is created with the hidden tag and H button is enabled, so the task is present on the tasks list), _Hidden_ (task is created with the hidden tag but H button is disable, so the task isn't present on the tasks list).
+
+<br>
+
+**Transition Table**
+
+![Transition Table 3](../.github/%2304/Tables/transition_table3.png)
+
+> The task can go from the state _Configuring_ to the state _Configured as Hidden_ and vice-versa by setting the hidden tag on task's title or by removing it. After the task is _Configured as Hidden_ when is created it can go to the states _Displayed_ (if H button is enabled) or _Hidden_ (if H button is disabled). After this, when the task is created it can go from _Displayed_ to _Hidden_ and vice-versa by simply disable/enable the H button.
+
+<br>
+
+**Transition Tree**
+
+![Transition Tree 3](../.github/%2304/TT/3_transition_tree_hidden.png)
+
+> The following tree represent the possible transitions present on the state machine diagram of the 3-use-case
+
+<br>
+
+![Transition Tree Color 3](../.github/%2304/TT/tree_arrows3.png)
+
+> There are 3 leaves in this tree, what means that there are 3 paths which covers all states and transitions. The path is defined as the path from the root to the leaf. Each path represents separated test case which will be implemented by QF-Test.
+
+<br>
+
+![State Machine Paths 3](../.github/%2304/SM/3_sm_priority_paths.png)
+
+> By displaying tree paths on the state diagram, we can see that each transition and state is covered at least once.
 
 <br>
 
 ## Brief description of each test developed on the QF-Test tool.
+
+<hr>
 
 ### Case 1
 
@@ -132,8 +165,8 @@ The second use case concerns prioritization of tasks, which is important for the
 				Realize orange path in the tree (<i>Configuring</i> -> <i>Configured as Done</i> -> <i>Configuring</i>). <br>
 				- Set task as done (checkbox) before adding it <br>
 				- Check if task was set as done <br>
-				- Configuring task done <br>
-				- Check configuring changed <br>
+				- Set configuring task as not done <br>
+				- Check if task is not mark as done <br>
 				- Cleanup: reset task
 			</td>
 		</tr>
@@ -195,6 +228,10 @@ The second use case concerns prioritization of tasks, which is important for the
 	</tbody>
 </table>
 
+![QF-Test Priority](../.github/%2304/QF-Screenshots/1_main.png)
+
+<br>
+
 ### Case 2
 
 <table>
@@ -254,14 +291,76 @@ The second use case concerns prioritization of tasks, which is important for the
 
 ![QF-Test Priority](../.github/%2304/QF-Screenshots/2_priority.png)
 
+<br>
+
 ### Case 3
 
-| Test Case | Description |
-| --------- | ----------- |
-| sample    | sample      |
-| sample    | sample      |
+<table>
+	<thead>
+		<tr>
+			<th>Test Case</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>hidden1</td>
+			<td>
+			Realize red path in the tree (<i>Configuring<i> -> <i>Configured as Hidden</i> -> <i>Configuring</i>).<br/>
+			- Set tittle with hidden tag (h:1) <br/>
+			- Check that hidden tag was set <br/>
+			- Delete hidden tag <br/>
+			- Check that hidden tag was deleted <br/>
+			- Cleanup: reset task
+			</td>
+		</tr>
+		<tr>
+			<td>hidden2</td>
+			<td>
+			Realize green path in the tree (<i>Configuring</i> -> <i>Configured as Hidden</i> -> <i>Hidden</i> -> <i>Displayed</i>). <br/>
+			- Disable H button <br/>
+			- Set tittle with hidden tag (h:1) <br/>
+			- Check that hidden tag was set <br/>
+			- Create task <br/>
+			- Check that task dont appear on the tasks list <br/>
+			- Enable H button <br/>
+			- Check that task appear on the tasks list <br/>
+			- Cleanup: delete task
+			</td>
+		</tr>
+		<tr>
+			<td>hidden3</td>
+			<td>
+			Realize blue path in the tree (<i>Configuring</i> -> <i>Configured as Hidden</i> -> <i>Displayed</i> -> <i>Hidden</i>). <br/>
+			- Set tittle with hidden tag (h:1) <br/>
+			- Check that hidden tag was set <br/>
+			- Create task <br/>
+			- Check that task appear on the tasks list <br/>
+			- Disable H button <br/>
+			- Check that task dont appear on the tasks list <br/>
+			- Cleanup: enable H button, delete task
+			</td>
+		</tr>
+		<tr>
+			<td>sneak-path</td>
+			<td>
+			Sneak path: enable/disable "H" button while <i>Configuring</i> and keep on the same state. <br/>
+			- Enable "H" button <br/>
+			- Disable "H" button <br/>
+			- Check that no new task appeared <br/>
+			- Cleanup: reset task
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+![QF-Test Priority](../.github/%2304/QF-Screenshots/3_case.png)
+
+<br>
 
 ## Brief description of the outcome of each test and whether any test results in a failure (and why).
+
+<hr>
 
 ### Case 1
 
@@ -285,11 +384,13 @@ The second use case concerns prioritization of tasks, which is important for the
 
 ### Case 3
 
-| Test Case | Outcome | Failure Reason |
-| --------- | ------- | -------------- |
-| sample    | sample  | -              |
-| sample    | sample  | sample         |
+| Test Case  | Outcome                                   | Failure Reason                                                                                            |
+| ---------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| hidden1    | Asserts were successful                   | -                                                                                                         |
+| hidden2    | Firstly assert failed and fixed after on. | When change the state of the H button the title resets and also the check verifier was in the wrong panel |
+| hidden3    | Asserts were successful                   | -                                                                                                         |
+| sneak-path | Asserts were successful                   | -                                                                                                         |
 
-## In English (mandatory), detail feedback/opinion of the QF-Test tool.
+## Feedback of the QF-Test tool.
 
 While developing the first use case it was possible to note how can we use this tool for development growth. It's possible to prevent multiple ways of failure, doing changes in different ways and validating it according to the business specification. It is not so easy for understanding the usage of the tool at first, but with some tries and errors, it is notable the power it brings for scaling new applications and assure quality.
