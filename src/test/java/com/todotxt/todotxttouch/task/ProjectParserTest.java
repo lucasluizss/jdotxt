@@ -43,6 +43,13 @@ public class ProjectParserTest {
 	}
 
 	@Test
+	public void testProjectParserNull() {
+		expected = Collections.emptySet();
+		actual.addAll(ProjectParser.getInstance().parse(null));
+		assertEquals(expected, actual);
+	}
+
+	@Test
 	public void testAsciiProjects() {
 		task = "Buy flour, eggs and milk +groceries +birthdayCake23";
 		expected.addAll(Arrays.asList(

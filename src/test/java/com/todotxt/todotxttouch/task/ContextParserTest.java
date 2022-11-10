@@ -35,6 +35,13 @@ public class ContextParserTest {
 	}
 
 	@Test
+	public void testNoContextNull() {
+		expected = Collections.emptySet();
+		actual.addAll(ContextParser.getInstance().parse(null));
+		assertEquals(expected, actual);
+	}
+
+	@Test
 	public void testNoContext2() {
 		task = "Poke mike@live.com";
 		expected = Collections.emptySet();

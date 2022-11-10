@@ -29,7 +29,7 @@ import java.util.ArrayList;
  * Returns true when there are no subfilters.
  */
 class AndFilter implements Filter<Task> {
-	private ArrayList<Filter<Task>> filters = new ArrayList<Filter<Task>>();
+	public ArrayList<Filter<Task>> filters = new ArrayList<Filter<Task>>();
 
 	public void addFilter(Filter<Task> filter) {
 		if (filter != null) {

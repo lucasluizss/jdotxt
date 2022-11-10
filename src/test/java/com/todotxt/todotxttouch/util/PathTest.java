@@ -66,6 +66,19 @@ public class PathTest {
 	}
 
 	@Test
+	public void testReturnsEmptyIfParentPathIsSlash() {
+		// arange
+		String expected = "";
+		String path = "/";
+
+		// act
+		String actual = Path.parentPath(path);
+
+		// assert
+		assertEquals(expected, actual);
+	}
+
+	@Test
 	public void testReturnsCorrectParentPathIfPathStartsWithSlash() {
 		// arange
 		String expected = "/";
@@ -81,6 +94,7 @@ public class PathTest {
 	@Test
 	public void testReturnsCorrectParentPathIfPathEndsWithSlash() {
 		// arange
+		Path path_class = new Path();
 		String expected = "";
 		String path = "test/";
 

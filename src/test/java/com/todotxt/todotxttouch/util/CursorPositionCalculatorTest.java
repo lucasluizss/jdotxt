@@ -49,4 +49,20 @@ public class CursorPositionCalculatorTest {
 		// assert
 		assertEquals(expected, actual);
 	}
+
+	@Test
+	public void testReturnsNewPositionBack() {
+		CursorPositionCalculator calculator = new CursorPositionCalculator();
+		// arange
+		int expected = 0;
+		int priorCursorPosition = 1;
+		String priorValue = "Old Value";
+		String newValue = "New";
+
+		// act
+		int actual = CursorPositionCalculator.calculate(priorCursorPosition, priorValue, newValue);
+
+		// assert
+		assertEquals(expected, actual);
+	}
 }
