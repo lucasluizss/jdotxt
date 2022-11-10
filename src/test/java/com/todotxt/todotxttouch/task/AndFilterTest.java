@@ -2,8 +2,7 @@ package com.todotxt.todotxttouch.task;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class AndFilterTest {
 
@@ -44,5 +43,17 @@ public class AndFilterTest {
         boolean result = andFilter.apply(task);
 
         assertTrue(result);
+    }
+
+    @Test
+    public void testApplyFilterFalse() {
+        AndFilter andFilter = new AndFilter();
+        Filter<Task> hidden = new HiddenFilter();
+        andFilter.addFilter(hidden);
+        Task task = new Task(1, "Hidden task h:1");
+
+        boolean result = andFilter.apply(task);
+
+        assertFalse(result);
     }
 }

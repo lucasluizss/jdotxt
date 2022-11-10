@@ -31,7 +31,7 @@ import java.util.ArrayList;
  * @author Tim Barlotta
  */
 class OrFilter implements Filter<Task> {
-	private ArrayList<Filter<Task>> filters = new ArrayList<Filter<Task>>();
+	public ArrayList<Filter<Task>> filters = new ArrayList<Filter<Task>>();
 
 	public void addFilter(Filter<Task> filter) {
 		if (filter != null) {
