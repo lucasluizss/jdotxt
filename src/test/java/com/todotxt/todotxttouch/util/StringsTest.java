@@ -1,10 +1,13 @@
 package com.todotxt.todotxttouch.util;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertFalse;
+//import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class StringsTest {
 
@@ -255,5 +258,151 @@ public class StringsTest {
 
 		// assert
 		assertFalse(actual);
+	}
+
+	@Test
+	public void testInsertPaddedStringToInsertNull() {
+		String s = "test";
+		int insertAt = 0;
+		String stringToInsert = "";
+
+		String returned = Strings.insertPadded(s, insertAt, stringToInsert);
+
+		assertEquals("test", returned);
+	}
+
+	@Rule
+	public ExpectedException thrown = ExpectedException.none();
+
+	@Test
+	public void testInsertPaddedIndexIncorrect() throws IndexOutOfBoundsException {
+		String s = "test";
+		int insertAt = -1;
+		String stringToInsert = "test";
+
+		thrown.expect(IndexOutOfBoundsException.class);
+		Strings.insertPadded(s, insertAt, stringToInsert);
+	}
+
+	@Test
+	public void testInsertPaddedIndexZero() {
+		String s = "test";
+		int insertAt = 0;
+		String stringToInsert = "test";
+
+		String returned = Strings.insertPadded(s, insertAt, stringToInsert);
+
+		assertEquals("test test", returned);
+	}
+
+	@Test
+	public void testInsertPaddedCorrect() {
+		String s = "test";
+		int insertAt = 1;
+		String stringToInsert = "test";
+
+		String returned = Strings.insertPadded(s, insertAt, stringToInsert);
+
+		assertEquals("t test est", returned);
+	}
+
+	@Test
+	public void testInsertPaddedCorrectWithSpace() {
+		String s = "t est";
+		int insertAt = 1;
+		String stringToInsert = "test";
+
+		String returned = Strings.insertPadded(s, insertAt, stringToInsert);
+
+		assertEquals("t test est", returned);
+	}
+
+	@Test
+	public void testInsertPaddedIfNeededEmptyInsert() {
+		String s = "test";
+		int insertAt = 0;
+		String stringToInsert = "";
+
+		String returned = Strings.insertPaddedIfNeeded(s, insertAt, stringToInsert);
+
+		assertEquals("test", returned);
+	}
+
+	@Test
+	public void testInsertPaddedNotNeededIncluded() {
+		String s = "te st";
+		int insertAt = 0;
+		String stringToInsert = "te";
+
+		String returned = Strings.insertPaddedIfNeeded(s, insertAt, stringToInsert);
+
+		assertEquals("te st ", returned);
+	}
+
+	@Test
+	public void testInsertPaddedNotNeededWithoutSpaces() {
+		String s = "test";
+		int insertAt = 1;
+		String stringToInsert = "es";
+
+		String returned = Strings.insertPaddedIfNeeded(s, insertAt, stringToInsert);
+
+		assertEquals("t es est", returned);
+	}
+
+	@Test
+	public void testInsertPaddedNotNeededNotBeginning() {
+		String s = " te st";
+		int insertAt = 0;
+		String stringToInsert = "te";
+
+		String returned = Strings.insertPaddedIfNeeded(s, insertAt, stringToInsert);
+
+		assertEquals(" te st ", returned);
+	}
+
+	@Test
+	public void testInsertPaddedNotNeededEndSubstring() {
+		String s = "te st";
+		int insertAt = 0;
+		String stringToInsert = "st";
+
+		String returned = Strings.insertPaddedIfNeeded(s, insertAt, stringToInsert);
+
+		assertEquals("te st ", returned);
+	}
+
+	@Test
+	public void testInsertPaddedNotNeededSpaceEnd() {
+		String s = "te st ";
+		int insertAt = 0;
+		String stringToInsert = "te";
+
+		String returned = Strings.insertPaddedIfNeeded(s, insertAt, stringToInsert);
+
+		assertEquals("te st ", returned);
+	}
+
+	@Test
+	public void testInsertPaddedNotNeededNotIncluded() {
+		Strings strings = new Strings();
+		String s = "test";
+		int insertAt = 0;
+		String stringToInsert = "aa";
+
+		String returned = Strings.insertPaddedIfNeeded(s, insertAt, stringToInsert);
+
+		assertEquals("aa test", returned);
+	}
+
+	@Test
+	public void testInsertPaddedIfNeededIncorrectIndex() {
+		String s = "";
+		int insertAt = 0;
+		String stringToInsert = "te";
+
+		String returned = Strings.insertPaddedIfNeeded(s, insertAt, stringToInsert);
+
+		assertEquals("te ", returned);
 	}
 }
