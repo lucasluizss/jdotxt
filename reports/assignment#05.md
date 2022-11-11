@@ -306,6 +306,6 @@ A line/branch coverage is not close to 100% because of following reasons:
 
 - In the following images we can see that it is impossible to get to that specific part of the code, so it is impossible to cover it in the tests, because it just advance if the property is false but just reach the code to be coverd if the property is true, and it's the only call to that private class.
 
-  ![com.chschmid.jdotxt.util impossibleCoverage](../.github/%2305/impossibleCoverage.png)
-
   ![com.chschmid.jdotxt.util condition](../.github/%2305/condition.png)
+  
+  ![com.chschmid.jdotxt.util impossibleCoverage](../.github/%2305/impossibleCoverage.png)
