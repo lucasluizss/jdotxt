@@ -1,18 +1,29 @@
 package com.todotxt.todotxttouch.task;
 
-import static org.junit.Assert.assertNotNull;
-
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
+import java.util.stream.Stream;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import com.chschmid.jdotxt.Jdotxt;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.runners.Parameterized;
+import org.junit.jupiter.*;
+
+import static org.junit.Assert.*;
 
 public class LocalFileTaskRepositoryTest {
 	private static LocalFileTaskRepository localFileTaskRepository;
+	final static String DEFAULTDIR = Jdotxt.DEFAULT_DIR;
+	public static File TODO_TXT_FILE = new File(DEFAULTDIR + File.separator + "todo.txt");
 
 	@Before
 	public void setUp() {
@@ -73,4 +84,26 @@ public class LocalFileTaskRepositoryTest {
 		localFileTaskRepository.storeDoneTasks(file);
 		assertNotNull(localFileTaskRepository);
 	}
+
+	@Test
+	public void testDoneFileModifiedSinceNull() {
+		LocalFileTaskRepository repository = new LocalFileTaskRepository();
+		boolean returned = repository.doneFileModifiedSince(null);
+		assertEquals(0 < TODO_TXT_FILE.lastModified(), returned);
+	}
+
+	@Test
+	public void testTodoFileModifiedSinceNull() {
+		LocalFileTaskRepository repository = new LocalFileTaskRepository();
+		boolean returned = repository.todoFileModifiedSince(null);
+		assertEquals(0 < TODO_TXT_FILE.lastModified(), returned);
+	}
+
+	@Test
+	public void testTodoFileModifiedSinceFalse() {
+		LocalFileTaskRepository repository = new LocalFileTaskRepository();
+		boolean returned = repository.todoFileModifiedSince(new Date(100));
+		assertTrue(returned);
+	}
+
 }
