@@ -13,6 +13,7 @@ public class FilterFactoryTest {
 
 	@Test
 	public void generateAndFilterWithPrioritiesTrueTest() {
+		FilterFactory factory = new FilterFactory();
 		List<Priority> priorities = Arrays.asList(Priority.A);
 
 		Filter<Task> filter = FilterFactory.generateAndFilter(priorities,
