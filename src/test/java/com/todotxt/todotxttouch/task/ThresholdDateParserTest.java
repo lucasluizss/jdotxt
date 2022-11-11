@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.DateTimeException;
 import java.util.Date;
 import java.util.regex.Pattern;
 
@@ -13,7 +14,8 @@ import static org.junit.Assert.assertNull;
 public class ThresholdDateParserTest {
 
     private static final SimpleDateFormat FORMAT = new SimpleDateFormat("yyy-MM-dd");
-    private static final Pattern THRESHOLD_DATE_PATTERN = Pattern.compile("(?:\\s|^)t:(\\d{4}-\\d{1,2}-\\d{1,2})(?:\\s|$)");
+    private static final Pattern THRESHOLD_DATE_PATTERN = Pattern
+            .compile("(?:\\s|^)t:(\\d{4}-\\d{1,2}-\\d{1,2})(?:\\s|$)");
 
     @Test
     public void correctThresholdDateParseTest() throws ParseException {
