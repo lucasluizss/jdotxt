@@ -209,7 +209,7 @@
 
 ## Line and branch coverage of the unit tests you have developed in this assignment.
 
-[!new coverage image](../.github/%2305/coverage.png)
+![new coverage image](../.github/%2305/coverage.png)
 
 A line/branch coverage is not close to 100% because of following reasons:
 
