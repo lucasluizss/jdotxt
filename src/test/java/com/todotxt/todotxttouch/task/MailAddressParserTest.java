@@ -1,8 +1,12 @@
 package com.todotxt.todotxttouch.task;
 
 import org.junit.Test;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -28,16 +32,6 @@ public class MailAddressParserTest {
         assertEquals(expected, actual);
     }
 
-    /*
-    @Test
-    public void parseEmptyTest(){
-        String input = "";
-        expected = "[]";
-        actual = MailAddressParser.getInstance().parse(input).toString();
-        assertEquals(expected, actual);
-    }
-    */
-
     @Test
     public void parseRightWrongTest(){
         String input = "fvp@teste.com, teste/teste.pt";
@@ -54,4 +48,16 @@ public class MailAddressParserTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void testMailAddressParserNull() {
+        List<String> array = MailAddressParser.getInstance().parse(null);
+        assertEquals(Collections.emptyList(), array);
+    }
+
+    @Test
+    public void testMailAddressParser() {
+        String address = "test.test@gmail.com";
+        List<String> array = MailAddressParser.getInstance().parse(address);
+        assertEquals(address, array.get(0));
+    }
 }

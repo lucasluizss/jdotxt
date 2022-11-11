@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import static org.junit.Assert.assertEquals;
 
@@ -203,6 +204,29 @@ public class RelativeDateTest {
         String result = RelativeDate.getRelativeDate(d1, d2);
 
         // assert
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testGetRelativeDateFromCalendar() {
+        JdotxtGUI.lang = new LanguagesController("English");
+        Calendar date = new GregorianCalendar(2015, 9, 1);
+        String expected = sdf.format(date.getTime());
+
+        String result = RelativeDate.getRelativeDate(date);
+
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testGetRelativeDateFromDate() {
+        RelativeDate relativeDate = new RelativeDate();
+        JdotxtGUI.lang = new LanguagesController("English");
+        Date date = new Date(1441062000000L);
+        String expected = sdf.format(date.getTime());
+
+        String result = RelativeDate.getRelativeDate(date);
+
         assertEquals(expected, result);
     }
 }

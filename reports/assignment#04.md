@@ -8,6 +8,8 @@
 
 ## Which use cases have you selected for testing and why.
 
+<hr>
+
 ### Case 1
 
 This is one of the most important use cases. As a first scenario, the first use case regards the basic usage of the application. The main path leads to the creation of tasks following the common steps of a user. For example, the user can start configuring his task by adding a description or using its default value, and then can add it for a new creation (adding to the list of tasks) or set it as done directly or later. Also, the user can also delete his task (which will remove the task from the list of tasks).
@@ -20,9 +22,12 @@ The second use case concerns prioritization of tasks, which is important for the
 
 The third use cases focus on a specific feature of the Jdotxt App. This feature gives to the user the possibility to hide tasks, this could be used to make the interface cleaner or to any other goal that user finds this feature relevant. Also, this feature is very easy to use. The user just has to add "h:1" in front of the task's title. After this, the user can hide or show the tasks with this property by simply click on the "H" button on the top of the interface.
 
+<br>
+
 ## Derive the state machine, transition tree, and transition table of each use case.
 
-> Note: write a brief description of each diagram.
+<hr>
+<br>
 
 ### Case 1
 
@@ -57,10 +62,6 @@ The third use cases focus on a specific feature of the Jdotxt App. This feature 
 ![State Machine Paths 1](../.github/%2304/SM/1_sm_main_paths.png)
 
 > By displaying tree paths on the state diagram, we can see that each transition and state is covered at least once.
-
-<br>
-
-![QF-Test Priority](../.github/%2304/QF-Screenshots/1_main.png)
 
 <br>
 
@@ -135,7 +136,7 @@ The third use cases focus on a specific feature of the Jdotxt App. This feature 
 ![Transition Tree Color 3](../.github/%2304/TT/tree_arrows3.png)
 
 > There are 3 leaves in this tree, what means that there are 3 paths which covers all states and transitions. The path is defined as the path from the root to the leaf. Each path represents separated test case which will be implemented by QF-Test.
- 
+
 <br>
 
 ![State Machine Paths 3](../.github/%2304/SM/3_sm_priority_paths.png)
@@ -144,11 +145,9 @@ The third use cases focus on a specific feature of the Jdotxt App. This feature 
 
 <br>
 
-![QF-Test Priority](../.github/%2304/QF-Screenshots/3_case.png)
-
-<br>
-
 ## Brief description of each test developed on the QF-Test tool.
+
+<hr>
 
 ### Case 1
 
@@ -229,6 +228,10 @@ The third use cases focus on a specific feature of the Jdotxt App. This feature 
 	</tbody>
 </table>
 
+![QF-Test Priority](../.github/%2304/QF-Screenshots/1_main.png)
+
+<br>
+
 ### Case 2
 
 <table>
@@ -287,6 +290,8 @@ The third use cases focus on a specific feature of the Jdotxt App. This feature 
 </table>
 
 ![QF-Test Priority](../.github/%2304/QF-Screenshots/2_priority.png)
+
+<br>
 
 ### Case 3
 
@@ -349,7 +354,13 @@ The third use cases focus on a specific feature of the Jdotxt App. This feature 
 	</tbody>
 </table>
 
+![QF-Test Priority](../.github/%2304/QF-Screenshots/3_case.png)
+
+<br>
+
 ## Brief description of the outcome of each test and whether any test results in a failure (and why).
+
+<hr>
 
 ### Case 1
 
@@ -373,13 +384,13 @@ The third use cases focus on a specific feature of the Jdotxt App. This feature 
 
 ### Case 3
 
-| Test Case  | Outcome                                    | Failure Reason                                            |
-| ---------- | -----------------------------------------  | --------------------------------------------------------  |
-| hidden1      | Asserts were successful                  | -                                                         |
-| hidden2      | Firstly assert failed and fixed after on.| When change the state of the H button the title resets and also the check verifier was in the wrong panel				  |
-| hidden3      | Asserts were successful                  | -                                                         |
-| sneak-path | Asserts were successful                    | -                                                         |
+| Test Case  | Outcome                                   | Failure Reason                                                                                            |
+| ---------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| hidden1    | Asserts were successful                   | -                                                                                                         |
+| hidden2    | Firstly assert failed and fixed after on. | When change the state of the H button the title resets and also the check verifier was in the wrong panel |
+| hidden3    | Asserts were successful                   | -                                                                                                         |
+| sneak-path | Asserts were successful                   | -                                                                                                         |
 
-## In English (mandatory), detail feedback/opinion of the QF-Test tool.
+## Feedback of the QF-Test tool.
 
 While developing the first use case it was possible to note how can we use this tool for development growth. It's possible to prevent multiple ways of failure, doing changes in different ways and validating it according to the business specification. It is not so easy for understanding the usage of the tool at first, but with some tries and errors, it is notable the power it brings for scaling new applications and assure quality.

@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Pattern;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -12,6 +13,7 @@ import static org.junit.Assert.assertNull;
 public class ThresholdDateParserTest {
 
     private static final SimpleDateFormat FORMAT = new SimpleDateFormat("yyy-MM-dd");
+    private static final Pattern THRESHOLD_DATE_PATTERN = Pattern.compile("(?:\\s|^)t:(\\d{4}-\\d{1,2}-\\d{1,2})(?:\\s|$)");
 
     @Test
     public void correctThresholdDateParseTest() throws ParseException {
@@ -19,6 +21,19 @@ public class ThresholdDateParserTest {
         Date expected = FORMAT.parse("2018-01-01");
         Date actual = ThresholdDateParser.getInstance().parseThresholdDate(task);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testParseError() throws ParseException {
+        String task = "Threshold date t:2018/01/01";
+        Date actual = ThresholdDateParser.getInstance().parseThresholdDate(task);
+        assertNull(actual);
+    }
+
+    @Test
+    public void testThresholdParseNull() {
+        Date actual = ThresholdDateParser.getInstance().parseThresholdDate(null);
+        assertNull(actual);
     }
 
     @Test
