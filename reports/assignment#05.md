@@ -10,7 +10,7 @@
 
 > tests developed in Assignment #2 and Assignment #3.
 
-description/screenshots
+![coverage image](../.github/%2305/coverage.png)
 
 ## Brief description of the JUnit features explored by your tests
 
@@ -26,6 +26,7 @@ description/screenshots
   }
   ```
 - `@Before`
+
   - To execute some statement before each test case. It was used for creating new instances and reuse objects/variables in following tests.
 
   ```java
@@ -41,31 +42,34 @@ description/screenshots
   ```
 
 - `@BeforeClass`
+
   - Used to execute a statement before all the test cases. Normally it was used for creating objects that will keep the same instance through the tests in the same class.
 
   ```java
   // e.g.
     @BeforeClass
-	public static void beforeClassFunction() {
-		DEFAULTDIR = Jdotxt.DEFAULT_DIR;
-		TODO_TXT_FILE = new File(DEFAULTDIR + File.separator + "todo.txt");
-    } 
+  public static void beforeClassFunction() {
+  	DEFAULTDIR = Jdotxt.DEFAULT_DIR;
+  	TODO_TXT_FILE = new File(DEFAULTDIR + File.separator + "todo.txt");
+    }
   ```
-  
+
 - `@AfterClass`
+
   - Used to execute a statement after all the test cases. It was used for clening garbage not needed after tests execution. For deleting temp files for example.
+
   ```java
   // e.g.
     @AfterClass
-	public static void afterClassFunction() throws IOException {
-		deleteDefaultFile();
-		deleteRenamedFile();
-	} 
+  public static void afterClassFunction() throws IOException {
+  	deleteDefaultFile();
+  	deleteRenamedFile();
+  }
   ```
 
 - `@Test(expected = TodoException.class)`
 
-  - As the first one mentioned above, this will describe a method as a test and it will expect an error during its execution.
+  - As the first one mentioned above, this will describe a method as a test and it will expect an error during its execution. It will prevent the failure of the test by abstracting its result and validating the assertion.
 
   ```java
   // e.g.
@@ -78,10 +82,13 @@ description/screenshots
   	Util.createParentDirectory(dest);
   }
   ```
-  
+
 - `@ParameterizedTest`
+  - In case we need to test some functionality with multiple options of parameters with the same type, we can use ParameterizedTest to avoid code duplication.
+  - We used this decorator in order to specify that this testing method will be used with multiple values, making easy the process of testing the same functionality with different parameters/values.
 - `@ValueSource`
-  - In case we need to test some functionality with multiple options of parameters with the same type, we can use ParameterizedTest to avoid code duplication. ValueSource provides an array of values for the test.
+
+  - ValueSource provides an array of values for the test. It's also possible to inform different types of values having the target method in consideration.
 
   ```java
     // e.g.
@@ -95,6 +102,7 @@ description/screenshots
   ```
 
 - `@NullSource`
+
   - Provides a null parameter to the test
 
   ```java
@@ -112,7 +120,9 @@ description/screenshots
         assertEquals("", result.completedDate);
     }
   ```
+
 - `assertEquals`
+
   - Asserts that two objects or values are equal. That's the most common method for asserting _expected_ results with _actual_.
 
   ```java
@@ -124,9 +134,26 @@ description/screenshots
         assertEquals("updated", task.getText());
     }
   ```
-  
+
+- `@Ignore`
+
+  - Used to ignore some statements during test execution. It can be used for both classes and methods.
+  - Sometimes when trying to raise more tests, we've struggled to write good and understandable tests that we decided to move on and conclude later. For keeping the test progressing without affecting the coverage result we used the ignore decorator that will not run the test.
+
+  ```java
+    // e.g.
+    @Ignore
+    @Test
+    public void testUpdateTaskt() {
+        Task task = new Task(1, "texto");
+        task.update("updated");
+        assertEquals("updated", task.getText());
+    }
+  ```
+
 - `assertTrue`
-  - Assert that parameter is true.
+
+  - Assert that expected parameter is true.
 
   ```java
     // e.g.
@@ -137,8 +164,10 @@ description/screenshots
         assertTrue(hidden);
     }
   ```
+
 - `assertFalse`
-  - Assert that parameter is false
+
+  - Assert that expected parameter is false
 
   ```java
     // e.g.
@@ -149,19 +178,23 @@ description/screenshots
         assertFalse(hidden);
     }
   ```
+
 - `assertNull`
-  - Assert that parameter is null
+
+  - Assert that expected parameter is null
 
   ```java
     // e.g.
     @Test
-	public void testReadStreamNull() {
-		String returned = Util.readStream(null);
+  public void testReadStreamNull() {
+  	String returned = Util.readStream(null);
 
-		assertNull(returned);
-	}
+  	assertNull(returned);
+  }
   ```
+
 - `assertNotNull`
+
   - Assert that parameter is not null
 
   ```java
@@ -176,66 +209,82 @@ description/screenshots
 
 ## Line and branch coverage of the unit tests you have developed in this assignment.
 
-
-screenshots
-<br>
 A line/branch coverage is not close to 100% because of following reasons:
+
 - Exceptions which are difficult to simulate
-  - There are try-catch blocks in a code, where it is difficult to simulate exception for catch. 
+
+  - There are try-catch blocks in a code, where it is difficult to simulate exception for catch.
+  - There is no easy way to find out which kind of parameters could be used for simulating possible failures.
+
   ```java
     // e.g.
   public static void writeToFile(List<Task> tasks, File file, boolean append) {
-		try {
-			if (!Util.isDeviceWritable()) {
-				throw new IOException("Device is not writable!");
-			}
-			Util.createParentDirectory(file);
-			OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(file, append), encoding);
-			
-			for (int i = 0; i < tasks.size(); ++i) {
-				String fileFormat = tasks.get(i).inFileFormat();
-				fw.write(fileFormat);
-				if (sWindowsLineBreaks) {
-					fw.write("\r\n");
-				} else {
-					fw.write("\n");
-				}
-			}
-			fw.close();
-		} catch (Exception e) {
-			System.out.printf(TAG, e.getMessage());
-		}
-	}
+  	try {
+  		if (!Util.isDeviceWritable()) {
+  			throw new IOException("Device is not writable!");
+  		}
+  		Util.createParentDirectory(file);
+  		OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(file, append), encoding);
+
+  		for (int i = 0; i < tasks.size(); ++i) {
+  			String fileFormat = tasks.get(i).inFileFormat();
+  			fw.write(fileFormat);
+  			if (sWindowsLineBreaks) {
+  				fw.write("\r\n");
+  			} else {
+  				fw.write("\n");
+  			}
+  		}
+  		fw.close();
+  	} catch (Exception e) {
+  		System.out.printf(TAG, e.getMessage());
+  	}
+  }
   ```
 
 - Private functions
+
   - Some functions are private, but they are still shown uncovered by the library.
+  - Its usage depend on different calling functions that is not well listed in the testing class.
+
   ```java
-    // e.g.
-    
+  // e.g.
+  private void initThread() {
+  	t = new Thread(new DelayRunnable());
+  	t.start();
+  }
   ```
+
 - Not 100% condition coverage in case of multiple conditions in one if/loop statement
+
   - If/loops statement with multiple conditions still shown as uncovered, if not all of conditions were covered.
+
   ```java
-    // e.g.
-    
+  // e.g.
+  private void fireFileModified() {
+    for (int i = fileModifiedListenerList.size()-1; i >= 0; i--) fileModifiedListenerList.get(i).fileModified();
+  }
   ```
+
 - Unreachable parts of code
-  - I can be if/loop statement which is always false because function it depends on always returnes false. 
+
+  - I can be if/loop statement which is always false because function it depends on always returnes false.
+
   ```java
     // e.g.
     public static boolean isDeviceWritable() {
         return true;
     }
-  
+
     public static void writeToFile(List<Task> tasks, File file, boolean append) {
         try {
-			if (!Util.isDeviceWritable()) {
-				throw new IOException("Device is not writable!");
-			}
+  			if (!Util.isDeviceWritable()) {
+  				throw new IOException("Device is not writable!");
+  			}
             // some code
         }
         // some code
     }
   ```
-</br>
+
+  </br>
