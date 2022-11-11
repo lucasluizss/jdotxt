@@ -46,10 +46,101 @@ description/screenshots
   	Util.createParentDirectory(dest);
   }
   ```
+  
+- `@ParameterizedTest`
+- `@ValueSource`
+  - In case we need to test some functionality with multiple options of parameters with the same type, we can use ParameterizedTest to avoid code duplication. ValueSource provides an array of values for the test.
 
+  ```java
+    // e.g.
+    @ParameterizedTest
+    @ValueSource(strings = {"teste/teste.pt", "teste", "@teste.pt", "@.pt", "@pt", "@teste", ""})
+    public void parseWrongTest(String input){
+        expected = "[]";
+        actual = MailAddressParser.getInstance().parse(input).toString();
+        assertEquals(expected, actual);
+    }
+  ```
+
+- `@NullSource`
+  - Provides a null parameter to the test
+
+  ```java
+    // e.g.
+    @ParameterizedTest
+    @NullSource
+    public void testSplitNull(String text) {
+        TextSplitter splitter = TextSplitter.getInstance();
+        TextSplitter.SplitResult result = splitter.split(text);
+
+        assertEquals(Priority.NONE, result.priority);
+        assertEquals("", result.prependedDate);
+        assertEquals("", result.text);
+        assertFalse(result.completed);
+        assertEquals("", result.completedDate);
+    }
+  ```
 - `assertEquals`
   - Asserts that two objects or values are equal. That's the most common method for asserting _expected_ results with _actual_.
--
+
+  ```java
+    // e.g.
+    @Test
+    public void testUpdateTaskt() {
+        Task task = new Task(1, "texto");
+        task.update("updated");
+        assertEquals("updated", task.getText());
+    }
+  ```
+  
+- `assertTrue`
+  - Assert that parameter is true.
+
+  ```java
+    // e.g.
+    @Test
+    public void hiddenTest() {
+        String task = "Hidden task h:1";
+        boolean hidden = HiddenParser.getInstance().parse(task);
+        assertTrue(hidden);
+    }
+  ```
+- `assertFalse`
+  - Assert that parameter is false
+
+  ```java
+    // e.g.
+    @Test
+    public void notHiddenTest() {
+        String task = "Not hidden task";
+        boolean hidden = HiddenParser.getInstance().parse(task);
+        assertFalse(hidden);
+    }
+  ```
+- `assertNull`
+  - Assert that parameter is null
+
+  ```java
+    // e.g.
+    @Test
+	public void testReadStreamNull() {
+		String returned = Util.readStream(null);
+
+		assertNull(returned);
+	}
+  ```
+- `assertNotNull`
+  - Assert that parameter is not null
+
+  ```java
+    // e.g.
+    @Test
+    public void testConstructor1() {
+        Task task = new Task();
+        Task task1 = new Task(task);
+        assertNotNull(task1);
+    }
+  ```
 
 ## Line and branch coverage of the unit tests you have developed in this assignment.
 
