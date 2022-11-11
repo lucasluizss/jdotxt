@@ -176,4 +176,66 @@ description/screenshots
 
 ## Line and branch coverage of the unit tests you have developed in this assignment.
 
+
 screenshots
+<br>
+A line/branch coverage is not close to 100% because of following reasons:
+- Exceptions which are difficult to simulate
+  - There are try-catch blocks in a code, where it is difficult to simulate exception for catch. 
+  ```java
+    // e.g.
+  public static void writeToFile(List<Task> tasks, File file, boolean append) {
+		try {
+			if (!Util.isDeviceWritable()) {
+				throw new IOException("Device is not writable!");
+			}
+			Util.createParentDirectory(file);
+			OutputStreamWriter fw = new OutputStreamWriter(new FileOutputStream(file, append), encoding);
+			
+			for (int i = 0; i < tasks.size(); ++i) {
+				String fileFormat = tasks.get(i).inFileFormat();
+				fw.write(fileFormat);
+				if (sWindowsLineBreaks) {
+					fw.write("\r\n");
+				} else {
+					fw.write("\n");
+				}
+			}
+			fw.close();
+		} catch (Exception e) {
+			System.out.printf(TAG, e.getMessage());
+		}
+	}
+  ```
+
+- Private functions
+  - Some functions are private, but they are still shown uncovered by the library.
+  ```java
+    // e.g.
+    
+  ```
+- Not 100% condition coverage in case of multiple conditions in one if/loop statement
+  - If/loops statement with multiple conditions still shown as uncovered, if not all of conditions were covered.
+  ```java
+    // e.g.
+    
+  ```
+- Unreachable parts of code
+  - I can be if/loop statement which is always false because function it depends on always returnes false. 
+  ```java
+    // e.g.
+    public static boolean isDeviceWritable() {
+        return true;
+    }
+  
+    public static void writeToFile(List<Task> tasks, File file, boolean append) {
+        try {
+			if (!Util.isDeviceWritable()) {
+				throw new IOException("Device is not writable!");
+			}
+            // some code
+        }
+        // some code
+    }
+  ```
+</br>
