@@ -27,10 +27,42 @@ description/screenshots
   ```
 - `@Before`
   - To execute some statement before each test case. It was used for creating new instances and reuse objects/variables in following tests.
+
+  ```java
+  // e.g.
+  @Before
+  public void setUp() throws IOException {
+    test = new FileModifiedWatcher();
+    watcher = FileSystems.getDefault().newWatchService();
+    file = new File(path); // com/chschmid/jdotxt/util/DelayedActionHandler.java
+    file1 = new File(path1);
+    key = null;
+  }
+  ```
+
 - `@BeforeClass`
   - Used to execute a statement before all the test cases. Normally it was used for creating objects that will keep the same instance through the tests in the same class.
+
+  ```java
+  // e.g.
+    @BeforeClass
+	public static void beforeClassFunction() {
+		DEFAULTDIR = Jdotxt.DEFAULT_DIR;
+		TODO_TXT_FILE = new File(DEFAULTDIR + File.separator + "todo.txt");
+    } 
+  ```
+  
 - `@AfterClass`
   - Used to execute a statement after all the test cases. It was used for clening garbage not needed after tests execution. For deleting temp files for example.
+  ```java
+  // e.g.
+    @AfterClass
+	public static void afterClassFunction() throws IOException {
+		deleteDefaultFile();
+		deleteRenamedFile();
+	} 
+  ```
+
 - `@Test(expected = TodoException.class)`
 
   - As the first one mentioned above, this will describe a method as a test and it will expect an error during its execution.
