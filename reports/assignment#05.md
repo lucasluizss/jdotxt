@@ -216,6 +216,8 @@ A line/branch coverage is not close to 100% because of following reasons:
   - There are try-catch blocks in a code, where it is difficult to simulate exception for catch.
   - There is no easy way to find out which kind of parameters could be used for simulating possible failures.
 
+  ![exception-sample image](../.github/%2305/exception-sample.png)
+
   ```java
     // e.g.
   public static void writeToFile(List<Task> tasks, File file, boolean append) {
@@ -288,3 +290,11 @@ A line/branch coverage is not close to 100% because of following reasons:
   ```
 
   </br>
+
+### com.todotxt.todotxttouch.task
+
+- Some of the classes were harder to increase the coverage because of the reasons listed previously.
+- In this package we can check how specific classes can impact the final coverage for this package.
+
+- `e.g.`
+  ![com.todotxt.todotxttouch.task image](../.github/%2305/com.todotxt.todotxttouch.task.png)
