@@ -298,3 +298,18 @@ A line/branch coverage is not close to 100% because of following reasons:
 
 - `e.g.`
   ![com.todotxt.todotxttouch.task image](../.github/%2305/com.todotxt.todotxttouch.task.png)
+
+### com.todotxt.todotxttouch.util
+
+- `e.g.`
+  ![com.todotxt.todotxttouch.util image](../.github/%2305/com.todotxt.todotxttouch.util.png)
+
+### com.chschmid.jdotxt.util
+
+- `e.g.`
+  ![com.chschmid.jdotxt.util image](../.github/%2305/com.chschmid.jdotxt.util.png)
+
+### com.todotxt.todotxttouch.task.sorter
+
+- `e.g.`
+  ![com.todotxt.todotxttouch.task.sorter image](../.github/%2305/com.todotxt.todotxttouch.task.sorter.png)
