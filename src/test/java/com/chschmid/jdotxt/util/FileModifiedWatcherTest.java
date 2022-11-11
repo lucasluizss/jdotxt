@@ -1,5 +1,6 @@
 package com.chschmid.jdotxt.util;
 
+import com.chschmid.jdotxt.Jdotxt;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -22,8 +23,12 @@ public class FileModifiedWatcherTest {
 
     FileModifiedWatcher test;
 
-    String path = "C:\\Users\\franc\\Desktop\\1ano_feup\\tvvs\\jdotxt\\src\\main\\java\\com\\chschmid\\jdotxt\\util\\teste.java";
-    String path1 = "C:\\Users\\franc\\Desktop\\1ano_feup\\tvvs\\jdotxt\\src\\main\\java\\com\\chschmid\\jdotxt\\util\\teste1.java";
+    //String baseDir = System.getProperty("user.dir");
+    String baseDir = Jdotxt.DEFAULT_DIR;
+
+    String path = baseDir.replace("\\", "/") + "/teste.txt";
+
+    String path1 = baseDir.replace("\\", "/") + "/teste1.txt";;
 
     @Before
     public void setUp() throws IOException {
@@ -36,8 +41,8 @@ public class FileModifiedWatcherTest {
 
     @Test
     public void registerFileTest() throws IOException {
-        file.createNewFile();
         file1.createNewFile();
+        file.createNewFile();
 
         /*The first one has to be File insted of String because the getPath goes to the previous file so
          * for the first one the file will be null an error will be thrown */
@@ -45,7 +50,7 @@ public class FileModifiedWatcherTest {
         String firstExpected = null;
         Assertions.assertEquals(firstExpected, first);
 
-        String second = test.registerFile(file).getPath();
+        String second = test.registerFile(file).getPath().replace("\\", "/");
         String secondExpected = path;
         Assertions.assertEquals(secondExpected, second);
 
@@ -57,11 +62,10 @@ public class FileModifiedWatcherTest {
     public void getFileTest() throws IOException {
         file.createNewFile();
         test.registerFile(file);
-        String actual = test.getFile().toString();
+        String actual = test.getFile().toString().replace("\\", "/");
         assertEquals(path, actual);
 
         file.delete();
-        file1.delete();
     }
 
 }
