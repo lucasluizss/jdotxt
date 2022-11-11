@@ -2,6 +2,7 @@ package com.chschmid.jdotxt.util;
 
 import com.chschmid.jdotxt.Jdotxt;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -12,6 +13,8 @@ import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class FileModifiedWatcherTest {
     File file;
@@ -23,7 +26,7 @@ public class FileModifiedWatcherTest {
 
     FileModifiedWatcher test;
 
-    //String baseDir = System.getProperty("user.dir");
+    // String baseDir = System.getProperty("user.dir");
     String baseDir = Jdotxt.DEFAULT_DIR;
 
     String path = baseDir.replace("\\", "/") + "/teste.txt";
@@ -36,7 +39,7 @@ public class FileModifiedWatcherTest {
         watcher = FileSystems.getDefault().newWatchService();
         file = new File(path); // com/chschmid/jdotxt/util/DelayedActionHandler.java
         file1 = new File(path1);
-        key  = null;
+        key = null;
     }
 
     @Test
@@ -44,8 +47,11 @@ public class FileModifiedWatcherTest {
         file1.createNewFile();
         file.createNewFile();
 
-        /*The first one has to be File insted of String because the getPath goes to the previous file so
-         * for the first one the file will be null an error will be thrown */
+        /*
+         * The first one has to be File insted of String because the getPath goes to the
+         * previous file so
+         * for the first one the file will be null an error will be thrown
+         */
         File first = test.registerFile(file);
         String firstExpected = null;
         Assertions.assertEquals(firstExpected, first);
@@ -66,6 +72,49 @@ public class FileModifiedWatcherTest {
         assertEquals(path, actual);
 
         file.delete();
+    }
+
+    @Test
+    public void testUnRegisterFile() {
+        File file = test.unRegisterFile();
+        assertNull(file);
+    }
+
+    @Test
+    public void testAddFileModifiedListener() {
+        test.addFileModifiedListener(new FileModifiedListener() {
+
+            @Override
+            public void fileModified() {
+                // TODO Auto-generated method stub
+
+            }
+
+        });
+
+        assertNotNull(test);
+    }
+
+    @Test
+    public void testRemoveFileModifiedListener() {
+        test.removeFileModifiedListener(new FileModifiedListener() {
+
+            @Override
+            public void fileModified() {
+                // TODO Auto-generated method stub
+
+            }
+
+        });
+
+        assertNotNull(test);
+    }
+
+    @Test
+    public void testStartingCheckEvents() {
+        test.startProcessingEvents();
+        test.stopProcessingEvents();
+        assertNotNull(test);
     }
 
 }
