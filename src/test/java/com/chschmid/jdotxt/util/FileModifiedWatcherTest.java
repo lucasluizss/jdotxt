@@ -162,7 +162,7 @@ public class FileModifiedWatcherTest {
 
         test.stopProcessingEvents();
         boolean actual = (boolean) f.get(test);
-
+        //aksdhaksjdhiuashdhasd
         assertFalse(actual);
     }
 
