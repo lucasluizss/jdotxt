@@ -10,7 +10,7 @@
 
 > tests developed in Assignment #2 and Assignment #3.
 
-![coverage image](../.github/%2305/coverage.png)
+![old coverage image](../.github/%2305/old_result.png)
 
 ## Brief description of the JUnit features explored by your tests
 
@@ -208,6 +208,8 @@
   ```
 
 ## Line and branch coverage of the unit tests you have developed in this assignment.
+
+[!new coverage image](../.github/%2305/coverage.png)
 
 A line/branch coverage is not close to 100% because of following reasons:
 
