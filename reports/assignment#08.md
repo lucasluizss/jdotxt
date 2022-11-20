@@ -10,8 +10,10 @@
 
 ### Function 1
 
-- description
-
+- ```java 
+  public static final int calculate(int priorCursorPosition, String priorValue, String newValue)
+  ```
+  - description
 ### Function 2
 
 - description
@@ -24,7 +26,7 @@
 
 ### Function 1
 
-- description
+- Function calculates the cursor position based on initial cursor position (_priorCursorPosition_), old string value (_priorValue_) and new string value (_newValue_).
 
 ### Function 2
 
@@ -134,9 +136,13 @@ We collected all def-use pairs for all variables by control-flow graph.
 
 ### Function 1
 
-| Unit test | Coverage Criteria |
-| --------- | ----------------- |
-| t1        | description       |
+| Unit test                                | Coverage Criteria |
+|------------------------------------------|-------------------|
+| testReturnsZeroIfNewValueIsNull()        |                   |
+| testReturnsNewValueLengthIfPriorIsNull() |                   |
+| testReturnsNewPosition()                 |                   |
+| testReturnsNewPositionLongerString()     |                   |
+| testReturnsNewPositionBack()             |                   |
 
 ### Function 2
 
@@ -154,10 +160,13 @@ We collected all def-use pairs for all variables by control-flow graph.
 
 ### Function 1
 
-| Unit test | VariableX | VariableY | Outcome             | Failure reason |
-| --------- | --------- | --------- | ------------------- | -------------- |
-| t1        | 0         | 1         | outcome description | description    |
-| t2        | 1         | 2         | outcome description | -              |
+| Unit test                                | priorCursorPosition | priorValue  | newValue    | Outcome | Failure reason |
+|------------------------------------------|---------------------|-------------|-------------|---------|----------------|
+| testReturnsZeroIfNewValueIsNull()        | 0                   | null        | null        | 0       | -              |
+| testReturnsNewValueLengthIfPriorIsNull() | 0                   | null        | "New Value" | 9       | -              |
+| testReturnsNewPosition()                 | 10                  | "Old Value" | "New Value" | 9       | -              |
+| testReturnsNewPositionLongerString()     | 6                   | "Old Value" | "New Value" | 6       | -              |
+| testReturnsNewPositionBack()             | 1                   | "Old Value" | "New"       | 0       | -              |
 
 ### Function 2
 

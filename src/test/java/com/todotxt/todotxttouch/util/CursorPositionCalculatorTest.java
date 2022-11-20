@@ -21,7 +21,7 @@ public class CursorPositionCalculatorTest {
 	}
 
 	@Test
-	public void testReturnsNewValueLenghtIfPriorIsNull() {
+	public void testReturnsNewValueLengthIfPriorIsNull() {
 		// arange
 		int expected = 9;
 		int priorCursorPosition = 0;
