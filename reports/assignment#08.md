@@ -10,13 +10,19 @@
 
 ### Function 1
 
-- ```java 
-  public static final int calculate(int priorCursorPosition, String priorValue, String newValue)
-  ```
-  - The function was chosen because it has a sufficient number of variables and it has several branches in the control-flow graph.
+```java
+public static final int calculate(int priorCursorPosition, String priorValue, String newValue)
+```
+
+- The function was chosen because it has a sufficient number of variables and it has several branches in the control-flow graph.
+
 ### Function 2
 
-- description
+```java
+public static String insertPadded​(String s, int insertAt, String stringToInsert)
+```
+
+- This function was chosen because of its different number of arguments and types, and the ways that is possible to perform different kind of executions helping with the data flow testing.
 
 ### Function 3
 
@@ -30,7 +36,15 @@
 
 ### Function 2
 
-- description
+- This function inserts a given string into another padding it with spaces. Is aware if the insertion point has a space on either end and does not add extra spaces.
+- Parameters:
+  - s - the string to insert into
+  - insertAt - the position to insert the string
+  - stringToInsert - the string to insert
+- Returns:
+  - the result of inserting the stringToInsert into the passed in string
+- Throws:
+  - `IndexOutOfBoundsException` - if the insertAt is negative, or insertAt is larger than the length of s String object
 
 ### Function 3
 
@@ -45,15 +59,21 @@
 - Constructed control-flow graph
 - Defined defs, c-uses and p-uses for each block
 - Attached defs, c-use and p-use to each node in the graph
-![control flow compute](../.github/08/calculate_flow.png)
-<br>_priorCursorPosition_ was shortened to "pCP" for convenience.</br>
+  ![control flow compute](../.github/08/f1/calculate_flow.png)
+  <br>_priorCursorPosition_ was shortened to "pCP" for convenience.</br>
 - Created tabular summary for each variable (see it below)
 - Specify all-defs, all-c-uses, all-p-uses, all-uses pairs (see it below)
 - Created tests to cover all needed paths
 
 ### Function 2
 
-- description
+- Constructed control-flow graph for _insertPadded_ function
+- Defined defs, c-uses and p-uses for each block
+- Attached defs, c-use and p-use to each node in the graph
+
+![insertpadded flow compute](../.github/08/f2/insertpadded_flow.png)
+
+- Specify all-defs, all-c-uses, all-p-uses, all-uses pairs (see it below)
 
 ### Function 3
 
@@ -64,12 +84,13 @@
 > as the one presented in lecture #9 and all paths for each coverage criteria: all-defs,
 
 ### Function 1
-We collected all def-use pairs for all variables by control-flow graph. 
 
-![tabular compute](../.github/08/pcp_table.png)
-![tabular compute](../.github/08/prior_value_table.png)
-![tabular compute](../.github/08/new_value_table.png)
-![tabular compute](../.github/08/pos_table.png)
+We collected all def-use pairs for all variables by control-flow graph.
+
+![tabular compute](../.github/08/f1/pcp_table.png)
+![tabular compute](../.github/08/f1/prior_value_table.png)
+![tabular compute](../.github/08/f1/new_value_table.png)
+![tabular compute](../.github/08/f1/pos_table.png)
 
 ### Function 2
 
@@ -82,33 +103,34 @@ We collected all def-use pairs for all variables by control-flow graph.
 ## all-defs, all-c-uses, all-p-uses, and all-uses.
 
 ### Function 1
+
 - On the right column a test which cover needed path is specified.
 - all-defs
   - for every function variable v at least one def-clear path from every definition of v to at least one c-use or one p-use of v must be covered
-![calculate defs pcp table](../.github/08/defs_pcp.png)
-![calculate defs prior table](../.github/08/defs_prior.png)
-![calculate defs new table](../.github/08/defs_new.png)
-![calculate defs pos table](../.github/08/defs_pos.png)
+    ![calculate defs pcp table](../.github/08/f1/defs_pcp.png)
+    ![calculate defs prior table](../.github/08/f1/defs_prior.png)
+    ![calculate defs new table](../.github/08/f1/defs_new.png)
+    ![calculate defs pos table](../.github/08/f1/defs_pos.png)
 - all-c-uses
   - for every function variable v at least one def-clear path from every definition of v to every c-use of v must be covered
-![calculate defs pcp table](../.github/08/c_uses_pcp.png)
-![calculate defs prior table](../.github/08/c_uses_prior.png)
-![calculate defs new table](../.github/08/c_uses_new.png)
-![calculate defs pos table](../.github/08/c_uses_pos.png)
+    ![calculate defs pcp table](../.github/08/f1/c_uses_pcp.png)
+    ![calculate defs prior table](../.github/08/f1/c_uses_prior.png)
+    ![calculate defs new table](../.github/08/f1/c_uses_new.png)
+    ![calculate defs pos table](../.github/08/f1/c_uses_pos.png)
 - all-p-uses
   - for every function variable v at least one def-clear path from every definition of v to every p-use of v must be covered
   - _priorCursorPosition_ doesn't have p-uses.
   - Pair which colored as blue can't be covered by def-clear path.
-![calculate defs prior table](../.github/08/p_uses_prior.png)
-![calculate defs new table](../.github/08/p_uses_new.png)
-![calculate defs pos table](../.github/08/p_uses_pos.png)
+    ![calculate defs prior table](../.github/08/f1/p_uses_prior.png)
+    ![calculate defs new table](../.github/08/f1/p_uses_new.png)
+    ![calculate defs pos table](../.github/08/f1/p_uses_pos.png)
 - all-uses
   - for every function variable v at least one def-clear path from every definition of v to every c-use and every p-use of v must be covered
   - Pair which colored as blue can't be covered by def-clear path.
-![calculate defs pcp table](../.github/08/all_uses_pcp.png)
-![calculate defs prior table](../.github/08/all_uses_prior.png)
-![calculate defs new table](../.github/08/all_uses_new.png)
-![calculate defs pos table](../.github/08/all_uses_pos.png)
+    ![calculate defs pcp table](../.github/08/f1/all_uses_pcp.png)
+    ![calculate defs prior table](../.github/08/f1/all_uses_prior.png)
+    ![calculate defs new table](../.github/08/f1/all_uses_new.png)
+    ![calculate defs pos table](../.github/08/f1/all_uses_pos.png)
 
 ### Function 2
 
@@ -137,7 +159,7 @@ We collected all def-use pairs for all variables by control-flow graph.
 ### Function 1
 
 | Unit test                                | Coverage Criteria |
-|------------------------------------------|-------------------|
+| ---------------------------------------- | ----------------- |
 | testReturnsZeroIfNewValueIsNull()        |                   |
 | testReturnsNewValueLengthIfPriorIsNull() |                   |
 | testReturnsNewPosition()                 |                   |
@@ -148,6 +170,7 @@ We collected all def-use pairs for all variables by control-flow graph.
 
 | Unit test | Coverage Criteria |
 | --------- | ----------------- |
+| t1        | description       |
 | t1        | description       |
 
 ### Function 3
@@ -161,7 +184,7 @@ We collected all def-use pairs for all variables by control-flow graph.
 ### Function 1
 
 | Unit test                                | priorCursorPosition | priorValue  | newValue    | Outcome | Failure reason |
-|------------------------------------------|---------------------|-------------|-------------|---------|----------------|
+| ---------------------------------------- | ------------------- | ----------- | ----------- | ------- | -------------- |
 | testReturnsZeroIfNewValueIsNull()        | 0                   | null        | null        | 0       | -              |
 | testReturnsNewValueLengthIfPriorIsNull() | 0                   | null        | "New Value" | 9       | -              |
 | testReturnsNewPosition()                 | 10                  | "Old Value" | "New Value" | 9       | -              |
