@@ -80,6 +80,7 @@ We collected all def-use pairs for all variables by control-flow graph.
 ## all-defs, all-c-uses, all-p-uses, and all-uses.
 
 ### Function 1
+- On the right column a test which cover needed path is specified.
 - all-defs
   - for every function variable v at least one def-clear path from every definition of v to at least one c-use or one p-use of v must be covered
 ![calculate defs pcp table](../.github/08/defs_pcp.png)
@@ -94,8 +95,18 @@ We collected all def-use pairs for all variables by control-flow graph.
 ![calculate defs pos table](../.github/08/c_uses_pos.png)
 - all-p-uses
   - for every function variable v at least one def-clear path from every definition of v to every p-use of v must be covered
+  - _priorCursorPosition_ doesn't have p-uses.
+  - Pair which colored as blue can't be covered by def-clear path.
+![calculate defs prior table](../.github/08/p_uses_prior.png)
+![calculate defs new table](../.github/08/p_uses_new.png)
+![calculate defs pos table](../.github/08/p_uses_pos.png)
 - all-uses
   - for every function variable v at least one def-clear path from every definition of v to every c-use and every p-use of v must be covered
+  - Pair which colored as blue can't be covered by def-clear path.
+![calculate defs pcp table](../.github/08/all_uses_pcp.png)
+![calculate defs prior table](../.github/08/all_uses_prior.png)
+![calculate defs new table](../.github/08/all_uses_new.png)
+![calculate defs pos table](../.github/08/all_uses_pos.png)
 
 ### Function 2
 
