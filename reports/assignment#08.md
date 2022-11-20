@@ -44,7 +44,7 @@
 - Defined defs, c-uses and p-uses for each block
 - Attached defs, c-use and p-use to each node in the graph
 ![control flow compute](../.github/08/calculate_flow.png)
-_priorCursorPosition_ was shortened to "pCP" for convenience.
+<br>_priorCursorPosition_ was shortened to "pCP" for convenience.</br>
 - Created tabular summary for each variable (see it below)
 - Specify all-defs, all-c-uses, all-p-uses, all-uses pairs (see it below)
 - Created tests to cover all needed paths
