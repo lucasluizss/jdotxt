@@ -13,7 +13,7 @@
 - ```java 
   public static final int calculate(int priorCursorPosition, String priorValue, String newValue)
   ```
-  - description
+  - The function was chosen because it has a sufficient number of variables and it has several branches in the control-flow graph.
 ### Function 2
 
 - description
