@@ -158,13 +158,13 @@ We collected all def-use pairs for all variables by control-flow graph.
 
 ### Function 1
 
-| Unit test                                | Coverage Criteria |
-| ---------------------------------------- | ----------------- |
-| testReturnsZeroIfNewValueIsNull()        |                   |
-| testReturnsNewValueLengthIfPriorIsNull() |                   |
-| testReturnsNewPosition()                 |                   |
-| testReturnsNewPositionLongerString()     |                   |
-| testReturnsNewPositionBack()             |                   |
+| Unit test                                | Coverage Criteria                                                |
+|------------------------------------------|------------------------------------------------------------------|
+| testReturnsZeroIfNewValueIsNull()        | Coverage criteria specified in the right column in tabular above |
+| testReturnsNewValueLengthIfPriorIsNull() | Coverage criteria specified in the right column in tabular above |
+| testReturnsNewPosition()                 | Coverage criteria specified in the right column in tabular above |
+| testReturnsNewPositionLongerString()     | Coverage criteria specified in the right column in tabular above |
+| testReturnsNewPositionBack()             | Coverage criteria specified in the right column in tabular above |
 
 ### Function 2
 
