@@ -40,7 +40,14 @@
 
 ### Function 1
 
-- description
+- Constructed control-flow graph
+- Defined defs, c-uses and p-uses for each block
+- Attached defs, c-use and p-use to each node in the graph
+![control flow compute](../.github/08/calculate_flow.png)
+_priorCursorPosition_ was shortened to "pCP" for convenience.
+- Created tabular summary for each variable (see it below)
+- Specify all-defs, all-c-uses, all-p-uses, all-uses pairs (see it below)
+- Created tests to cover all needed paths
 
 ### Function 2
 
@@ -55,8 +62,12 @@
 > as the one presented in lecture #9 and all paths for each coverage criteria: all-defs,
 
 ### Function 1
+We collected all def-use pairs for all variables by control-flow graph. 
 
-- description
+![tabular compute](../.github/08/pcp_table.png)
+![tabular compute](../.github/08/prior_value_table.png)
+![tabular compute](../.github/08/new_value_table.png)
+![tabular compute](../.github/08/pos_table.png)
 
 ### Function 2
 
@@ -66,19 +77,30 @@
 
 - description
 
-## all-c-uses, all-p-uses, and all-uses.
+## all-defs, all-c-uses, all-p-uses, and all-uses.
 
 ### Function 1
-
+- all-defs
+  - for every function variable v at least one def-clear path from every definition of v to at least one c-use or one p-use of v must be covered
+![calculate defs pcp table](../.github/08/defs_pcp.png)
+![calculate defs prior table](../.github/08/defs_prior.png)
+![calculate defs new table](../.github/08/defs_new.png)
+![calculate defs pos table](../.github/08/defs_pos.png)
 - all-c-uses
-  - description
+  - for every function variable v at least one def-clear path from every definition of v to every c-use of v must be covered
+![calculate defs pcp table](../.github/08/c_uses_pcp.png)
+![calculate defs prior table](../.github/08/c_uses_prior.png)
+![calculate defs new table](../.github/08/c_uses_new.png)
+![calculate defs pos table](../.github/08/c_uses_pos.png)
 - all-p-uses
-  - description
+  - for every function variable v at least one def-clear path from every definition of v to every p-use of v must be covered
 - all-uses
-  - description
+  - for every function variable v at least one def-clear path from every definition of v to every c-use and every p-use of v must be covered
 
 ### Function 2
 
+- all-defs
+  - description
 - all-c-uses
   - description
 - all-p-uses
@@ -88,6 +110,8 @@
 
 ### Function 3
 
+- all-defs
+  - description
 - all-c-uses
   - description
 - all-p-uses
