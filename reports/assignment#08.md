@@ -112,7 +112,10 @@ We collected all def-use pairs for all variables by control-flow graph.
 
 ### Function 3
 
-- description
+We collected all def-use pairs for all variables by control-flow graph.
+
+![createParentDirectory tabular compute](../.github/08/f1/destFlowTable.png)
+![createParentDirectory tabular compute](../.github/08/f1/dirFlowTable.png)
 
 ## all-defs, all-c-uses, all-p-uses, and all-uses.
 
