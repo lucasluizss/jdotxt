@@ -26,7 +26,11 @@ public static String insertPadded​(String s, int insertAt, String stringToInse
 
 ### Function 3
 
-- description
+```java
+public static void createParentDirectory(File dest)
+```
+
+- This function was chosen because it's behavior and goal it's different that the functions chosen before and also it origins a good data flow diagram for analysis. 
 
 ## What is the purpose of each function.
 
@@ -48,7 +52,11 @@ public static String insertPadded​(String s, int insertAt, String stringToInse
 
 ### Function 3
 
-- description
+- This funtion creates the parent directory for a file.
+- Parameters:
+  - file - The file which parent directory will be created.
+- Throws: 
+  - `IndexOutOfBoundsException` - if the file received doesn't exist or the function wasn't able to create the parent directory.
 
 ## Step-by-step of the ‘Dataflow Testing’ for each function and each variable.
 
@@ -77,7 +85,13 @@ public static String insertPadded​(String s, int insertAt, String stringToInse
 
 ### Function 3
 
-- description
+- Constructed control-flow graph for _insertPadded_ function
+- Defined defs, c-uses and p-uses for each block
+- Attached defs, c-use and p-use to each node in the graph
+
+![createParentDirectory flow compute](../.github/08/f2/createParentDirectory_flow.png)
+
+- Specify all-defs, all-c-uses, all-p-uses, all-uses pairs (see it below)
 
 ## Summary for each variable
 
