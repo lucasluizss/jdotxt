@@ -111,6 +111,8 @@ We collected all def-use pairs for all variables by control-flow graph.
 ![insertPadded compute](../.github/08/f2/f2_summary_s.png)
 ![insertPadded compute](../.github/08/f2/f2_summary_insertAt.png)
 ![insertPadded compute](../.github/08/f2/f2_summary_stringToInsert.png)
+![insertPadded compute](../.github/08/f2/f2_summary_newText.png)
+![insertPadded compute](../.github/08/f2/f2_summary_posItem.png)
 
 ### Function 3
 
