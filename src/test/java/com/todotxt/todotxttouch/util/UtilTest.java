@@ -55,7 +55,7 @@ public class UtilTest {
 	 */
 
 	@Test(expected = TodoException.class)
-	public void testThrowsTodoExceptionWhenPassingNullDestitaion() throws IOException, TodoException {
+	public void testThrowsTodoExceptionWhenPassingNullDestination() throws IOException, TodoException {
 		// arange
 		File dest = null;
 
@@ -77,7 +77,7 @@ public class UtilTest {
 	}
 
 	@Test
-	public void testParentDirectoryNull() throws IOException, TodoException {
+	public void testParentDirectoryValid() throws IOException, TodoException {
 		// arange
 		String parentPath = System.getProperty("user.home") + File.separator + "unexisting_dir";
 		File dest = new File(parentPath + File.separator + "todo.txt");

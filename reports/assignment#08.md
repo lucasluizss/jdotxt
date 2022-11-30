@@ -162,6 +162,7 @@ We collected all def-use pairs for all variables by control-flow graph.
 
 ### Function 3
 
+- On the right column a test which cover needed path is specified.
 - all-defs
   - description
 - all-c-uses
