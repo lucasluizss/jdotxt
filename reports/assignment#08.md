@@ -30,7 +30,7 @@ public static String insertPadded​(String s, int insertAt, String stringToInse
 public static void createParentDirectory(File dest)
 ```
 
-- This function was chosen because it's behavior and goal it's different that the functions chosen before and also it origins a good data flow diagram for analysis. 
+- This function was chosen because it's behavior and goal it's different that the functions chosen before and also it origins a good data flow diagram for analysis.
 
 ## What is the purpose of each function.
 
@@ -55,7 +55,7 @@ public static void createParentDirectory(File dest)
 - This funtion creates the parent directory for a file.
 - Parameters:
   - file - The file which parent directory will be created.
-- Throws: 
+- Throws:
   - `IndexOutOfBoundsException` - if the file received doesn't exist or the function wasn't able to create the parent directory.
 
 ## Step-by-step of the ‘Dataflow Testing’ for each function and each variable.
@@ -108,7 +108,11 @@ We collected all def-use pairs for all variables by control-flow graph.
 
 ### Function 2
 
-- description
+![insertPadded compute](../.github/08/f2/f2_summary_s.png)
+![insertPadded compute](../.github/08/f2/f2_summary_insertAt.png)
+![insertPadded compute](../.github/08/f2/f2_summary_stringToInsert.png)
+![insertPadded compute](../.github/08/f2/f2_summary_newText.png)
+![insertPadded compute](../.github/08/f2/f2_summary_posItem.png)
 
 ### Function 3
 
@@ -177,7 +181,7 @@ We collected all def-use pairs for all variables by control-flow graph.
 ### Function 1
 
 | Unit test                                | Coverage Criteria                                                           |
-|------------------------------------------|-----------------------------------------------------------------------------|
+| ---------------------------------------- | --------------------------------------------------------------------------- |
 | testReturnsZeroIfNewValueIsNull()        | The corresponding coverage criteria can be determined from the tables above |
 | testReturnsNewValueLengthIfPriorIsNull() | The corresponding coverage criteria can be determined from the tables above |
 | testReturnsNewPosition()                 | The corresponding coverage criteria can be determined from the tables above |
