@@ -108,6 +108,8 @@ We collected all def-use pairs for all variables by control-flow graph.
 
 ### Function 2
 
+We collected all def-use pairs for all variables by control-flow graph.
+
 ![insertPadded compute](../.github/08/f2/f2_summary_s.png)
 ![insertPadded compute](../.github/08/f2/f2_summary_insertAt.png)
 ![insertPadded compute](../.github/08/f2/f2_summary_stringToInsert.png)
@@ -156,13 +158,91 @@ We collected all def-use pairs for all variables by control-flow graph.
 ### Function 2
 
 - all-defs
-  - description
+
+  - for every function variable v at least one def-clear path from every definition of v to at least one c-use or one p-use of v must be covered
+
+  | var            | pair id | def | use    | path                                  | test case |
+  | -------------- | ------- | --- | ------ | ------------------------------------- | --------- |
+  | s              | 1       | 1   | (2, T) | <1, 2, 3>                             | asd()     |
+  | insertAt       | 1       | 1   | (4, T) | <1, 2, 4, 5>                          | asd()     |
+  | stringToInsert | 1       | 1   | (2, T) | <1, 2, 3>                             | asd()     |
+  | newText        | 1       | 6   | 6      | <1, 2, 3, 4, 6>                       | asd()     |
+  | posItem        | 1       | 12  | 13     | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13> | asd()     |
+
 - all-c-uses
-  - description
+
+  - for every function variable v at least one def-clear path from every definition of v to every c-use of v must be covered
+
+  | var            | pair id | def | use     | path                                              | test case |
+  | -------------- | ------- | --- | ------- | ------------------------------------------------- | --------- |
+  | s              | 1       | 1   | (2, T)  | <1, 2, 3>                                         | asd()     |
+  | s              | 2       | 1   | (4, T)  | <1, 2, 4, 5>                                      | asd()     |
+  | s              | 3       | 1   | 8       | <1, 2, 4, 6, 7, 8>                                | asd()     |
+  | s              | 4       | 1   | (9, F)  | <1, 2, 4, 6, 7, 8, 9, 11, 12>                     | asd()     |
+  | s              | 5       | 1   | (9, T)  | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12>                 | asd()     |
+  | s              | 6       | 1   | (13, F) | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15>         | asd()     |
+  | s              | 7       | 1   | (13, T) | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15>     | asd()     |
+  | s              | 8       | 1   | (7, F)  | <1, 2, 4, 6, 7, 17, 18>                           | asd()     |
+  | s              | 9       | 1   | (18, F) | <1, 2, 4, 6, 7, 17, 18, 20>                       | asd()     |
+  | s              | 10      | 1   | (18, T) | <1, 2, 4, 6, 7, 17, 18, 19, 20>                   | asd()     |
+  | insertAt       | 1       | 1   | (4, T)  | <1, 2, 4, 5>                                      | asd()     |
+  | insertAt       | 2       | 1   | (4, F)  | <1, 2, 4, 6, 7, 8>                                | asd()     |
+  | insertAt       | 4       | 1   | (9, F)  | <1, 2, 4, 6, 7, 8, 9, 11, 12>                     | asd()     |
+  | insertAt       | 5       | 1   | (9, T)  | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12>                 | asd()     |
+  | stringToInsert | 2       | 1   | 17      | <1, 2, 4, 6, 7, 17>                               | asd()     |
+  | newText        | 1       | 6   | 6       | <1, 2, 4, 6>                                      | asd()     |
+  | newText        | 2       | 6   | 8       | <1, 2, 4, 6, 7, 8>                                | asd()     |
+  | newText        | 4       | 6   | (9, F)  | <1, 2, 4, 6, 7, 8, 9, 11>                         | asd()     |
+  | newText        | 5       | 6   | 10      | <1, 2, 4, 6, 7, 8, 9, 10>                         | asd()     |
+  | newText        | 6       | 6   | 11      | <1, 2, 4, 6, 7, 8, 9, 10, 11>                     | asd()     |
+  | newText        | 7       | 6   | 14      | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14>         | asd()     |
+  | newText        | 8       | 6   | (13, F) | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15>         | asd()     |
+  | newText        | 9       | 6   | 15      | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15>     | asd()     |
+  | newText        | 10      | 6   | 16      | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16> | asd()     |
+
 - all-p-uses
-  - description
+
+  - for every function variable v at least one def-clear path from every definition of v to every p-use of v must be covered
+
+  | var            | pair id | def | use    | path                                  | test case |
+  | -------------- | ------- | --- | ------ | ------------------------------------- | --------- |
+  | s              | 8       | 1   | (7, F) | <1, 2, 4, 6, 7, 17, 18>               | asd()     |
+  | insertAt       | 1       | 1   | (4, T) | <1, 2, 4, 5>                          | asd()     |
+  | insertAt       | 3       | 1   | (7, F) | <1, 2, 4, 6, 7, 8>                    | asd()     |
+  | stringToInsert | 1       | 1   | (2, T) | <1, 2, 3>                             | asd()     |
+  | newText        | 3       | 6   | 9      | <1, 2, 4, 6, 7, 8, 9>                 | asd()     |
+  | posItem        | 1       | 12  | 13     | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13> | asd()     |
+
 - all-uses
-  - description
+
+  - for every function variable v at least one def-clear path from every definition of v to every c-use and every p-use of v must be covered
+
+  | var            | pair id | def | use     | path                                              | test case |
+  | -------------- | ------- | --- | ------- | ------------------------------------------------- | --------- |
+  | s              | 1       | 1   | (2, T)  | <1, 2, 3>                                         | asd()     |
+  | s              | 2       | 1   | (4, T)  | <1, 2, 4, 5>                                      | asd()     |
+  | s              | 3       | 1   | 8       | <1, 2, 4, 6, 7, 8>                                | asd()     |
+  | s              | 4       | 1   | (9, F)  | <1, 2, 4, 6, 7, 8, 9, 11, 12>                     | asd()     |
+  | s              | 5       | 1   | (9, T)  | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12>                 | asd()     |
+  | s              | 6       | 1   | (13, F) | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15>         | asd()     |
+  | s              | 7       | 1   | (13, T) | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15>     | asd()     |
+  | s              | 8       | 1   | (7, F)  | <1, 2, 4, 6, 7, 17, 18>                           | asd()     |
+  | s              | 9       | 1   | (18, F) | <1, 2, 4, 6, 7, 17, 18, 20>                       | asd()     |
+  | s              | 10      | 1   | (18, T) | <1, 2, 4, 6, 7, 17, 18, 19, 20>                   | asd()     |
+  | insertAt       | 1       | 1   | (4, T)  | <1, 2, 4, 5>                                      | asd()     |
+  | insertAt       | 2       | 1   | (4, F)  | <1, 2, 4, 6, 7, 8>                                | asd()     |
+  | insertAt       | 4       | 1   | (9, F)  | <1, 2, 4, 6, 7, 8, 9, 11, 12>                     | asd()     |
+  | insertAt       | 5       | 1   | (9, T)  | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12>                 | asd()     |
+  | stringToInsert | 2       | 1   | 17      | <1, 2, 4, 6, 7, 17>                               | asd()     |
+  | newText        | 1       | 6   | 6       | <1, 2, 4, 6>                                      | asd()     |
+  | newText        | 2       | 6   | 8       | <1, 2, 4, 6, 7, 8>                                | asd()     |
+  | newText        | 4       | 6   | (9, F)  | <1, 2, 4, 6, 7, 8, 9, 11>                         | asd()     |
+  | newText        | 5       | 6   | 10      | <1, 2, 4, 6, 7, 8, 9, 10>                         | asd()     |
+  | newText        | 6       | 6   | 11      | <1, 2, 4, 6, 7, 8, 9, 10, 11>                     | asd()     |
+  | newText        | 7       | 6   | 14      | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14>         | asd()     |
+  | newText        | 8       | 6   | (13, F) | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15>         | asd()     |
+  | newText        | 9       | 6   | 15      | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15>     | asd()     |
+  | newText        | 10      | 6   | 16      | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16> | asd()     |
 
 ### Function 3
 
@@ -214,10 +294,10 @@ We collected all def-use pairs for all variables by control-flow graph.
 
 ### Function 2
 
-| Unit test | VariableX | VariableY | Outcome             | Failure reason |
-| --------- | --------- | --------- | ------------------- | -------------- |
-| t1        | 0         | 1         | outcome description | description    |
-| t2        | 1         | 2         | outcome description | -              |
+| Unit test | s   | insertAt | stringToInsert | Outcome             | Failure reason |
+| --------- | --- | -------- | -------------- | ------------------- | -------------- |
+| t1        | 0   | 1        | 1              | outcome description | description    |
+| t2        | 1   | 2        | 2              | outcome description | -              |
 
 ### Function 3
 
