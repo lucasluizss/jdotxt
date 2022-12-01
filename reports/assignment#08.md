@@ -168,13 +168,24 @@ We collected all def-use pairs for all variables by control-flow graph.
 
 - On the right column a test which cover needed path is specified.
 - all-defs
-  - description
+  - for every function variable v at least one def-clear path from every definition of v to at least one c-use or one p-use of v must be covered
+    ![calculate defs dest table](../.github/08/f1/defs_dest.png)
+    ![calculate defs dir table](../.github/08/f1/defs_dir.png)
 - all-c-uses
-  - description
+  - for every function variable v at least one def-clear path from every definition of v to every c-use of v must be covered
+    ![calculate defs dest table](../.github/08/f1/c_uses_dest.png)
+    ![calculate defs dir table](../.github/08/f1/c_uses_dir.png)
 - all-p-uses
-  - description
+  - for every function variable v at least one def-clear path from every definition of v to every p-use of v must be covered
+    ![calculate defs dest table](../.github/08/f1/p_uses_dest.png)
+    ![calculate defs dir table](../.github/08/f1/p_uses_dir.png)
 - all-uses
-  - description
+  - for every function variable v at least one def-clear path from every definition of v to every c-use and every p-use of v must be covered
+    ![calculate defs dest table](../.github/08/f1/all_uses_dest.png)
+    ![calculate defs dir table](../.github/08/f1/all_uses_dir.png)
+
+- In the above figures the blue paths are impossible to reach with this tests because of the impossibility of make a condition true.
+    
 
 ## Brief description of the unit tests generated for each coverage criteria.
 

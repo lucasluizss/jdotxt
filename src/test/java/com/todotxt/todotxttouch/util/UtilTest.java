@@ -55,7 +55,7 @@ public class UtilTest {
 	 */
 
 	@Test(expected = TodoException.class)
-	public void testThrowsTodoExceptionWhenPassingNullDestination() throws IOException, TodoException {
+	public void testNullDestination() throws IOException, TodoException {
 		// arange
 		File dest = null;
 
