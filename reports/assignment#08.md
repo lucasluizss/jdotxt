@@ -250,6 +250,7 @@ We collected all def-use pairs for all variables by control-flow graph.
 - On the right column a test which cover needed path is specified.
 - all-defs
   - for every function variable v at least one def-clear path from every definition of v to at least one c-use or one p-use of v must be covered
+  
     ![calculate defs dest table](../.github/08/f1/defs_dest.png)
     ![calculate defs dir table](../.github/08/f1/defs_dir.png)
 - all-c-uses
