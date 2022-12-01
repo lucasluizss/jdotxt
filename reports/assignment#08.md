@@ -5,6 +5,7 @@
 > **Lucas Silva** - up202103397
 >
 > **Francisco Pacheco** - up201906505
+> `
 
 ## Which functions have you selected for testing and why.
 
@@ -161,88 +162,88 @@ We collected all def-use pairs for all variables by control-flow graph.
 
   - for every function variable v at least one def-clear path from every definition of v to at least one c-use or one p-use of v must be covered
 
-  | var            | pair id | def | use    | path                                  | test case |
-  | -------------- | ------- | --- | ------ | ------------------------------------- | --------- |
-  | s              | 1       | 1   | (2, T) | <1, 2, 3>                             | asd()     |
-  | insertAt       | 1       | 1   | (4, T) | <1, 2, 4, 5>                          | asd()     |
-  | stringToInsert | 1       | 1   | (2, T) | <1, 2, 3>                             | asd()     |
-  | newText        | 1       | 6   | 6      | <1, 2, 3, 4, 6>                       | asd()     |
-  | posItem        | 1       | 12  | 13     | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13> | asd()     |
+  | var            | pair id | def | use    | path                                  | test case         |
+  | -------------- | ------- | --- | ------ | ------------------------------------- | ----------------- |
+  | s              | 1       | 1   | (2, T) | <1, 2, 3>                             | insertPaddedE1()  |
+  | insertAt       | 1       | 1   | (4, T) | <1, 2, 4, 5>                          | insertPaddedE6()  |
+  | stringToInsert | 1       | 1   | (2, T) | <1, 2, 3>                             | insertPaddedE8()  |
+  | newText        | 1       | 6   | 6      | <1, 2, 3, 4, 6>                       | insertPaddedE10() |
+  | posItem        | 1       | 12  | 13     | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13> | insertPaddedE11() |
 
 - all-c-uses
 
   - for every function variable v at least one def-clear path from every definition of v to every c-use of v must be covered
 
-  | var            | pair id | def | use     | path                                              | test case |
-  | -------------- | ------- | --- | ------- | ------------------------------------------------- | --------- |
-  | s              | 1       | 1   | (2, T)  | <1, 2, 3>                                         | asd()     |
-  | s              | 2       | 1   | (4, T)  | <1, 2, 4, 5>                                      | asd()     |
-  | s              | 3       | 1   | 8       | <1, 2, 4, 6, 7, 8>                                | asd()     |
-  | s              | 4       | 1   | (9, F)  | <1, 2, 4, 6, 7, 8, 9, 11, 12>                     | asd()     |
-  | s              | 5       | 1   | (9, T)  | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12>                 | asd()     |
-  | s              | 6       | 1   | (13, F) | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15>         | asd()     |
-  | s              | 7       | 1   | (13, T) | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15>     | asd()     |
-  | s              | 8       | 1   | (7, F)  | <1, 2, 4, 6, 7, 17, 18>                           | asd()     |
-  | s              | 9       | 1   | (18, F) | <1, 2, 4, 6, 7, 17, 18, 20>                       | asd()     |
-  | s              | 10      | 1   | (18, T) | <1, 2, 4, 6, 7, 17, 18, 19, 20>                   | asd()     |
-  | insertAt       | 1       | 1   | (4, T)  | <1, 2, 4, 5>                                      | asd()     |
-  | insertAt       | 2       | 1   | (4, F)  | <1, 2, 4, 6, 7, 8>                                | asd()     |
-  | insertAt       | 4       | 1   | (9, F)  | <1, 2, 4, 6, 7, 8, 9, 11, 12>                     | asd()     |
-  | insertAt       | 5       | 1   | (9, T)  | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12>                 | asd()     |
-  | stringToInsert | 2       | 1   | 17      | <1, 2, 4, 6, 7, 17>                               | asd()     |
-  | newText        | 1       | 6   | 6       | <1, 2, 4, 6>                                      | asd()     |
-  | newText        | 2       | 6   | 8       | <1, 2, 4, 6, 7, 8>                                | asd()     |
-  | newText        | 4       | 6   | (9, F)  | <1, 2, 4, 6, 7, 8, 9, 11>                         | asd()     |
-  | newText        | 5       | 6   | 10      | <1, 2, 4, 6, 7, 8, 9, 10>                         | asd()     |
-  | newText        | 6       | 6   | 11      | <1, 2, 4, 6, 7, 8, 9, 10, 11>                     | asd()     |
-  | newText        | 7       | 6   | 14      | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14>         | asd()     |
-  | newText        | 8       | 6   | (13, F) | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15>         | asd()     |
-  | newText        | 9       | 6   | 15      | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15>     | asd()     |
-  | newText        | 10      | 6   | 16      | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16> | asd()     |
+  | var            | pair id | def | use     | path                                              | test case         |
+  | -------------- | ------- | --- | ------- | ------------------------------------------------- | ----------------- |
+  | s              | 1       | 1   | (2, T)  | <1, 2, 3>                                         | insertPaddedE1()  |
+  | s              | 2       | 1   | (4, T)  | <1, 2, 4, 5>                                      | insertPaddedE1()  |
+  | s              | 3       | 1   | 8       | <1, 2, 4, 6, 7, 8>                                | insertPaddedE2()  |
+  | s              | 4       | 1   | (9, F)  | <1, 2, 4, 6, 7, 8, 9, 11, 12>                     | insertPaddedE3()  |
+  | s              | 5       | 1   | (9, T)  | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12>                 | insertPaddedE3()  |
+  | s              | 6       | 1   | (13, F) | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15>         | insertPaddedE3()  |
+  | s              | 7       | 1   | (13, T) | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15>     | insertPaddedE3()  |
+  | s              | 8       | 1   | (7, F)  | <1, 2, 4, 6, 7, 17, 18>                           | insertPaddedE5()  |
+  | s              | 9       | 1   | (18, F) | <1, 2, 4, 6, 7, 17, 18, 20>                       | insertPaddedE4()  |
+  | s              | 10      | 1   | (18, T) | <1, 2, 4, 6, 7, 17, 18, 19, 20>                   | insertPaddedE4()  |
+  | insertAt       | 1       | 1   | (4, T)  | <1, 2, 4, 5>                                      | insertPaddedE5()  |
+  | insertAt       | 2       | 1   | (4, F)  | <1, 2, 4, 6, 7, 8>                                | insertPaddedE5()  |
+  | insertAt       | 4       | 1   | (9, F)  | <1, 2, 4, 6, 7, 8, 9, 11, 12>                     | insertPaddedE6()  |
+  | insertAt       | 5       | 1   | (9, T)  | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12>                 | insertPaddedE7()  |
+  | stringToInsert | 2       | 1   | 17      | <1, 2, 4, 6, 7, 17>                               | insertPaddedE8()  |
+  | newText        | 1       | 6   | 6       | <1, 2, 4, 6>                                      | insertPaddedE11() |
+  | newText        | 2       | 6   | 8       | <1, 2, 4, 6, 7, 8>                                | insertPaddedE11() |
+  | newText        | 4       | 6   | (9, F)  | <1, 2, 4, 6, 7, 8, 9, 11>                         | insertPaddedE11() |
+  | newText        | 5       | 6   | 10      | <1, 2, 4, 6, 7, 8, 9, 10>                         | insertPaddedE11() |
+  | newText        | 6       | 6   | 11      | <1, 2, 4, 6, 7, 8, 9, 10, 11>                     | insertPaddedE11() |
+  | newText        | 7       | 6   | 14      | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14>         | insertPaddedE11() |
+  | newText        | 8       | 6   | (13, F) | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15>         | insertPaddedE11() |
+  | newText        | 9       | 6   | 15      | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15>     | insertPaddedE11() |
+  | newText        | 10      | 6   | 16      | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16> | insertPaddedE11() |
 
 - all-p-uses
 
   - for every function variable v at least one def-clear path from every definition of v to every p-use of v must be covered
 
-  | var            | pair id | def | use    | path                                  | test case |
-  | -------------- | ------- | --- | ------ | ------------------------------------- | --------- |
-  | s              | 8       | 1   | (7, F) | <1, 2, 4, 6, 7, 17, 18>               | asd()     |
-  | insertAt       | 1       | 1   | (4, T) | <1, 2, 4, 5>                          | asd()     |
-  | insertAt       | 3       | 1   | (7, F) | <1, 2, 4, 6, 7, 8>                    | asd()     |
-  | stringToInsert | 1       | 1   | (2, T) | <1, 2, 3>                             | asd()     |
-  | newText        | 3       | 6   | 9      | <1, 2, 4, 6, 7, 8, 9>                 | asd()     |
-  | posItem        | 1       | 12  | 13     | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13> | asd()     |
+  | var            | pair id | def | use    | path                                  | test case         |
+  | -------------- | ------- | --- | ------ | ------------------------------------- | ----------------- |
+  | s              | 8       | 1   | (7, F) | <1, 2, 4, 6, 7, 17, 18>               | insertPaddedE1()  |
+  | insertAt       | 1       | 1   | (4, T) | <1, 2, 4, 5>                          | insertPaddedE5()  |
+  | insertAt       | 3       | 1   | (7, F) | <1, 2, 4, 6, 7, 8>                    | insertPaddedE6()  |
+  | stringToInsert | 1       | 1   | (2, T) | <1, 2, 3>                             | insertPaddedE8()  |
+  | newText        | 3       | 6   | 9      | <1, 2, 4, 6, 7, 8, 9>                 | insertPaddedE10() |
+  | posItem        | 1       | 12  | 13     | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13> | insertPaddedE11() |
 
 - all-uses
 
   - for every function variable v at least one def-clear path from every definition of v to every c-use and every p-use of v must be covered
 
-  | var            | pair id | def | use     | path                                              | test case |
-  | -------------- | ------- | --- | ------- | ------------------------------------------------- | --------- |
-  | s              | 1       | 1   | (2, T)  | <1, 2, 3>                                         | asd()     |
-  | s              | 2       | 1   | (4, T)  | <1, 2, 4, 5>                                      | asd()     |
-  | s              | 3       | 1   | 8       | <1, 2, 4, 6, 7, 8>                                | asd()     |
-  | s              | 4       | 1   | (9, F)  | <1, 2, 4, 6, 7, 8, 9, 11, 12>                     | asd()     |
-  | s              | 5       | 1   | (9, T)  | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12>                 | asd()     |
-  | s              | 6       | 1   | (13, F) | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15>         | asd()     |
-  | s              | 7       | 1   | (13, T) | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15>     | asd()     |
-  | s              | 8       | 1   | (7, F)  | <1, 2, 4, 6, 7, 17, 18>                           | asd()     |
-  | s              | 9       | 1   | (18, F) | <1, 2, 4, 6, 7, 17, 18, 20>                       | asd()     |
-  | s              | 10      | 1   | (18, T) | <1, 2, 4, 6, 7, 17, 18, 19, 20>                   | asd()     |
-  | insertAt       | 1       | 1   | (4, T)  | <1, 2, 4, 5>                                      | asd()     |
-  | insertAt       | 2       | 1   | (4, F)  | <1, 2, 4, 6, 7, 8>                                | asd()     |
-  | insertAt       | 4       | 1   | (9, F)  | <1, 2, 4, 6, 7, 8, 9, 11, 12>                     | asd()     |
-  | insertAt       | 5       | 1   | (9, T)  | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12>                 | asd()     |
-  | stringToInsert | 2       | 1   | 17      | <1, 2, 4, 6, 7, 17>                               | asd()     |
-  | newText        | 1       | 6   | 6       | <1, 2, 4, 6>                                      | asd()     |
-  | newText        | 2       | 6   | 8       | <1, 2, 4, 6, 7, 8>                                | asd()     |
-  | newText        | 4       | 6   | (9, F)  | <1, 2, 4, 6, 7, 8, 9, 11>                         | asd()     |
-  | newText        | 5       | 6   | 10      | <1, 2, 4, 6, 7, 8, 9, 10>                         | asd()     |
-  | newText        | 6       | 6   | 11      | <1, 2, 4, 6, 7, 8, 9, 10, 11>                     | asd()     |
-  | newText        | 7       | 6   | 14      | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14>         | asd()     |
-  | newText        | 8       | 6   | (13, F) | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15>         | asd()     |
-  | newText        | 9       | 6   | 15      | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15>     | asd()     |
-  | newText        | 10      | 6   | 16      | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16> | asd()     |
+  | var            | pair id | def | use     | path                                              | test case         |
+  | -------------- | ------- | --- | ------- | ------------------------------------------------- | ----------------- |
+  | s              | 1       | 1   | (2, T)  | <1, 2, 3>                                         | insertPaddedE1()  |
+  | s              | 2       | 1   | (4, T)  | <1, 2, 4, 5>                                      | insertPaddedE1()  |
+  | s              | 3       | 1   | 8       | <1, 2, 4, 6, 7, 8>                                | insertPaddedE2()  |
+  | s              | 4       | 1   | (9, F)  | <1, 2, 4, 6, 7, 8, 9, 11, 12>                     | insertPaddedE3()  |
+  | s              | 5       | 1   | (9, T)  | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12>                 | insertPaddedE3()  |
+  | s              | 6       | 1   | (13, F) | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15>         | insertPaddedE3()  |
+  | s              | 7       | 1   | (13, T) | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15>     | insertPaddedE3()  |
+  | s              | 8       | 1   | (7, F)  | <1, 2, 4, 6, 7, 17, 18>                           | insertPaddedE5()  |
+  | s              | 9       | 1   | (18, F) | <1, 2, 4, 6, 7, 17, 18, 20>                       | insertPaddedE4()  |
+  | s              | 10      | 1   | (18, T) | <1, 2, 4, 6, 7, 17, 18, 19, 20>                   | insertPaddedE4()  |
+  | insertAt       | 1       | 1   | (4, T)  | <1, 2, 4, 5>                                      | insertPaddedE5()  |
+  | insertAt       | 2       | 1   | (4, F)  | <1, 2, 4, 6, 7, 8>                                | insertPaddedE5()  |
+  | insertAt       | 4       | 1   | (9, F)  | <1, 2, 4, 6, 7, 8, 9, 11, 12>                     | insertPaddedE6()  |
+  | insertAt       | 5       | 1   | (9, T)  | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12>                 | insertPaddedE7()  |
+  | stringToInsert | 2       | 1   | 17      | <1, 2, 4, 6, 7, 17>                               | insertPaddedE8()  |
+  | newText        | 1       | 6   | 6       | <1, 2, 4, 6>                                      | insertPaddedE11() |
+  | newText        | 2       | 6   | 8       | <1, 2, 4, 6, 7, 8>                                | insertPaddedE11() |
+  | newText        | 4       | 6   | (9, F)  | <1, 2, 4, 6, 7, 8, 9, 11>                         | insertPaddedE11() |
+  | newText        | 5       | 6   | 10      | <1, 2, 4, 6, 7, 8, 9, 10>                         | insertPaddedE11() |
+  | newText        | 6       | 6   | 11      | <1, 2, 4, 6, 7, 8, 9, 10, 11>                     | insertPaddedE11() |
+  | newText        | 7       | 6   | 14      | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14>         | insertPaddedE11() |
+  | newText        | 8       | 6   | (13, F) | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 15>         | insertPaddedE11() |
+  | newText        | 9       | 6   | 15      | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15>     | insertPaddedE11() |
+  | newText        | 10      | 6   | 16      | <1, 2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16> | insertPaddedE11() |
 
 ### Function 3
 
@@ -269,10 +270,21 @@ We collected all def-use pairs for all variables by control-flow graph.
 
 ### Function 2
 
-| Unit test | Coverage Criteria |
-| --------- | ----------------- |
-| t1        | description       |
-| t1        | description       |
+![insertPadded coverage](../.github/08/f2/function2_coverage.png)
+
+| Unit Testing    | Description                                                                                                                 | Coverage Criteria                                                           |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| insertPaddedE1  | Passing empty string in parameter `s` that return an empty string as expected.                                              | The corresponding coverage criteria can be determined from the tables above |
+| insertPaddedE2  | Passing null string in parameter `s` that return a **_NullPointerException_** as expected.                                  | The corresponding coverage criteria can be determined from the tables above |
+| insertPaddedE3  | Passing string with spaces in parameter `s` that return a new string with the expected character.                           | The corresponding coverage criteria can be determined from the tables above |
+| insertPaddedE4  | Passing valid string in parameter `s` that return a new string with the expected value.                                     | The corresponding coverage criteria can be determined from the tables above |
+| insertPaddedE5  | Passing a negative value in parameter `insertAt` will throw an **_IndexOutOfBoundsException_** exception.                   | The corresponding coverage criteria can be determined from the tables above |
+| insertPaddedE6  | Passing a value greater then string lenght in parameter `insertAt` will throw an **_IndexOutOfBoundsException_** exception. | The corresponding coverage criteria can be determined from the tables above |
+| insertPaddedE7  | Passign a valid value in parameter `insertAt` will return the expected inserted string in the correct place.                | The corresponding coverage criteria can be determined from the tables above |
+| insertPaddedE8  | Passing empty string in parameter `stringToInsert` that return the content of parameter `s`.                                | The corresponding coverage criteria can be determined from the tables above |
+| insertPaddedE9  | Passing a null string in parameter `stringToInsert` that return the content of parameter `s`.                               | The corresponding coverage criteria can be determined from the tables above |
+| insertPaddedE10 | Passing a blank string in parameter `stringToInsert` that return `s` with the inserted spaces in the specified position.    | The corresponding coverage criteria can be determined from the tables above |
+| insertPaddedE11 | Passing a valdid string will return the new string as expected.                                                             | The corresponding coverage criteria can be determined from the tables above |
 
 ### Function 3
 
@@ -294,10 +306,19 @@ We collected all def-use pairs for all variables by control-flow graph.
 
 ### Function 2
 
-| Unit test | s   | insertAt | stringToInsert | Outcome             | Failure reason |
-| --------- | --- | -------- | -------------- | ------------------- | -------------- |
-| t1        | 0   | 1        | 1              | outcome description | description    |
-| t2        | 1   | 2        | 2              | outcome description | -              |
+| Function        | s             | insertAt | stringToText | Outcome                            | Failure reason                                                                             |
+| --------------- | ------------- | -------- | ------------ | ---------------------------------- | ------------------------------------------------------------------------------------------ |
+| insertPaddedE1  | ""            | 0        | "test1"      | "test1"                            | -                                                                                          |
+| insertPaddedE2  | null          | 0        | "test2       | throws `NullPointerException`      | Throws an exception for passing null in `s`                                                |
+| insertPaddedE3  | " "           | 0        | "test"       | "test "                            | -                                                                                          |
+| insertPaddedE4  | "4"           | 0        | "test"       | "test 4"                           | -                                                                                          |
+| insertPaddedE5  | "5"           | -1       | "test"       | throws `IndexOutOfBoundsException` | It throws an exception for trying to access a negative index that doesn't exists in string |
+| insertPaddedE6  | "6"           | 5        | "test"       | throws `IndexOutOfBoundsException` | It throws an exception for trying to access an index that doesn't exists in string         |
+| insertPaddedE7  | "my boundary" | 3        | "7th"        | "my 7th boundary"                  | -                                                                                          |
+| insertPaddedE8  | "my boundary" | 3        | ""           | "my boundary"                      | -                                                                                          |
+| insertPaddedE9  | "my boundary" | 3        | null         | "my boundary"                      | -                                                                                          |
+| insertPaddedE10 | "my boundary" | 2        | " "          | "my boundary"                      | -                                                                                          |
+| insertPaddedE11 | "my boundary" | 2        | "11th"       | "my 11th boundary"                 | -                                                                                          |
 
 ### Function 3
 
