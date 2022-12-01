@@ -55,7 +55,7 @@ public class UtilTest {
 	 */
 
 	@Test(expected = TodoException.class)
-	public void testNullDestination() throws IOException, TodoException {
+	public void testNullDestination() throws TodoException {
 		// arange
 		File dest = null;
 
@@ -64,7 +64,7 @@ public class UtilTest {
 	}
 
 	@Test
-	public void testParentDirectoryExist() throws IOException, TodoException {
+	public void testParentDirectoryExist() throws TodoException {
 		// arange
 		File dest = TODO_TXT_FILE;
 		String parentPath = DEFAULTDIR;

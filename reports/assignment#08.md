@@ -250,7 +250,7 @@ We collected all def-use pairs for all variables by control-flow graph.
 - On the right column a test which cover needed path is specified.
 - all-defs
   - for every function variable v at least one def-clear path from every definition of v to at least one c-use or one p-use of v must be covered
-  
+
     ![calculate defs dest table](../.github/08/f1/defs_dest.png)
     ![calculate defs dir table](../.github/08/f1/defs_dir.png)
 - all-c-uses
@@ -301,9 +301,11 @@ We collected all def-use pairs for all variables by control-flow graph.
 
 ### Function 3
 
-| Unit test | Coverage Criteria |
-| --------- | ----------------- |
-| t1        | description       |
+| Unit test | Description | Coverage Criteria |
+| --------- | ----------- | ----------------- |
+| testParentDirectoryValid() | Pass a file in `dest` parameter that does not have a directory created | The corresponding coverage criteria can be determined from the tables above       |
+| testParentDirectoryExist() | Pass a file in `dest` parameter that already has a directory created | The corresponding coverage criteria can be determined from the tables above       | 
+| testNullDestination() | Pass a `null` file in `dest` parameter | The corresponding coverage criteria can be determined from the tables above       | 
 
 ## Brief description of the outcome of each unit test and whether any test results in a failure (and why).
 
@@ -335,7 +337,8 @@ We collected all def-use pairs for all variables by control-flow graph.
 
 ### Function 3
 
-| Unit test | VariableX | VariableY | Outcome             | Failure reason |
-| --------- | --------- | --------- | ------------------- | -------------- |
-| t1        | 0         | 1         | outcome description | description    |
-| t2        | 1         | 2         | outcome description | -              |
+| Unit test | dest      | Failure reason |
+| --------- | --------- | -------------- |
+| testParentDirectoryValid() | C:\Users\franc\unexisting_dir\todo.txt | - |
+| testParentDirectoryExist() | C:\Users\franc\jdotxt\todo.txt | - |
+| testNullDestination() | `null` | Throws a `TodoException` when check that the file is `null` |
