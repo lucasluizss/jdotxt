@@ -45,6 +45,15 @@ public class JdotxtTaskBagImplTest {
 	}
 
 	@Test
+	public void testAddAsTaskCheckReturned() {
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
+
+		Task task = taskBag.addAsTask("task t +p @c");
+
+		assertEquals("task t +p @c", task.getText());
+	}
+
+	@Test
 	public void testUpdateTask() {
 		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
 

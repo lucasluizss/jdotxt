@@ -102,6 +102,21 @@ public class TaskTest {
     }
 
     @Test
+    public void testInScreenFormatReturnedValue() {
+        Task task = new Task(1, "texto");
+        String actual = task.inScreenFormat();
+        assertEquals("texto", actual);
+    }
+
+    @Test
+    public void testInScreenFormatCompleted() {
+        Task task = new Task(1, "texto");
+        task.markComplete(new java.util.Date(100000000));
+        String actual = task.inScreenFormat();
+        assertEquals("x 1970-01-02 texto", actual);
+    }
+
+    @Test
     public void testUpdateTaskt() {
         Task task = new Task(1, "texto");
         task.update("updated");
@@ -197,6 +212,14 @@ public class TaskTest {
     }
 
     @Test
+    public void testEqualsDifferentId() {
+        Task t1 = new Task(1, "text");
+        Task t2 = new Task(2, "text");
+
+        assertFalse(t1.equals(t2));
+    }
+
+    @Test
     public void testEqualsSameTask() {
         Task t = new Task();
 
@@ -279,6 +302,13 @@ public class TaskTest {
         Task t = new Task();
 
         assertEquals("", t.inFileFormatHeader());
+    }
+
+    @Test
+    public void testToStringTask() {
+        Task t = new Task(1, "test", new Date(1000000));
+
+        assertEquals("1970-01-01 test", t.toString());
     }
 
     @Test

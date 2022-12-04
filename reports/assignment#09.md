@@ -75,12 +75,22 @@
 
 - com.todotxt.todotxttouch.task.Task
 
-| Tested function    | Test name            | Mutation killed                                              | Description                                                 |
-|--------------------|----------------------|--------------------------------------------------------------|-------------------------------------------------------------|
-| getLinks()         | testGetLinks         | replaced return value with Collections.emptyList -> SURVIVED | Checks size of returned list                                |
-| getPrependedDate() | testGetPrependedDate | replaced return value with "" -> SURVIVED                    | Checks that prepended date is calculated correctly          |
-| getRelativeAge()   | testGetRelativeAge   | replaced return value with "" -> SURVIVED                    | Checks that relative age is calculated correctly            |
-| isRec()            | testIsRec            | replaced boolean return with false -> SURVIVED               | Check that rec property is calculated correctly             |
-| isFromThreshold()  | testIsFromThreshold  | replaced boolean return with false -> SURVIVED               | Check that isFromThreshold property is calculated correctly |
-| getDuration()      | testGetDuration      | replaced int return with 0 -> SURVIVED                       | Check that duration property is calculated correctly        |
-| getAmount()        | testGetAmount        | replaced int return with 0 -> SURVIVED                       | Check that amount property is calculated correctly          |
+| Tested function    | Test name                       | Mutation killed                                                              | Description                                                                           |
+|--------------------|---------------------------------|------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
+| getLinks()         | testGetLinks                    | replaced return value with Collections.emptyList -> SURVIVED                 | Checks size of returned list                                                          |
+| getPrependedDate() | testGetPrependedDate            | replaced return value with "" -> SURVIVED                                    | Checks that prepended date is calculated correctly                                    |
+| getRelativeAge()   | testGetRelativeAge              | replaced return value with "" -> SURVIVED                                    | Checks that relative age is calculated correctly                                      |
+| isRec()            | testIsRec                       | replaced boolean return with false -> SURVIVED                               | Checks that rec property is calculated correctly                                      |
+| isFromThreshold()  | testIsFromThreshold             | replaced boolean return with false -> SURVIVED                               | Checks that isFromThreshold property is calculated correctly                          |
+| getDuration()      | testGetDuration                 | replaced int return with 0 -> SURVIVED <br/> negated conditional -< SURVIVED | Checks that duration property is calculated correctly                                 |
+| getAmount()        | testGetAmount                   | replaced int return with 0 -> SURVIVED                                       | Checks that amount property is calculated correctly                                   |
+| toString()         | testToStringTask                | replaced return value with "" -> SURVIVED                                    | Checks that task correctly transforms task to string                                  |
+| inScreenFormat()   | testInScreenFormatReturnedValue | replaced return value with "" -> SURVIVED                                    | Checks that task correctly transforms task to screen format                           |
+| inScreenFormat()   | testInScreenFormatCompleted     | negated conditional -> SURVIVED                                              | Checks that task correctly transforms task to screen format in case task is completed |
+| equals(Object obj) | testEqualsDifferentId           | replaced boolean return with true -> SURVIVED                                | Cheks that function returns false in case if different ids                            |
+
+- com.todotxt.todotxttouch.task.JdotxtTaskBagImpl
+
+| Tested function         | Test name                  | Mutation killed                             | Description                          |
+|-------------------------|----------------------------|---------------------------------------------|--------------------------------------|
+| addAsTask(String input) | testAddAsTaskCheckReturned | replaced return value with null -> SURVIVED | Checks that returned task is correct |
