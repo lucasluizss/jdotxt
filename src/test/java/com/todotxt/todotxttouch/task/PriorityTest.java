@@ -16,6 +16,29 @@ public class PriorityTest {
 	}
 
 	@Test
+	public void testRangeCorrectList() {
+		List<Priority> range = Priority.range(Priority.A, Priority.C);
+		assertEquals(Priority.A, range.get(0));
+		assertEquals(Priority.B, range.get(1));
+		assertEquals(Priority.C, range.get(2));
+	}
+
+	@Test
+	public void testRangeEqualBoundaries() {
+		List<Priority> range = Priority.range(Priority.A, Priority.A);
+		assertEquals(1, range.size());
+		assertEquals(Priority.A, range.get(0));
+	}
+
+	@Test
+	public void testRangeInCodeCorrectList() {
+		List<String> range = Priority.rangeInCode(Priority.A, Priority.C);
+		assertEquals("A", range.get(0));
+		assertEquals("B", range.get(1));
+		assertEquals("C", range.get(2));
+	}
+
+	@Test
 	public void test_toPriority() {
 		ArrayList<String> l = new ArrayList<String>();
 		l.add("a");
@@ -25,9 +48,25 @@ public class PriorityTest {
 	}
 
 	@Test
+	public void testToPriorityCorrectList() {
+		ArrayList<String> l = new ArrayList<String>();
+		l.add("a");
+		l.add("b");
+		ArrayList<Priority> priorities = Priority.toPriority(l);
+		assertEquals(Priority.A, priorities.get(0));
+		assertEquals(Priority.B, priorities.get(1));
+	}
+
+	@Test
 	public void test_toPriority_String() {
 		Priority.toPriority("aa");
 		assertTrue(true);
+	}
+
+	@Test
+	public void testToPriorityCorrect() {
+		Priority priority = Priority.toPriority("aa");
+		assertEquals(Priority.NONE, priority);
 	}
 
 	@Test

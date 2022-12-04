@@ -22,10 +22,7 @@
  */
 package com.todotxt.todotxttouch.task;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 public enum Priority {
 	A("A", "A", "A", "(A)"), B("B", "B", "B", "(B)"), C(
