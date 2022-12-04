@@ -1,5 +1,7 @@
 package com.todotxt.todotxttouch.task;
 
+import com.chschmid.jdotxt.gui.JdotxtGUI;
+import com.chschmid.jdotxt.util.LanguagesController;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -8,6 +10,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.net.URL;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -133,6 +136,57 @@ public class TaskTest {
         assertFalse(t.isHidden());
         assertFalse(t.isRec());
         assertFalse(t.isFromThreshold());
+    }
+
+    @Test
+    public void testGetLinks() {
+        Task t = new Task(1, "http://www.link.com", new Date(1000000));
+        List<URL> urls = t.getLinks();
+        assertEquals(1, urls.size());
+    }
+
+    @Test
+    public void testGetPrependedDate() {
+        JdotxtGUI.lang = new LanguagesController("English");
+        Task t = new Task(1, "2022-01-01 test", new Date(1000000));
+        String prependedDate = t.getPrependedDate();
+        assertEquals("2022-01-01", prependedDate);
+    }
+
+    @Test
+    public void testGetRelativeAge() {
+        JdotxtGUI.lang = new LanguagesController("English");
+        Task t = new Task(1, "2020-01-01 test", new Date(1000000));
+        String relativeAge = t.getRelativeAge();
+        assertEquals("2020-01-01", relativeAge);
+    }
+
+    @Test
+    public void testIsRec() {
+        Task t = new Task(1, "rec:+123d", new Date(1000000));
+        boolean isRec = t.isRec();
+        assertTrue(isRec);
+    }
+
+    @Test
+    public void testIsFromThreshold() {
+        Task t = new Task(1, "rec:+123d", new Date(1000000));
+        boolean isFromThreshold = t.isFromThreshold();
+        assertTrue(isFromThreshold);
+    }
+
+    @Test
+    public void testGetDuration() {
+        Task t = new Task(1, "rec:+123d", new Date(1000000));
+        int duration = t.getDuration();
+        assertEquals(6, duration);
+    }
+
+    @Test
+    public void testGetAmount() {
+        Task t = new Task(1, "rec:+123d", new Date(1000000));
+        int amount = t.getAmount();
+        assertEquals(123, amount);
     }
 
     @Test
