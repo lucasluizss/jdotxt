@@ -94,3 +94,9 @@
 | Tested function         | Test name                  | Mutation killed                             | Description                          |
 |-------------------------|----------------------------|---------------------------------------------|--------------------------------------|
 | addAsTask(String input) | testAddAsTaskCheckReturned | replaced return value with null -> SURVIVED | Checks that returned task is correct |
+
+- com.todotxt.todotxttouch.task.TaskBagImpl
+
+| Tested function         | Test name                  | Mutation killed                             | Description                          |
+|-------------------------|----------------------------|---------------------------------------------|--------------------------------------|
+| addAsTask(String input) | testAddAsTaskCheckReturned | replaced return value with null -> SURVIVED | Checks that returned task is correct |

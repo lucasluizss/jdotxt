@@ -519,4 +519,13 @@ public class TaskBagImplTest {
 	private Date getMockDate(String date) throws ParseException {
 		return new SimpleDateFormat("yyyy-MM-dd").parse(date);
 	}
+
+	@Test
+	public void testAddAsTaskCheckReturned() {
+		TaskBagImpl taskBag = new TaskBagImpl(null);
+
+		Task task = taskBag.addAsTask("task t +p @c");
+
+		assertEquals("task t +p @c", task.getText());
+	}
 }
