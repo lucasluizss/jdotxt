@@ -2,6 +2,7 @@ package com.todotxt.todotxttouch.task;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -68,6 +69,40 @@ public class JdotxtTaskBagImplTest {
 	}
 
 	@Test
+	public void testUpdateFindTask() {
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
+
+		taskBag.addAsTask("task t +p @c");
+
+		Task t = taskBag.getTasks().get(0);
+
+		taskBag.update(t);
+
+		List<Task> actual = taskBag.getTasks();
+
+		assertNotNull(actual);
+	}
+
+	@Test(expected = TaskPersistException.class)
+	public void testUpdateTaskNotFound() {
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
+
+		Task t = new Task(0, "task t +p @c", new Date());
+
+		taskBag.update(t);
+	}
+
+	@Test
+	public void testUpdateNullTask() {
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
+
+		Task t = null;
+		taskBag.update(t);
+
+		assertNull(t);
+	}
+
+	@Test
 	public void testDeleteTask() {
 		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
 
@@ -80,5 +115,14 @@ public class JdotxtTaskBagImplTest {
 		List<Task> expected = new ArrayList<>();
 
 		assertEquals(expected, actual);
+	}
+
+	@Test(expected = TaskPersistException.class)
+	public void testDeleteTaskNotFound() {
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
+
+		Task t = new Task(0, "task t +p @c", new Date());
+
+		taskBag.delete(t);
 	}
 }

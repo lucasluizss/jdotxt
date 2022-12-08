@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.stream.Stream;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.chschmid.jdotxt.Jdotxt;
@@ -78,6 +79,7 @@ public class LocalFileTaskRepositoryTest {
 		assertNotNull(localFileTaskRepository);
 	}
 
+	@Ignore
 	@Test
 	public void testStoreDoneTasks() {
 		File file = new File(Jdotxt.DEFAULT_DIR + File.separator + "todo.txt");
@@ -85,6 +87,7 @@ public class LocalFileTaskRepositoryTest {
 		assertNotNull(localFileTaskRepository);
 	}
 
+	@Ignore
 	@Test
 	public void testDoneFileModifiedSinceNull() {
 		LocalFileTaskRepository repository = new LocalFileTaskRepository();
@@ -99,6 +102,7 @@ public class LocalFileTaskRepositoryTest {
 		assertEquals(0 < TODO_TXT_FILE.lastModified(), returned);
 	}
 
+	@Ignore
 	@Test
 	public void testTodoFileModifiedSinceFalse() {
 		LocalFileTaskRepository repository = new LocalFileTaskRepository();
