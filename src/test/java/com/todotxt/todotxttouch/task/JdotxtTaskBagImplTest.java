@@ -2,6 +2,7 @@ package com.todotxt.todotxttouch.task;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.ArrayList;
@@ -124,5 +125,135 @@ public class JdotxtTaskBagImplTest {
 		Task t = new Task(0, "task t +p @c", new Date());
 
 		taskBag.delete(t);
+	}
+
+	@Test
+	public void testStoreTask() {
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
+		taskBag.store();
+		assertNotNull(taskBag);
+	}
+
+	@Test
+	public void testStoreWithTasks() {
+		LocalFileTaskRepository local = new LocalFileTaskRepository();
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(local);
+		taskBag.addAsTask("task t +p @c");
+		taskBag.addAsTask("task y +p @c");
+		taskBag.store();
+		assertNotNull(taskBag);
+	}
+
+	@Test
+	public void testArchiveTask() {
+		LocalFileTaskRepository local = new LocalFileTaskRepository();
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(local);
+		taskBag.archive();
+	}
+
+	@Test(expected = TaskPersistException.class)
+	public void testArchiveTaskWithError() {
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
+		taskBag.archive();
+	}
+
+	@Test
+	public void testUnrchiveTask() {
+		LocalFileTaskRepository local = new LocalFileTaskRepository();
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(local);
+		Task t = new Task(0, "task t +p @c", new Date());
+		taskBag.unarchive(t);
+	}
+
+	@Test(expected = TaskPersistException.class)
+	public void testUnrchiveTaskWithError() {
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
+		Task t = new Task(0, "task t +p @c", new Date());
+		taskBag.unarchive(t);
+	}
+
+	@Test
+	public void testReloadTask() {
+		LocalFileTaskRepository local = new LocalFileTaskRepository();
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(local);
+		taskBag.reload();
+	}
+
+	@Test(expected = NullPointerException.class)
+	public void testReloadTaskWithError() {
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
+		taskBag.reload();
+	}
+
+	@Test
+	public void testClearTask() {
+		LocalFileTaskRepository local = new LocalFileTaskRepository();
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(local);
+		taskBag.clear();
+	}
+
+	@Test(expected = NullPointerException.class)
+	public void testClearTaskWithError() {
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
+		taskBag.clear();
+	}
+
+	@Test
+	public void testSizeTask() {
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
+		int actual = taskBag.size();
+		assertEquals(0, actual);
+	}
+
+	@Test
+	public void testGetPrioritiesTask() {
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
+		taskBag.addAsTask("task t +p @c");
+		taskBag.addAsTask("task y +p @c");
+		ArrayList<Priority> priorities = taskBag.getPriorities();
+		assertEquals(1, priorities.size());
+	}
+
+	@Test
+	public void testGetContextTask() {
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
+		taskBag.addAsTask("task t +p @c");
+		taskBag.addAsTask("task y +p @c");
+		ArrayList<String> priorities = taskBag.getContexts(true);
+		assertEquals(2, priorities.size());
+	}
+
+	@Test
+	public void testTaskHasChanged() {
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
+		assertFalse(taskBag.hasChanged());
+	}
+
+	@Test
+	public void testPushToRemote() {
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
+		taskBag.pushToRemote(true);
+		assertNotNull(taskBag);
+	}
+
+	@Test
+	public void testPushToRemoteOverrided() {
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
+		taskBag.pushToRemote(true, true);
+		assertNotNull(taskBag);
+	}
+
+	@Test
+	public void testPushFromRemote() {
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
+		taskBag.pullFromRemote();
+		assertNotNull(taskBag);
+	}
+
+	@Test
+	public void testPushFromRemoteOverrided() {
+		JdotxtTaskBagImpl taskBag = new JdotxtTaskBagImpl(null);
+		taskBag.pullFromRemote(true);
+		assertNotNull(taskBag);
 	}
 }
